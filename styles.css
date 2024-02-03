@@ -1,0 +1,93 @@
+body  {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+/* styles for header */
+.header {
+    background-color: #55ffbf;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* allign the logo to left */
+.logo {
+    float: left;
+    margin-left: 20px;
+}
+
+/* styles for the navigations */
+nav {
+    float: right;
+    margin-right: 20px;
+}
+
+/* styles for the nav links */
+nav a {
+    color: black;
+    text-decoration: none;
+    margin-right: 10px;
+}
+/* add an underline on hover */
+nav a:hover {
+    text-decoration: underline;
+}
+
+.settings-logo  {
+    float: right;
+    margin-right: 20px;
+    cursor: pointer;
+    color: black;
+    font-size: 40px !important;
+}
+
+/* style for popup */
+.popupBg {
+    color: black;
+    display:none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+
+    /* styles for the popup content */
+    .settingsPopUp {
+        padding: 10px;
+        border-radius: 5px;
+        width: 300px;
+        height: auto;
+        z-index: 2;
+        background-color: white;
+        margin: 0 auto;
+        text-align: left;
+
+        h1 {
+            margin-top: 0;
+            color: black;
+        }
+    }
+}
+
+
+/* styles for close icon */
+.close-icon, .closeBtn {
+    position: fixed;
+    top: 4px;
+    right: 4px;
+    float: right;
+    cursor: pointer;
+    font-size: 20px;
+    &:hover {
+        color: red;
+    }
+}
+
