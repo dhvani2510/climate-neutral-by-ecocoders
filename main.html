@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
-    <!-- link javascript file -->
-    <script src="index.js"></script>
     <title>GreenFleet</title>
 </head>
 
@@ -31,6 +29,90 @@
 
     <!-- main section, where all the content will be placed -->
 
+    <div class="main">
+
+        <button class="button green" onclick="openModal()">Add New Record</button>
+     
+        <div id="fleetTable"></div>
+     
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span onclick="closeModal()" class="close-modal">&times;</span>
+                <h2>Add Data</h2>
+        
+                <!-- First row of inputs -->
+                <div class="modal-row">
+                    <div class="input_label">
+                        <label for="modalDescription">Description:</label>
+                        <input type="text" id="modalDescription" placeholder="Description">
+                      </div>
+                    
+                   <div class="input_label">
+                    <label for="modalType">Type:</label>
+                    <input type="text" id="modalType" placeholder="Type">
+                   </div>
+                  <div class="input_label"> 
+                    <label for="modalYear">Year:</label>
+                    <input type="number" id="modalYear" placeholder="Year">
+                  </div>
+                               
+                </div>
+        
+                <!-- Second row of inputs -->
+                <div class="modal-row">
+                  
+                    <div class="input_label">
+                        <label for="modalMake">Make:</label>
+                        <input type="text" id="modalMake" placeholder="Make">
+                      </div>
+    
+                    <div class="input_label">
+                        <label for="modalModel">Model:</label>
+                        <input type="text" id="modalModel" placeholder="Model">
+                    </div>
+                    <div class="input_label">
+                        <label for="modalAnnualVKT">Annual VKT:</label>
+                        <input type="number" id="modalAnnualVKT" placeholder="Annual VKT">
+                    </div>
+              
+                </div>
+        
+                <!-- Third row of inputs -->
+                <div class="modal-row">
+                    <div class="input_label">
+                        <label for="modalAnnualFuel">Annual Fuel:</label>
+                        <input type="number" id="modalAnnualFuel" placeholder="Annual Fuel">
+                    </div>
+                   <div class="input_label">
+                    <label for="modalFuelType">Fuel Type:</label>
+                    <input type="text" id="modalFuelType" placeholder="Fuel Type">
+                   </div>
+                   <div class="input_label">
+                    <label for="modalFlexFuel">Flex Fuel:</label>
+                    <select id="modalFlexFuel">
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+                    </select>
+                   </div>
+                  
+                </div>
+        
+                <!-- Fourth row of inputs -->
+                <div class="modal-row">
+                    <div class="input_label">
+                        <label for="modalQuantity">Quantity:</label>
+                        <input type="number" id="modalQuantity" placeholder="Quantity">
+                    </div>            
+                </div>
+        
+                <div class="modal-buttons">
+                    <button class="button blue" onclick="closeModal()">Cancel</button>
+                    <button class="button green" onclick="submitData()">Submit</button>      
+                </div>
+            </div>
+        </div>
+        
+     </div>
     <!-- footer section, where all the content will be placed -->
 
     <footer class="footer">
