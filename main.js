@@ -191,7 +191,7 @@ return convertedFleetData;
       fleetTable.updateConfig({ data: fleetDataGridFormat }).forceRender();
   
     
-      sweetAlert("Vehicle added successfully");
+      sweetAlert("Vehicle added successfully", "success",3000);
       // Close the modal after submission
       closeModal();
   }
