@@ -19,10 +19,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Run Jest tests
-      - name: Run Jest tests
-        run: npm test -- --ci
-
+      - name: Run Jest tests and show coverage
+        run: |
+          npm test -- --ci
+          npx jest --coverage
+          
       # Install Cypress
       - name: Install Cypress
         run: npm install cypress
