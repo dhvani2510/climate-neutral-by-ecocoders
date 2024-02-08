@@ -44,7 +44,7 @@
 
     <div class="main">
 
-        <button class="button green" onclick="openModal()">Add New Record</button>
+        <button class="button green" id="new_record_button" onclick="openModal()">Add New Record</button>
      
         <div id="fleetTable"></div>
      
@@ -52,7 +52,7 @@
             <div class="modal-content">
                 
                 <div class="modal-header">
-                    <span onclick="closeModal()" class="close-modal">&times;</span>
+                    <span onclick="closeModal()" class="close-modal" id="top_close_button">&times;</span>
                     <h3>Vehicle Record</h3>
                   </div>
 
@@ -123,7 +123,7 @@
         
                 <div class="modal-buttons">
                     <button class="button blue" onclick="closeModal()">Cancel</button>
-                    <button class="button green" onclick="submitData()">Submit</button>      
+                    <button class="button green" id="vehicle_modal_submit_button" onclick="submitData()">Submit</button>      
                 </div>
             </div>
         </div>
