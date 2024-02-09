@@ -1,9 +1,12 @@
-body  {
+body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
 }
-/* styles for header */
+
 .header {
     background-color: #55ffbf;
     color: white;
@@ -12,43 +15,36 @@ body  {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-shrink: 0; 
 }
 
-/* allign the logo to left */
 .logo {
-    float: left;
     margin-left: 20px;
 }
 
-/* styles for the navigations */
 nav {
-    float: right;
     margin-right: 20px;
 }
 
-/* styles for the nav links */
 nav a {
     color: black;
     text-decoration: none;
     margin-right: 10px;
 }
-/* add an underline on hover */
+
 nav a:hover {
     text-decoration: underline;
 }
 
-.settings-logo  {
-    float: right;
+.settings-logo {
     margin-right: 20px;
     cursor: pointer;
     color: black;
     font-size: 40px !important;
 }
 
-/* style for popup */
 .popupBg {
-    color: black;
-    display:none;
+    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -58,36 +54,58 @@ nav a:hover {
     border-radius: 5px;
     z-index: 1;
     transform: translate(-50%, -50%);
-
-    /* styles for the popup content */
-    .settingsPopUp {
-        padding: 10px;
-        border-radius: 5px;
-        width: 300px;
-        height: auto;
-        z-index: 2;
-        background-color: white;
-        margin: 0 auto;
-        text-align: left;
-
-        h1 {
-            margin-top: 0;
-            color: black;
-        }
-    }
 }
 
+.settingsPopUp {
+    padding: 10px;
+    border-radius: 5px;
+    width: 300px;
+    height: auto;
+    z-index: 2;
+    background-color: white;
+    margin: 0 auto;
+    text-align: left;
+}
 
-/* styles for close icon */
-.close-icon, .closeBtn {
+.closeBtn {
     position: fixed;
     top: 4px;
     right: 4px;
-    float: right;
     cursor: pointer;
     font-size: 20px;
-    &:hover {
-        color: red;
-    }
 }
 
+.footer {
+    margin-top: auto; /* Pushes the footer to the bottom of the page */
+    background-color: #CCCCCC;
+    color: black;
+    font-size: 20px;
+    text-align: left;
+    padding: 20px 2% 10px 2%;
+}
+
+.footer .row {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0 10px; 
+}
+
+.footer .col-1 {
+    flex: 1; 
+    padding: 0 10px; 
+    width: 60%;
+}
+
+.footer .col-2 {
+    flex: 1; 
+    padding: 0 10px; 
+    width: 40%;
+    text-align: right;
+    line-height: 1.75rem;
+}
+
+.col-2 a {
+    color: black;
+}
