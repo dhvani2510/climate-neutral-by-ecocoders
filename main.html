@@ -1,65 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <!-- font awesome library -->
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" 
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" 
-        crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
     <!-- link javascript file -->
     <script src="index.js"></script>
     <title>GreenFleet</title>
 </head>
+
 <body>
-    <!-- header section with logo on left corner, some menu options next to it,
-    seetings icon witht he word settings on the right corner -->
-    <header class="header">
-        <img class="logo" src="assets/climate-neutral-logo.png" alt="Logo">
-        <nav>
-            <!-- add options for uploading the file and also printing the reports -->
-            <!-- add relevant favicon icons -->
-            <a href="#home">Home</a> |
-            <a href="#"><i class="fa fa-upload"></i>Upload File </a>
-            <a href="#printReport" onclick="printPage()"><i class="fa fa-print"></i>Reports</a>
-        </nav>
-        <i class="settings far fa-cog settings-logo"  id="showSettings"
-        onclick="toggleSettings()"></i>
-        <!-- open a modal on clicking the settings -->
-        <div id="popupBg" class="popupBg" >
-            <!-- show cross icon for closing it -->
-            <section id="settingsPopUp" class="settingsPopUp">
-                <!-- give heading and close icon in one line -->
-                <span class="closeBtn" onclick="closeSettings()">&times;</span>
-                <h2>Settings</h2>
-                <p>Settings</p>
 
-            </section>
+    <header>
+        <div class="logo">
+            <img src="assets/climate1.png" alt="Logo">
         </div>
-
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </nav>
     </header>
 
     <!-- main section, where all the content will be placed -->
 
     <!-- footer section, where all the content will be placed -->
+
     <footer class="footer">
-        <div class="container">
-          <div class="row">
-            <div class="col-1">
-                <p>Climate Neutral is a Canadian technology company developing and implementing software resources to accelerate climate action and address the climate emergency.</p>
+        <div class="footer-start">
+            <div class="line"></div>
+            <div class="footer-icons">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-linkedin-in"></i>
             </div>
-            <div class="col-2">
-                <p>MMII Climate Neutral Technologies Inc. 2024</p>
-                
+            <div class="line"></div>
+        </div>
+
+        <div class="footer-text">
+            <p>MMII Climate Neutral Technologies Inc. 2024</p>
+            <div class="footer-links">
                 <a href="https://climateneutral.ca/termsofservice">Terms and Conditions</a> <br>
                 <a href="https://climateneutral.ca/privacy-policy">Privacy Policy</a> <br>
                 <a href="https://climateneutral.ca/contact-us-2023">Contact Us</a> <br>
             </div>
-          </div>
         </div>
-      </footer>
-    
+    </footer>
+
+
 </body>
+
 </html>
