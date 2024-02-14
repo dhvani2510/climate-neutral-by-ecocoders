@@ -11,19 +11,20 @@ header {
     color: #fff;
     padding: 20px;
     display: flex;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo img {
-    padding-left: 50px;
+    padding-left: 3vw;
     width: 200px;
     height: auto;
 }
 
 nav ul {
-    padding-left: 700px;
-    margin: 0;
+    float: right;
+    padding-right: 5vw;
 }
 
 nav ul li {
@@ -43,43 +44,44 @@ nav ul li a {
 nav ul li a:hover {
     color: #bfd7b7;
     text-decoration: underline; 
-    
 }
 
 .landing {
-    background-image: url("image.jpg");
+    background-image: url("assets/image.jpg");
     background-size: cover;
     background-position: center;
     height: 100vh;
     display: flex;
-    /* justify-content: center; */
     align-items: center;
 }
 
 .landing-content {
-    margin-left: 50px;
+    margin-left: 3vw;
     text-align: left;
     padding: 20px;
     max-width: 40%;
     color: #fff;
+
 }
 
 .h1 {
     margin-bottom: 20px;
+    font-size: 30px;
 }
 
 .p{
-    line-height: 23px;
+    line-height: 1.5;
 }
+
 .get-started-btn {
     margin-top: 10px;
     padding: 10px 20px;
-    margin-left: 200px;
     font-size: 16px;
     background-color: transparent;
     color: #fff;
-    border: 0.5px  solid white;
-    border-radius: 5px;
+    border: 1px solid white;
+    /* border-style: solid; */
+    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
