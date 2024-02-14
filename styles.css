@@ -1,93 +1,115 @@
-body  {
+body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #a7deec;
     margin: 0;
-}
-/* styles for header */
-.header {
-    background-color: #55ffbf;
-    color: white;
-    text-align: center;
-    font-size: 20px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    min-height: 100vh; 
+    overflow:auto;
 }
 
-/* allign the logo to left */
-.logo {
-    float: left;
+header {
+    background-color: #0077B6;
+    position: fixed;
+    top: 0;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    width: 100vw;
+    justify-content: space-between; 
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo img {
+    padding-left: 3vw;
+    height: auto;
+    width: 200px;
+}
+
+nav ul {
+    padding-right: 3vw;
+    margin: 0;
+}
+
+nav ul li {
+    padding: 10px;
+    display: inline;
     margin-left: 20px;
 }
 
-/* styles for the navigations */
-nav {
-    float: right;
-    margin-right: 20px;
-}
-
-/* styles for the nav links */
-nav a {
-    color: black;
+nav ul li a {
+    font-size: large;
     text-decoration: none;
-    margin-right: 10px;
-}
-/* add an underline on hover */
-nav a:hover {
-    text-decoration: underline;
+    color: #fff;
+    font-weight: bold;
+    transition: 0.3s ease;
 }
 
-.settings-logo  {
-    float: right;
-    margin-right: 20px;
-    cursor: pointer;
+nav ul li a:hover {
+    color: #bfd7b7;
+    text-decoration: underline; 
+    
+}
+
+.footer {
+    background-color: #a7deec;
     color: black;
-    font-size: 40px !important;
-}
-
-/* style for popup */
-.popupBg {
-    color: black;
-    display:none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    background-color: white;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 5px;
-    z-index: 1;
-    transform: translate(-50%, -50%);
-
-    /* styles for the popup content */
-    .settingsPopUp {
-        padding: 10px;
-        border-radius: 5px;
-        width: 300px;
-        height: auto;
-        z-index: 2;
-        background-color: white;
-        margin: 0 auto;
-        text-align: left;
-
-        h1 {
-            margin-top: 0;
-            color: black;
-        }
-    }
-}
-
-
-/* styles for close icon */
-.close-icon, .closeBtn {
-    position: fixed;
-    top: 4px;
-    right: 4px;
-    float: right;
-    cursor: pointer;
     font-size: 20px;
-    &:hover {
-        color: red;
-    }
+    position: fixed;
+    width: -webkit-fill-available;
+    bottom: 0;
+    text-align: left;
+    padding: 20px 2% 10px 2%;
 }
 
+.footer-text p {
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.footer-links a {
+    color: black;
+    text-decoration: none; 
+}
+
+.footer-links a:hover {
+    text-decoration: underline; 
+}
+
+.footer-icons {
+    display: flex;
+    align-items: center;
+}
+
+.footer-icons i {
+    margin: 0 5px; 
+    color: black;
+}
+
+.footer-text {
+    margin: 10px 0;
+}
+
+
+.footer-start {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+  
+.line {
+    height: 2px;
+    width: 50%;
+    background-color: black;
+}
