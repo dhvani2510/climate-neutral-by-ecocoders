@@ -21,12 +21,13 @@ function yesOrNo(trueOrFalse) {
 
 var selectedVehicleId=null;
 
-function addVehicle()
-{
+function addVehicle() {
+  console.log("Adding vehicle");
   selectedVehicleId=null;
-  //TODO empty all the inputs
   openModal();
 }
+
+
 
 function editVehicle(id)
 {
@@ -53,6 +54,7 @@ function editVehicle(id)
 }
 
 function openModal() {
+  console.log(",opening modal");
     const modal = document.getElementById('myModal');
     modal.style.display = 'flex';
 }
@@ -267,17 +269,3 @@ function confirmation(callback){
   });
 }
 
-
-module.exports = {
-  getFleetData,
-  getFleetDataGridFormat,
-  getVehicleById,
-  convertToFleetArray
-}
-
-// export default{  
-//   getFleetData,
-//   getFleetDataGridFormat,
-//   getVehicleById,
-//   convertToFleetArray
-// }

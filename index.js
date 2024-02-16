@@ -1,20 +1,3 @@
-// code to display settings popup when icon is clied and close when clicked on smewhere else
-function toggleSettings() {
-  document.getElementById("popupBg").style.display = "block";
-}
-function closeSettings() {
-  document.getElementById("popupBg").style.display = "none";
-
-}
-// if popup is opened and user clicks randomly on the scree, the popup should be closed
-// TODO I don't know if this is usefull
-// window.addEventListener("click") = function (event) {
-//   console.log(event.target);
-//   const popup = document.querySelector(".popupBg");
-//   if (event.target == popup) {
-//     popup.classList.remove("show");
-//   }
-// }
 
 var fleetTable;
 (function () {
@@ -49,27 +32,25 @@ var fleetTable;
             },
         ],
         data: storedData,
-        pagination: true,
+        // pagination: true,
         search: true,
         sort: true,
+        autowidth:true,
         style: {
             table: {
-                
-            border: '3px solid #ccc',
-            //'background-color': '#0c1c81',
+                'border': '0',
+                'background-color': '#a7deec',
+                'white-space': 'nowrap'
             },
             th: {
-            //'background-color': 'rgba(0, 0, 0, 0.1)',
-            'background-color': '#0c1c81',
-            //color: '#000',
-            color: 'white',
-            'border-bottom': '3px solid #ccc',
-            'text-align': 'center'
+                'border': '0',
+                'border-bottom': '1px solid #000',
+                'background-color': '#a7deec',
+                'white-space': 'nowrap'
             },
-            td: {
-            'text-align': 'center',
-            //'background-color': '#0c1c81',
-            //color: 'white',
+            td:{
+                'background-color': '#a7deec',
+                'white-space': 'nowrap'
             }
         }
     })
