@@ -1,58 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <!-- font awesome library -->
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-
-    <!-- link javascript file -->
-    <script src="index.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
     <title>GreenFleet</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
+    <!-- header section, where all the navugation options and logo will be placed -->
     <header>
-        <div class="logo">
-            <img src="assets/climate1.png" alt="Logo">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Settings</a></li>
-            </ul>
-        </nav>
+      <div class="logo">
+        <a href="/landing.html"><img src="assets/climate1.png" alt="Logo" /></a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/main.html">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li>
+            <a href="#settingsModal" onclick="openSettingsModal()">Settings</a>
+          </li>
+        </ul>
+      </nav>
     </header>
 
     <!-- main section, where all the content will be placed -->
+    <div class="main" role="main">
+      <div class="main-content-head">
+        <div class="search-container">
+          <input type="text" id="searchInput" placeholder="Search" />
+          <span class="search-icon">|</span>
+          <i class="fas fa-search"></i>
+        </div>
+        <div class="row-icons">
+          <div>
+            <i class="fas fa-plus" onclick="openModalToAddRow()"></i>
+          </div>
+          <div>
+            <input
+              type="file"
+              id="fileInput"
+              accept=".csv,.txt"
+              style="display: none"
+            />
+            <label for="fileInput">
+              <i class="fa fa-file-import"></i>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div id="table">
+        <table id="myTable"></table>
+      </div>
+    </div>
+
+    <!-- modal section, where all the modal content will be placed -->
+
+    <div id="settingsModal" class="modal" role="dialog">
+      <span onclick="closeSettingsModal()">
+        <img class="close" src="assets/icons/close-icon.png" alt="Close Icon" />
+      </span>
+      <h1 class="modal-header">Settings</h1>
+      <div class="modal-content">
+        <img class="settings-icon" src="assets/settings.png" alt="Settings Image" />
+        <div class="modal-col">
+          <div class="modal-row">
+            <label for="provinceSelect">Select Province</label>
+            <div class="select-option">
+              <select id="provinceSelect" class="custom-select" onchange="updateEmissionCoefficient()">
+              </select>
+              <div class="select-arrow">
+                <i class="fas fa-chevron-down"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-row">
+            <label for="emissionCoefficient">Emission Coefficient</label>
+            <div class="input-field">
+              <input readonly type="text" id="emissionCoefficient">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div id="settingsModal" class="modal">
+      <div class="modal-content">
+        <img class="settings-icon" src="assets/settings.png" alt="Settings Icon">
+      </div>
+      <div class="modal-content">
+        <span class="close" onclick="closeSettingsModal()">
+          <i class="fas fa-times"></i>
+        </span>
+        <h2>Settings</h2>
+        <label for="provinceSelect">Select Province:</label>
+        <select id="provinceSelect" name="provinceSelect" 
+          onchange="updateEmissionCoefficient()">
+        </select>
+        <br><br>
+        <label for="emissionCoefficient">Emission Coefficient:</label>
+        <input type="text" id="emissionCoefficient" disabled>
+      </div>
+    </div>
+     -->
+
+    <div id="dataRowModal" class="dataRowModal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">
+          <i class="fas fa-times"></i>
+        </span>
+        <h1>Fleet Information</h1>
+        <div class="modal-row">
+          <div class="input_label">
+            <label for="modalDescription">Description:</label>
+            <input
+              type="text"
+              id="modalDescription"
+              placeholder="Description"
+            />
+          </div>
+
+          <div class="input_label">
+            <label for="modalType">Type:</label>
+            <input type="text" id="modalType" placeholder="Type" />
+          </div>
+          <div class="input_label">
+            <label for="modalYear">Year:</label>
+            <input type="number" id="modalYear" placeholder="Year" />
+          </div>
+        </div>
+
+        <!-- Second row of inputs -->
+        <div class="modal-row">
+          <div class="input_label">
+            <label for="modalMake">Make:</label>
+            <input type="text" id="modalMake" placeholder="Make" />
+          </div>
+
+          <div class="input_label">
+            <label for="modalModel">Model:</label>
+            <input type="text" id="modalModel" placeholder="Model" />
+          </div>
+          <div class="input_label">
+            <label for="modalAnnualVKT">Annual VKT:</label>
+            <input type="number" id="modalAnnualVKT" placeholder="Annual VKT" />
+          </div>
+        </div>
+
+        <!-- Third row of inputs -->
+        <div class="modal-row">
+          <div class="input_label">
+            <label for="modalAnnualFuel">Annual Fuel:</label>
+            <input
+              type="number"
+              id="modalAnnualFuel"
+              placeholder="Annual Fuel"
+            />
+          </div>
+          <div class="input_label">
+            <label for="modalFuelType">Fuel Type:</label>
+            <input type="text" id="modalFuelType" placeholder="Fuel Type" />
+          </div>
+          <div class="input_label">
+            <label for="modalFlexFuel">Flex Fuel:</label>
+            <select id="modalFlexFuel" name="modalFlexFuel">
+              <option value="True">True</option>
+              <option value="False">False</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Fourth row of inputs -->
+        <div class="modal-row">
+          <div class="input_label">
+            <label for="modalQuantity">Quantity:</label>
+            <input type="number" id="modalQuantity" placeholder="Quantity" />
+          </div>
+        </div>
+
+        <div class="modal-buttons">
+          <button class="button blue" onclick="closeModal()">Cancel</button>
+          <button
+            class="button green"
+            id="vehicle_modal_submit_button"
+            onclick="submitData()"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="overlay"></div>
 
     <!-- footer section, where all the content will be placed -->
 
     <footer class="footer">
-        <div class="footer-start">
-            <div class="line"></div>
-            <div class="footer-icons">
-                <i class="fab fa-facebook-f"></i>
-                <i class="fab fa-twitter"></i>
-                <i class="fab fa-linkedin-in"></i>
-            </div>
-            <div class="line"></div>
+      <div class="footer-start">
+        <div class="line"></div>
+        <div class="footer-icons">
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-linkedin-in"></i>
         </div>
+        <div class="line"></div>
+      </div>
 
-        <div class="footer-text">
-            <p>MMII Climate Neutral Technologies Inc. 2024</p>
-            <div class="footer-links">
-                <a href="https://climateneutral.ca/termsofservice">Terms and Conditions</a> <br>
-                <a href="https://climateneutral.ca/privacy-policy">Privacy Policy</a> <br>
-                <a href="https://climateneutral.ca/contact-us-2023">Contact Us</a> <br>
-            </div>
+      <div class="footer-text">
+        <p>MMII Climate Neutral Technologies Inc. 2024</p>
+        <div class="footer-links">
+          <a href="https://climateneutral.ca/termsofservice"
+            >Terms and Conditions</a
+          >
+          <br />
+          <a href="https://climateneutral.ca/privacy-policy">Privacy Policy</a>
+          <br />
+          <a href="https://climateneutral.ca/contact-us-2023">Contact Us</a>
+          <br />
         </div>
+      </div>
     </footer>
-</body>
-
+    <!-- link javascript file -->
+    <script src="coefficient.js"></script>
+    <script src="index.js"></script>
+    <script src="main.js"></script>
+  </body>
 </html>
