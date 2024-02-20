@@ -119,47 +119,6 @@ nav ul li a:hover {
     padding: 20px;
 }
 
-#myTable {
-    background-color: #ddefff;
-    border-collapse: collapse;
-    width: 100%;
-    border: 1px solid #ddd;
-    font-size: 18px;
-    margin-top: 20px;
-}
-#myTable thead {
-    border: 0;
-    border-bottom: 1px solid #333;
-}
-
-#myTable th, #myTable td {
-    border: 0;
-    text-align: left;
-    padding: 12px;
-}
-
-#emptyRow {
-    text-align: center;
-}
-
-#emptyRow:hover, #emptyRow td:hover {
-    background-color: transparent !important;
-}
-
-/* last child of tbody */
-#myTable tbody tr:last-child {
-    border-bottom: 1px solid #333;
-}
-
-#myTable tbody tr:hover {
-    background-color: #f2f2f2;
-}
-
-#myTable th {
-    background-color: #0077B6;
-    color: white;
-}
-
 /* setting Modal */
 #settingsModal {
     display: none;
@@ -169,7 +128,7 @@ nav ul li a:hover {
     top: 50%;
     transform: translate(-50%, -50%);
     background-color: #7fc7d9;
-    padding: 20px;
+    padding: 10px;
     flex-direction: column;
     justify-content: center;
     border-radius: 16px;
@@ -179,7 +138,7 @@ nav ul li a:hover {
     display: flex;
     justify-content: space-around;
     border-bottom: 1px solid #333;
-    padding: 4px;
+    /* padding: 4px; */
     font-family: "India-sans";
 }
 
@@ -188,13 +147,11 @@ nav ul li a:hover {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    padding: 12px;
 }
 
 #settingsModal .modal-col {
     display: flex;
     flex-direction: column;
-    padding: 10px;
     font-size: 20px;
 }
 
@@ -279,10 +236,10 @@ nav ul li a:hover {
 
 .close {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 10px;
+    right: 10px;
     cursor: pointer;
-    height: 20px;
+    height: 30px;
     
     &:hover {
         color: #f44336;
@@ -300,42 +257,7 @@ nav ul li a:hover {
     z-index: 998; /* Ensure overlay appears below the modal */
   }
 
-  /* datarow modal */
-
-.dataRowModal {
-    display: none;
-    z-index: 999;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-}
-
-.dataRowModal .modal-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.dataRowModal .input_label {
-    display: flex;
-    flex-direction: column;
-    margin-right: 10px;
-}
-
-.dataRowModal .modal-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.dataRowModal .input_label label {
-    margin-bottom: 5px;
-}
+ 
 
 #provinceBtn {
     margin-right: 10px;
@@ -369,7 +291,6 @@ nav ul li a:hover {
 }
 
 .option:hover {
-    /* give gradient background color with white text */
     background-image: linear-gradient(#b1b1b1, #ddd);
     color: white;
     font-size: 22px;

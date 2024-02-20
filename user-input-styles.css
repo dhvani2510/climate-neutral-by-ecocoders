@@ -56,3 +56,83 @@
     height: 30px;
     width: 30px;
   }
+
+  #myTable {
+    background-color: #ddefff;
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+    font-size: 18px;
+    margin-top: 20px;
+}
+#myTable thead {
+    border: 0;
+    border-bottom: 1px solid #333;
+}
+
+#myTable th, #myTable td {
+    border: 0;
+    text-align: left;
+    padding: 12px;
+}
+
+#emptyRow {
+    text-align: center;
+}
+
+#emptyRow:hover, #emptyRow td:hover {
+    background-color: transparent !important;
+}
+
+#myTable tbody tr {
+  border-bottom: 1px solid #333;
+}
+
+#myTable tbody tr:hover {
+  background-color: #f2f2f2;
+}
+
+#myTable th {
+  background-color: #0077B6;
+  color: white;
+}
+
+
+/* dara row modal */
+
+ /* datarow modal */
+
+ .dataRowModal {
+  display: none;
+  z-index: 999;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+}
+
+.dataRowModal .modal-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.dataRowModal .input_label {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+}
+
+.dataRowModal .modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.dataRowModal .input_label label {
+  margin-bottom: 5px;
+}
