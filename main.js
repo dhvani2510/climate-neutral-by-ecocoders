@@ -102,7 +102,10 @@ function createRow(vehicle) {
   // Add cells to the row based on column order
   columnOrder.forEach(column => {
       let cell = row.insertCell(-1);
-      cell.innerHTML = vehicle[column] || ''; // Set cell value or empty string if value is undefined
+      if(column==="flexFuel")
+       cell.innerHTML = yesOrNo(vehicle[column]) || "";
+      else          
+       cell.innerHTML = vehicle[column] || ''; // Set cell value or empty string if value is undefined
   });
 
   // Add onclick function to the row
@@ -113,6 +116,30 @@ function createRow(vehicle) {
   }
 }
 
+//Updates the row in the table with the updated vehicle data
+function updateTableRow(vehicle) {
+  var table = document.getElementById("myTable");
+
+  // Find the row corresponding to the selected vehicle
+  var rows = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+  for (var i = 0; i < rows.length; i++) {
+      var cells = rows[i].getElementsByTagName("td");
+      if (cells.length > 0 && cells[0].innerHTML === vehicle.id.toString()) {
+          // Update the cells with the new vehicle data
+          cells[1].innerHTML = vehicle.description;
+          cells[2].innerHTML = vehicle.type;
+          cells[3].innerHTML = vehicle.year;
+          cells[4].innerHTML = vehicle.make;
+          cells[5].innerHTML = vehicle.model;
+          cells[6].innerHTML = vehicle.annualVKT;
+          cells[7].innerHTML = vehicle.annualFuel;
+          cells[8].innerHTML = vehicle.fuelType;
+          cells[9].innerHTML = vehicle.flexFuel ? 'Yes' : 'No';
+          cells[10].innerHTML = vehicle.quantity;
+          break;
+      }
+  }
+}
  
 function yesOrNo(value) {
     console.log(value);
@@ -205,30 +232,9 @@ document.getElementById('dataRowModal').addEventListener('input', function(event
   const input = event.target;
 });
  
-function addNewRowToTable()  {
-  console.log("Adding new row to table");
-  console.log(document.getElementById("modalDescription").value);
-  let fleet ={
-    description: document.getElementById("modalDescription").value,
-    type: document.getElementById("modalType").value,
-    year: document.getElementById("modalYear").value,
-    make: document.getElementById("modalMake").value,
-    model: document.getElementById("modalModel").value,
-    vkt: document.getElementById("modalAnnualVKT").value,
-    fuel_used: document.getElementById("modalAnnualFuel").value,
-    fuel_type: document.getElementById("modalFuelType").value,
-    flex_fuel: yesOrNo(document.getElementById("modalFlexFuel")?.value),
-    quantity: document.getElementById("modalQuantity").value
-  }
-  
-  createRow(fleet);
-}
-
 
 function submitData() {
  
- submitData2();
-
  // Get input values from the modal
  const modalDescription = document.getElementById('modalDescription').value;
  const modalType = document.getElementById('modalType').value;
@@ -260,6 +266,8 @@ function submitData() {
    vehicle.fuelType= modalFuelType;
    vehicle.flexFuel= stringToBool(modalFlexFuel);
    vehicle.quantity=modalQuantity;
+
+   updateTableRow(vehicle);
  }
  else{ // This means a new vehicle is being added
 
@@ -278,6 +286,7 @@ function submitData() {
  };
 
  storedData.push(newRow);  
+ createRow(newRow);
  }
 
  localStorage.setItem('fleetData', JSON.stringify(storedData)); // Update the local storage data
@@ -354,12 +363,13 @@ function deleteVehicleCallBack()
 function selectFlexFuel(option) {
     if (option === 'Yes') {
         document.getElementById("modalFlexFuel").innerHTML = 'Yes';
+        document.getElementById("modalFlexFuel").value= true;
         document.getElementById("yes-button").classList.add('selected');
         document.getElementById("no-button").classList.remove('selected');
     } else {
         document.getElementById("modalFlexFuel").value = 'No';
+        document.getElementById("modalFlexFuel").value= false;
         document.getElementById("no-button").classList.add('selected');
         document.getElementById("yes-button").classList.remove('selected');
- 
       }
 }
