@@ -6,6 +6,13 @@ function openModalToAddRow(fleet) {
   modal.style.display = "block";
   overlay.style.display = "block";
   document.body.style.overflow = "hidden"; // Prevent scrolling of main content
+  var modalHeader = document.getElementById("data-modal-header");
+  if (fleet) {
+    modalHeader.innerHTML = "Edit Details";
+  }
+  else {
+    modalHeader.innerHTML = "Add Details";
+  }
   // set up the data fields in the modal
   if (fleet) {
     document.getElementById("modalDescription").value = fleet["description"];

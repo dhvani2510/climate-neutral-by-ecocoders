@@ -109,22 +109,36 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background-color: #faf3f3;
   padding: 20px;
 }
 
 .dataRowModal .modal-row {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+}
+
+.yes-button, .no-button  {
+  padding: 2px;
+  border: 0;
+  background: transparent;
+  margin: auto;
 }
 
 .dataRowModal .input_label {
   display: flex;
   flex-direction: column;
   margin-right: 10px;
+
+  input {
+    background-color: #d9d9d9;
+    border: 0;
+    border-radius: 16px;
+    
+  }
 }
 
 .dataRowModal .modal-buttons {
@@ -134,5 +148,6 @@
 }
 
 .dataRowModal .input_label label {
-  margin-bottom: 5px;
+  margin-bottom: 2px;
+  color: #0077B6
 }

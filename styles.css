@@ -142,6 +142,10 @@ nav ul li a:hover {
     font-family: "India-sans";
 }
 
+#data-modal-header {
+    border-bottom: 1.5px solid #0077B6;
+}
+
 #settingsModal > .modal-content {
     display: flex;
     flex-direction: row;
