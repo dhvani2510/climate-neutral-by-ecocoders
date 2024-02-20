@@ -127,7 +127,7 @@ nav ul li a:hover {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background-color: #7fc7d9;
+    background-color: #FAF3F3;
     padding: 10px;
     flex-direction: column;
     justify-content: center;
@@ -137,7 +137,7 @@ nav ul li a:hover {
 .modal-header  {
     display: flex;
     justify-content: space-around;
-    border-bottom: 1px solid #333;
+    border-bottom: 1.5px solid #0077B6;
     /* padding: 4px; */
     font-family: "India-sans";
 }
@@ -286,6 +286,15 @@ nav ul li a:hover {
     max-height: 300px;
 }
 
+#fueltypebtn
+{
+    margin-right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+}
 
 .option {
     color: black;
