@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="user-input-styles.css" />
     <!-- font awesome library -->
     <link
       rel="stylesheet"
@@ -39,7 +40,7 @@
         </div>
         <div class="row-icons">
           <div>
-            <i class="fas fa-plus" onclick="openModalToAddRow()"></i>
+            <img class="add-icon" src="assets/icons/add.png" alt="Add Icon" onclick="openModalToAddRow()" />
           </div>
           <div>
             <input
@@ -49,7 +50,7 @@
               style="display: none"
             />
             <label for="fileInput">
-              <i class="fa fa-file-import"></i>
+              <img class="upload-icon" src="assets/icons/flie-upload.png" alt="Upload Icon" />
             </label>
           </div>
         </div>
@@ -72,18 +73,19 @@
           <div class="modal-row">
             <label for="provinceSelect">Select Province</label>
             <div class="select-option">
-              <select id="provinceSelect" class="custom-select" onchange="updateEmissionCoefficient()">
-              </select>
+              <button class="select-btn" id="provinceBtn" onclick="openOptions()"></button>
+              <div class="option-dropdown" id="provinceSelect">
+              </div>
               <div class="select-arrow">
                 <i class="fas fa-chevron-down"></i>
               </div>
             </div>
           </div>
 
-          <div class="modal-row">
+          <div class="modal-row" id="emissionCoefficientRow">
             <label for="emissionCoefficient">Emission Coefficient</label>
-            <div class="input-field">
-              <input readonly type="text" id="emissionCoefficient">
+            <div class="select-option emission-coefficient">
+              <div id="emissionCoefficient"></div>
             </div>
           </div>
         </div>
