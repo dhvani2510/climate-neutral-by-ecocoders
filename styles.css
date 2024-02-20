@@ -16,6 +16,39 @@ header {
     justify-content: space-between; 
 }
 
+.vehicle-list{
+    /* padding: 6vw 0vw; */
+    /* margin: 6vw 0vw; */
+    text-align: center;
+}
+.vehicle-list button {
+    color: white;
+    border: none;
+    display: block;
+    font-weight: bold;
+    width: 45vw;
+    cursor: pointer;
+    background-color: transparent;
+    padding: 2vh;
+    border-radius: 50px;
+    font-size: large;
+}
+
+.vehicle-list button:hover {
+    background-color: #0b5624;
+    font-size: x-large;
+}
+
+.header2 {
+    color: black;
+    text-decoration: underline;
+    text-align: center;
+    background-color: #94d8e9;
+    position: sticky;
+    padding: 20px;
+    /* min-height: 15vh; */
+}
+
 nav {
     display: flex;
     align-items: center;
