@@ -1,20 +1,29 @@
+var selectedProvince = "Ontario";
+ 
 function openSettingsModal() {
   var modal = document.getElementById("settingsModal");
   var overlay = document.getElementById("overlay");
   modal.style.display = "flex";
   overlay.style.display = "block";
   document.body.style.overflow = "hidden"; // Prevent scrolling of main content
+  document.getElementById('provinceBtn').innerHTML = selectedProvince;
+  updateEmissionCoefficient(selectedProvince);
+}
+ 
+function openOptions() {
+  var select = document.getElementById("provinceSelect")
+  select.style.display = "block";
   createOptions();
-  updateEmissionCoefficient();
 }
-
+ 
 // function to update the coefficient
-function updateEmissionCoefficient() {
-  var selectedProvince = document.getElementById("provinceSelect").value;
+function updateEmissionCoefficient(event) {
+  selectedProvince = document.getElementById("provinceBtn").innerHTML = event;
   var emissionCoefficient = getEmissionCoefficient(selectedProvince);
-  document.getElementById("emissionCoefficient").value = emissionCoefficient;
+  document.getElementById("emissionCoefficient").innerHTML = emissionCoefficient;
+  document.getElementById('provinceSelect').style.display="none";
 }
-
+ 
 // function to get the emission coefficient
 function getEmissionCoefficient(selectedProvince) {
   for (var i = 0; i < provincialWfficnienyCoefficient.length; i++) {
@@ -24,7 +33,7 @@ function getEmissionCoefficient(selectedProvince) {
   }
   return 0;
 }
-
+ 
 function closeSettingsModal() {
   var modal = document.getElementById("settingsModal");
   var overlay = document.getElementById("overlay");
@@ -32,7 +41,7 @@ function closeSettingsModal() {
   overlay.style.display = "none";
   document.body.style.overflow = ""; // Restore scrolling of main content
 }
-
+ 
 // modal opeing at setup for adding a row
 // function to open modal for adding a row at setup
 function openModalToAddRow(fleet) {
@@ -55,7 +64,7 @@ function openModalToAddRow(fleet) {
     document.getElementById("modalQuantity").value = fleet['quantity'];
   }
 }
-
+ 
 // function to close modal
 function closeModal() {
   var modal = document.getElementById("dataRowModal");
@@ -78,7 +87,7 @@ function resetModalForm() {
   document.getElementById("modalFlexFuel").value = "";
   document.getElementById("modalQuantity").value = "";
 }
-
+ 
 // Function to handle submit button on click event
 function submitData() {
   var modal = document.getElementById("dataRowModal");
@@ -91,17 +100,17 @@ function submitData() {
     resetModalForm();
   }
 }
-
+ 
 // function to validate input
 function validateInput() {
   console.log("Validating input");
   return true;
 }
-
+ 
 document.getElementById('dataRowModal').addEventListener('input', function(event) {
   const input = event.target;
 });
-
+ 
 function addNewRowToTable()  {
   console.log("Adding new row to table");
   console.log(document.getElementById("modalDescription").value);
@@ -116,7 +125,7 @@ function addNewRowToTable()  {
     fuel_type: document.getElementById("modalFuelType").value,
     flex_fuel: yesOrNo(document.getElementById("modalFlexFuel").value),
     quantity: document.getElementById("modalQuantity").value
-  } 
+  }
   fleetData.push(fleet);
   createRow(fleet);
 }

@@ -1,0 +1,58 @@
+.main-content-head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 30px;
+  }
+   
+  .row-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+   
+  .search-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: large;
+    background-color: #faf3f3;
+    border-radius: 16px;
+  }
+   
+  #searchInput {
+    padding-left: 10px;
+    padding-right: 30px;
+    border: 0;
+    background-color: transparent;
+  }
+   
+  #searchInput::placeholder {
+    color: #999;
+  }
+   
+  #searchInput:focus + .fa-search {
+    color: #007bff; /* Change color of search icon when input is focused */
+  }
+   
+  .fa-search {
+    color: #999; /* Default color of search icon */
+    cursor: pointer;
+    padding: 0 10px;
+  }
+   
+  .search-icon {
+    color: #999;
+    margin-left: 5px; /* Add spacing between icon and | */
+  }
+   
+  .row-icons div {
+    margin: 0 20px;
+  }
+   
+  .upload-icon, .add-icon {
+    cursor: pointer;
+    font-size: 30px;
+    height: 30px;
+    width: 30px;
+  }
