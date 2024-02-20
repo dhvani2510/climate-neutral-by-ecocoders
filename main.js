@@ -10,8 +10,8 @@ function createTable() {
       createEmptyTableRow();
   } else {
     var table = document.getElementById('myTable')
-    fleetData.forEach(fleet => {
-        createRow(fleet)
+    fleetData.forEach(vehicle => {
+        createRow(vehicle)
     });
   }
 }
@@ -45,36 +45,6 @@ function createEmptyTableRow() {
         table.appendChild(tbody);
 } 
  
-function createRow2(fleet) {
-    var table = document.getElementById("myTable");
-    // delete empty row if exists
-    var emptyRow = document.getElementById("emptyRow");
-    if (emptyRow) {
-        emptyRow.remove();
-    }
-    var rowRecord = Object.values(fleet)
-    // create tbody if not already existing oterwise use the existing one
-    var tbody = document.createElement("tbody");
-    if (!document.querySelector("tbody")) {
-        table.appendChild(tbody);
-    } else {
-        tbody = document.querySelector("tbody");
-    }
-    table.appendChild(tbody);
-    console.log(table);
-    let row = tbody.insertRow(-1);
-    for(let i = 0; i < rowRecord.length; i++) {
-        let cell = row.insertCell(-1);
-        cell.innerHTML = rowRecord[i];
-    }
-    // add a onclick function
-    row.onclick = function() {
-        console.log(fleet);
-        openVehicleModal(fleet);
-        console.log(row);
-    }
-}
-
 // Defines the order of columns
 const columnOrder = [
   "description", "type", "year", "make", "model", 
@@ -99,14 +69,15 @@ function createRow(vehicle) {
   // Create new table row
   let row = table.tBodies[0].insertRow(-1);
   
+  // Add id to the row based on vehicle id
+  row.id = `row_${vehicle.id}`;
+
   // Add cells to the row based on column order
   columnOrder.forEach(column => {
-      let cell = row.insertCell(-1);
-      if(column==="flexFuel")
-       cell.innerHTML = yesOrNo(vehicle[column]) || "";
-      else          
+      let cell = row.insertCell(-1);         
        cell.innerHTML = vehicle[column] || ''; // Set cell value or empty string if value is undefined
   });
+
 
   // Add onclick function to the row
   row.onclick = function() {
@@ -117,49 +88,52 @@ function createRow(vehicle) {
 }
 
 //Updates the row in the table with the updated vehicle data
-function updateTableRow(vehicle) {
-  var table = document.getElementById("myTable");
 
-  // Find the row corresponding to the selected vehicle
-  var rows = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
-  for (var i = 0; i < rows.length; i++) {
-      var cells = rows[i].getElementsByTagName("td");
-      if (cells.length > 0 && cells[0].innerHTML === vehicle.id.toString()) {
-          // Update the cells with the new vehicle data
-          cells[1].innerHTML = vehicle.description;
-          cells[2].innerHTML = vehicle.type;
-          cells[3].innerHTML = vehicle.year;
-          cells[4].innerHTML = vehicle.make;
-          cells[5].innerHTML = vehicle.model;
-          cells[6].innerHTML = vehicle.annualVKT;
-          cells[7].innerHTML = vehicle.annualFuel;
-          cells[8].innerHTML = vehicle.fuelType;
-          cells[9].innerHTML = vehicle.flexFuel ? 'Yes' : 'No';
-          cells[10].innerHTML = vehicle.quantity;
-          break;
-      }
+function updateRow(updatedVehicle) {
+  // Get the row corresponding to the selected vehicle ID
+  var row = document.getElementById(`row_${updatedVehicle.id}`);
+  
+  if (row) {
+      // Update the cells with the new vehicle data
+      row.cells[0].textContent = updatedVehicle.description;
+      row.cells[1].textContent = updatedVehicle.type;
+      row.cells[2].textContent = updatedVehicle.year;
+      row.cells[3].textContent = updatedVehicle.make;
+      row.cells[4].textContent = updatedVehicle.model;
+      row.cells[5].textContent = updatedVehicle.annualVKT;
+      row.cells[6].textContent = updatedVehicle.annualFuel;
+      row.cells[7].textContent = updatedVehicle.fuelType;
+      row.cells[8].textContent = updatedVehicle.flexFuel;
+      row.cells[9].textContent = updatedVehicle.quantity;
+      
+      // Optionally, update the selectedVehicleId variable if needed
+      selectedVehicleId = updatedVehicle.id;
+  } else {
+      console.log("Row not found");
   }
 }
- 
-function yesOrNo(value) {
-    console.log(value);
-    if(value === 'Yes') {
-        return 'True';
-    } else {
-        return 'False';
-    }
+
+function deleteRow() {
+  // Get the row corresponding to the selected vehicle
+  var row = document.getElementById(`row_${selectedVehicleId}`);
+  if (row) {
+      // Remove the row from the table
+      row.parentNode.removeChild(row);
+  } else {
+      console.log("Row not found");
+  }
 }
 
 // modal opeing at setup for adding a row
 // function to open modal for adding a row at setup
-function openVehicleModal(fleet) {
+function openVehicleModal(vehicle) {
   var modal = document.getElementById("dataRowModal");
   var overlay = document.getElementById("overlay");
   modal.style.display = "block";
   overlay.style.display = "block";
   document.body.style.overflow = "hidden"; // Prevent scrolling of main content
   var modalHeader = document.getElementById("data-modal-header");
-  if (fleet) {
+  if (vehicle) {
     modalHeader.innerHTML = "Edit Details";
   }
   else {
@@ -167,18 +141,20 @@ function openVehicleModal(fleet) {
   }
 
   toggleDeleteButtonVisibility();
+  debugger;
   // set up the data fields in the modal
-  if (fleet) {
-    document.getElementById("modalDescription").value = fleet["description"];
-    document.getElementById("modalType").value = fleet["type"];
-    document.getElementById("modalYear").value = fleet["year"];
-    document.getElementById("modalMake").value = fleet['make'];
-    document.getElementById("modalModel").value = fleet['model'];
-    document.getElementById("modalAnnualVKT").value = fleet['vkt'];
-    document.getElementById("modalAnnualFuel").value = fleet['fuel_used'];
-    document.getElementById("modalFuelType").value = fleet['fuel_type'];
-    document.getElementById("modalFlexFuel").value = yesOrNo(fleet['flex_fuel']);
-    document.getElementById("modalQuantity").value = fleet['quantity'];
+  if (vehicle) {
+    document.getElementById("modalDescription").value = vehicle["description"];
+    document.getElementById("modalType").value = vehicle["type"];
+    document.getElementById("modalYear").value = vehicle["year"];
+    document.getElementById("modalMake").value = vehicle['make'];
+    document.getElementById("modalModel").value = vehicle['model'];
+    document.getElementById("modalAnnualVKT").value = vehicle['annualVKT'];
+    document.getElementById("modalAnnualFuel").value = vehicle['annualFuel'];
+    document.getElementById("modalFuelType").value = vehicle['fuelType'];
+    var flexFuel = vehicle['flexFuel'];
+    document.getElementById("modalFlexFuel").value = flexFuel; selectFlexFuel(flexFuel);
+    document.getElementById("modalQuantity").value = vehicle['quantity'];
   }
 }
  
@@ -207,18 +183,6 @@ function resetModalForm() {
   document.getElementById("modalQuantity").value = "";
 }
  
-// Function to handle submit button on click event
-function submitData2() {
-  var modal = document.getElementById("dataRowModal");
-  var overlay = document.getElementById("overlay");
-  if (validateInput()) {
-    addNewRowToTable();
-    modal.style.display = "none";
-    overlay.style.display = "none";
-    document.body.style.overflow = ""; // Restore scrolling of main content
-    resetModalForm();
-  }
-}
 
 var selectedVehicleId=null;
 
@@ -235,6 +199,17 @@ document.getElementById('dataRowModal').addEventListener('input', function(event
 
 function submitData() {
  
+  var modal = document.getElementById("dataRowModal");
+  var overlay = document.getElementById("overlay");
+  if (validateInput()) {
+    //addNewRowToTable();
+    modal.style.display = "none";
+    overlay.style.display = "none";
+    document.body.style.overflow = ""; // Restore scrolling of main content
+    //resetModalForm();
+  }
+
+
  // Get input values from the modal
  const modalDescription = document.getElementById('modalDescription').value;
  const modalType = document.getElementById('modalType').value;
@@ -244,7 +219,7 @@ function submitData() {
  const modalAnnualVKT = document.getElementById('modalAnnualVKT').value;
  const modalAnnualFuel = document.getElementById('modalAnnualFuel').value;
  const modalFuelType = document.getElementById('modalFuelType').value;
- const modalFlexFuel = document.getElementById('modalFlexFuel')?.value;
+ const modalFlexFuel = document.getElementById('modalFlexFuel').value;
  const modalQuantity = document.getElementById('modalQuantity').value;
 
  // TODO validate every field
@@ -264,10 +239,10 @@ function submitData() {
    vehicle.annualVKT= modalAnnualVKT;
    vehicle.annualFuel= modalAnnualFuel;
    vehicle.fuelType= modalFuelType;
-   vehicle.flexFuel= stringToBool(modalFlexFuel);
+   vehicle.flexFuel= modalFlexFuel;
    vehicle.quantity=modalQuantity;
 
-   updateTableRow(vehicle);
+   updateRow(vehicle);
  }
  else{ // This means a new vehicle is being added
 
@@ -281,7 +256,7 @@ function submitData() {
      annualVKT: modalAnnualVKT,
      annualFuel: modalAnnualFuel,
      fuelType: modalFuelType,
-     flexFuel: stringToBool(modalFlexFuel),
+     flexFuel: modalFlexFuel,
      quantity: modalQuantity
  };
 
@@ -295,23 +270,6 @@ function submitData() {
  // Close the modal after submission
  closeModal();
 }
-
-function stringToBool(str) {
- // Convert string to lowercase for case-insensitive comparison
- str = str?.toLowerCase();
-
- // Check if the string is "true" or "false" and return the corresponding boolean value
- if (str === "true") {
-     return true;
- } else if (str === "false") {
-     return false;
- } else {
-      return false;
-     // Handle cases where the string is neither "true" nor "false"
-     //throw new Error("Invalid input: String must be 'true' or 'false'");
- }
-}
-
 
 function toggleDeleteButtonVisibility() {
   var deleteButton = document.getElementById("deleteButton");
@@ -330,7 +288,13 @@ function getVehicleById(id) {
   }
 
   var vehicles = getFleetData();
-  return vehicles.find(v => v.id == id);
+  var vehicle = vehicles.find(v => v.id == id);
+  if(!vehicle){
+    sweetAlert("Vehicle not found", "error");
+    throw new Error(`Vehicle ${id} not found`);
+  }
+   
+  return vehicle;
 }
 
 function deleteVehicle() {
@@ -350,8 +314,10 @@ function deleteObjectFromArray(array, property, value) {
 
 function deleteVehicleCallBack()
 {
-  console.log(`Deleting vehicle ${selectedVehicleId}`)
+  console.log(`Deleting vehicle ${selectedVehicleId} from datatable`)
+  deleteRow();
   var vehicles = getFleetData();
+  debugger;
   var updated_vehicles= deleteObjectFromArray(vehicles, 'id', selectedVehicleId)
   localStorage.setItem('fleetData', JSON.stringify(updated_vehicles));
   console.log("Deleted vehicle from localstorage");
@@ -363,12 +329,12 @@ function deleteVehicleCallBack()
 function selectFlexFuel(option) {
     if (option === 'Yes') {
         document.getElementById("modalFlexFuel").innerHTML = 'Yes';
-        document.getElementById("modalFlexFuel").value= true;
+        document.getElementById("modalFlexFuel").value= "Yes";
         document.getElementById("yes-button").classList.add('selected');
         document.getElementById("no-button").classList.remove('selected');
     } else {
         document.getElementById("modalFlexFuel").value = 'No';
-        document.getElementById("modalFlexFuel").value= false;
+        document.getElementById("modalFlexFuel").value= "No";
         document.getElementById("no-button").classList.add('selected');
         document.getElementById("yes-button").classList.remove('selected');
       }
