@@ -1,0 +1,127 @@
+.vehicle-list {
+    /* padding: 6vw 0vw; */
+    /* margin: 6vw 0vw; */
+    text-align: center;
+}
+
+.vehicle-list button {
+    color: white;
+    border: none;
+    display: block;
+    font-weight: bold;
+    width: 45vw;
+    cursor: pointer;
+    background-color: transparent;
+    padding: 2vh;
+    border-radius: 50px;
+    font-size: 20px;
+}
+
+.vehicle-list button:hover {
+    background-color: #0b5624;
+    font-size: 22px;
+}
+
+.header2 {
+    color: black;
+    text-align: center;
+    background-color: #94d8e9;
+    padding: 20px;
+}
+
+.h2 {
+    text-decoration: underline;
+    margin-top: 0%;
+}
+
+.action-savings {
+    margin: 0 auto;
+    text-align: center;
+    width: 40%;
+    display: flex;
+    border-radius: 40px;
+    background-color: #D9D9D9;
+    justify-content: space-around;
+}
+
+.action-savings button {
+    color: black;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    width: 50%;
+    background-color: transparent;
+    border-radius: 50px;
+    padding: 10px 20px;
+}
+
+.action-savings button:hover {
+    background-color: #0077B6;
+}
+
+.action-savings button.active {
+    background-color: #0077B6; 
+    color: white;
+}
+
+.main1 {
+    background: linear-gradient(180deg, #26B170, #a7deec);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.main-content-head {
+    display: flex;
+}
+
+.row {
+    display: flex;
+}
+
+.col {
+    flex: 1;
+    padding: 0 10px;
+}
+
+.savings-info {
+    text-align: center;
+    color: black;
+}
+
+.savings-percentage {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.savings-percentage span {
+    font-size: 50px;
+}
+
+.savings-percentage sup {
+    font-weight: bolder;
+    font-size: 18px;
+    vertical-align: top;
+}
+
+.emission-savings{
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+.option-selected {
+    font-size: 17px;
+    margin-top: 10px;
+    background-color: #FAF3F3;
+    align-items: center;
+    width: 60%;
+    margin: auto;
+    border-radius: 30px;
+}
+
+.savings-percentage sup i {
+    display: inline-block; 
+    transform: rotate(45deg);
+    font-size: smaller;
+}
