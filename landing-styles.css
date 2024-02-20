@@ -74,18 +74,19 @@ nav ul li a:hover {
 }
 
 .get-started-btn {
+    text-decoration: none;
     margin-top: 10px;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 20px;
     background-color: transparent;
     color: #fff;
     border: 1px solid white;
     /* border-style: solid; */
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 .get-started-btn:hover {
     background-color: #2f5c26;
+    transition: background-color 0.5s linear; /* Transition effect */
 }
