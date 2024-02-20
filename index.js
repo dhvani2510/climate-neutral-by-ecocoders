@@ -1,41 +1,19 @@
 // variable to store all the data
 const fleetData = [];
  
-optionsForProvinces = [
-    'Alberta','British Columbia','Manitoba','New Brunswick','Newfoundland and Labrador',
-    'Nova Scotia','Ontario','Prince Edward Island','Quebec','Saskatchewan',
-    'Northwest Territories','Nunavut','Yukon'
-]
- 
-function createOptions() {
-    // make Ontario as a default selected option
-    optionsForProvinces.forEach((item)=>{
-        var option = document.createElement('li');
-        option.classList.add('option');
-        option.innerHTML = item;
-        option.value = item;
-        option.setAttribute('data-value', item);
-        option.setAttribute('id', 'provinceSelect');
-        option.setAttribute('name', 'provinceSelect');
-        option.setAttribute('onclick', `updateEmissionCoefficient('${item}')`); // Passing item here
-        if(item === 'Ontario') {
-            option.selected = true;
-        }
-        document.getElementById('provinceSelect').appendChild(option);
-    })    
-}
- 
 window.onload = createTable;
  
+// function to create the user-input table
 function createTable() {
     createHeaderRow();
     if (fleetData.length === 0) {
         createEmptyTableRow();
     } else {
-        createTableRows();
+        fleetData.forEach(fleet => {
+            createRow(fleet)
+        });
     }
 }
- 
  
 //  write code to geenerate th for myTable
 function createHeaderRow() {
@@ -64,24 +42,7 @@ function createEmptyTableRow() {
         cell.innerHTML = "No records Added";
         cell.style.textAlign = "center";
         table.appendChild(tbody);
-}
- 
-function createTableRows() {
-    var table = document.getElementById('myTable')
-    fleetData.forEach(fleet => {
-        createRow(fleet)
-    });
-}
- 
- 
-function yesOrNo(value) {
-    console.log(value);
-    if(value === 'Yes') {
-        return 'True';
-    } else {
-        return 'False';
-    }
-}
+} 
  
 function createRow(fleet) {
     var table = document.getElementById("myTable");
@@ -91,7 +52,13 @@ function createRow(fleet) {
         emptyRow.remove();
     }
     var rowRecord = Object.values(fleet)
+    // create tbody if not already existing oterwise use the existing one
     var tbody = document.createElement("tbody");
+    if (!document.querySelector("tbody")) {
+        table.appendChild(tbody);
+    } else {
+        tbody = document.querySelector("tbody");
+    }
     table.appendChild(tbody);
     console.log(table);
     let row = tbody.insertRow(-1);
@@ -107,3 +74,11 @@ function createRow(fleet) {
     }
 }
  
+function yesOrNo(value) {
+    console.log(value);
+    if(value === 'Yes') {
+        return 'True';
+    } else {
+        return 'False';
+    }
+}
