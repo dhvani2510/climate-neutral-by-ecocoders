@@ -40,7 +40,7 @@
         </div>
         <div class="row-icons">
           <div>
-            <img class="add-icon" src="assets/icons/add.png" alt="Add Icon" onclick="openModalToAddRow()" />
+            <img class="add-icon" src="assets/icons/add.png" alt="Add Icon" onclick="openVehicleModal()" />
           </div>
           <div>
             <input
@@ -176,7 +176,7 @@
         <button class="button" id="vehicle_modal_submit_button" onclick="submitData()" >
           Save
         </button>
-        <button class="button">Delete</button>
+        <button id="deleteButton" class="button red" onclick="deleteVehicle()">Delete</button>
       </div>
     </div>
 
@@ -209,7 +209,9 @@
         </div>
       </div>
     </footer>
-    <!-- link javascript file -->
+    <!-- script section, where all scripts will be placed -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="coefficient.js"></script>
     <script src="settings.js"></script>
     <script src="index.js"></script>
