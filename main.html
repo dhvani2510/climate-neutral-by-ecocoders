@@ -92,112 +92,91 @@
       </div>
     </div>
 
-    <!-- <div id="settingsModal" class="modal">
-      <div class="modal-content">
-        <img class="settings-icon" src="assets/settings.png" alt="Settings Icon">
-      </div>
-      <div class="modal-content">
-        <span class="close" onclick="closeSettingsModal()">
-          <i class="fas fa-times"></i>
-        </span>
-        <h2>Settings</h2>
-        <label for="provinceSelect">Select Province:</label>
-        <select id="provinceSelect" name="provinceSelect" 
-          onchange="updateEmissionCoefficient()">
-        </select>
-        <br><br>
-        <label for="emissionCoefficient">Emission Coefficient:</label>
-        <input type="text" id="emissionCoefficient" disabled>
-      </div>
-    </div>
-     -->
-
     <div id="dataRowModal" class="dataRowModal">
       <div class="modal-content">
         <span onclick="closeSettingsModal()">
           <img class="close" src="assets/icons/close-icon.png" alt="Close Icon" />
         </span>
-        <h1 class="modal-header" id="data-modal-header"></h1>
+        <div class="modal-header" id="data-modal-header"></div>
         <div class="modal-row">
           <div class="input_label">
-            <label for="modalDescription">Description:</label>
+            <label for="modalDescription">Description</label>
             <input
               type="text"
               id="modalDescription"
-              placeholder="Description"
             />
           </div>
 
           <div class="input_label">
-            <label for="modalType">Type:</label>
-            <input type="text" id="modalType" placeholder="Type" />
+            <label for="modalType">Type</label>
+            <input type="text" id="modalType" />
           </div>
         </div>
 
         <!-- Second row of inputs -->
         <div class="modal-row">
           <div class="input_label">
-            <label for="modalYear">Year:</label>
-            <input type="number" id="modalYear" placeholder="Year" />
+            <label for="modalYear">Year</label>
+            <input type="number" id="modalYear" min="2000" />
           </div>
           <div class="input_label">
-            <label for="modalMake">Make:</label>
-            <input type="text" id="modalMake" placeholder="Make" />
+            <label for="modalMake">Make</label>
+            <input type="text" id="modalMake" />
           </div>
         </div>
 
         <div class="modal-row">
           <div class="input_label">
-            <label for="modalModel">Model:</label>
-            <input type="text" id="modalModel" placeholder="Model" />
+            <label for="modalModel">Model</label>
+            <input type="text" id="modalModel" />
           </div>
           <div class="input_label">
-            <label for="modalAnnualVKT">Annual VKT:</label>
-            <input type="number" id="modalAnnualVKT" placeholder="Annual VKT" />
+            <label for="modalAnnualVKT">Annual VKT</label>
+            <input type="number" id="modalAnnualVKT"/>
           </div>
         </div>
 
         <!-- Third row of inputs -->
         <div class="modal-row">
           <div class="input_label">
-            <label for="modalAnnualFuel">Annual Fuel:</label>
+            <label for="modalAnnualFuel">Annual Fuel</label>
             <input
               type="number"
               id="modalAnnualFuel"
-              placeholder="Annual Fuel"
             />
           </div>
           <div class="input_label">
-            <label for="modalFuelType">Fuel Type:</label>
-            <input type="text" id="modalFuelType" placeholder="Fuel Type" />
+            <label for="modalFuelType">Fuel Type</label>
+            <input type="text" id="modalFuelType" />
           </div>
         </div>
 
         <!-- Fourth row of inputs -->
-        <div class="modal-row">
+        <div class="modal-row"> 
           <div class="input_label">
-            <label for="modalFlexFuel">Flex Fuel:</label>
+            <label for="modalFlexFuel">Flex Fuel</label>
+            <input type="text" id="modalFlexFuel" class="hidden"" />
             <div class="yes-no-select">
-              <button class="yes-button" onclick="selectFlexFuel('Yes')">Yes</button>
-              <button class="no-button" onclick="selectFlexFuel('No')">No</button>
+              <button id="yes-button" class="selected" onclick="selectFlexFuel('Yes')">
+                <i class="fas fa-check"></i> Yes</button>
+              <button id="no-button" onclick="selectFlexFuel('No')">
+                <i class="fas fa-times"></i> No</button>
             </div>
           </div>
           <div class="input_label">
-            <label for="modalQuantity">Quantity:</label>
-            <input type="number" id="modalQuantity" placeholder="Quantity" />
+            <label for="modalQuantity">Quantity</label>
+            <input type="number" id="modalQuantity" />
           </div>
         </div>
 
-        <div class="modal-buttons">
-          <button class="button blue" onclick="closeModal()">Cancel</button>
-          <button
-            class="button green"
-            id="vehicle_modal_submit_button"
-            onclick="submitData()"
-          >
-            Submit
-          </button>
-        </div>
+       
+      </div>
+      <div class="modal-buttons">
+        <button class="button">Validate</button>
+        <button class="button" id="vehicle_modal_submit_button" onclick="submitData()" >
+          Save
+        </button>
+        <button class="button">Delete</button>
       </div>
     </div>
 
