@@ -1,0 +1,245 @@
+header {
+  background-color: #0077b6;
+  position: sticky;
+  top: 0;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo img {
+  padding-left: 3vw;
+  height: auto;
+  width: 200px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav ul {
+  padding-right: 3vw;
+  margin: 0;
+}
+
+nav ul li {
+  padding: 10px;
+  display: inline;
+  margin-left: 20px;
+}
+
+nav ul li a {
+  font-size: large;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #bfd7b7;
+  text-decoration: underline;
+}
+
+/* green-options-styles.css */
+.header2 {
+  color: black;
+  text-decoration: underline;
+  text-align: center;
+  background-color: #94d8e9;
+  position: sticky;
+  padding: 20px;
+}
+
+.body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* green-options-styles.css */
+.main {
+  background: linear-gradient(180deg, #26b170, #a7deec);
+  display: flex;
+  padding: 10px;
+  flex-direction: row; /* Change flex direction to row */
+  flex-wrap: nowrap; /* Prevent wrapping */
+  /* min-height: 100vh; */
+}
+
+.row {
+  display: flex;
+  flex-direction: row; /* Ensure the contents of the row are in a row */
+  flex-wrap: nowrap; /* Prevent wrapping */
+  width: 100%; /* Ensure full width of the parent */
+}
+
+.col {
+  flex: 1; /* Equal width for both columns */
+  margin-right: 10px; /* Adjust margin between columns */
+}
+
+/* green-options-styles.css */
+/* .vehicle-list {
+  padding: 6vw 0vw;
+  text-align: center;
+  position: relative;
+} */
+
+/* green-options-styles.css */
+/* .vehicle-list button {
+  color: white;
+  border: none;
+  display: block;
+  font-weight: bold;
+  width: 45vw;
+  cursor: pointer;
+  background-color: transparent;
+  padding: 2vh;
+  border-radius: 50px;
+  font-size: large;
+} */
+
+/* green-options-styles.css */
+/* .vehicle-list button:hover {
+  background-color: #0b5624;
+  font-size: x-large;
+} */
+
+.footer {
+  background-color: #a7deec;
+  color: black;
+  font-size: 20px;
+  width: -webkit-fill-available;
+  bottom: 0;
+  text-align: left;
+  padding: 20px 2% 10px 2%;
+}
+
+.footer-text p {
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.footer-links a {
+  color: black;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-icons {
+  display: flex;
+  align-items: center;
+}
+
+.footer-icons i {
+  margin: 0 10px;
+  color: black;
+}
+
+.footer-text {
+  margin: 10px 0;
+}
+
+.footer-start {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.line {
+  height: 2px;
+  width: 50%;
+  background-color: black;
+}
+
+.main-button {
+  display: block;
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 120px; /* Adjust this value based on the width of your main buttons */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropbtn:hover + .dropdown-content,
+.dropdown-content:hover {
+  display: block;
+}
+
+/* Add your styles here */
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.vehicle-list {
+  color: white;
+  border: none;
+  display: block;
+  font-weight: bold;
+  width: 45vw;
+  cursor: pointer;
+  background-color: transparent;
+  padding: 2vh;
+  border-radius: 50px;
+  font-size: large;
+  /* padding: 6vw 0vw; */
+  text-align: center;
+  /* position: relative; */
+&:hover {
+  background-color: #0b5624;
+  font-size: x-large;
+}
+}
+
+.options {
+  /* display: none; */
+  background-color: transparent;
+  border: none;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+.item:hover .options {
+  display: block;
+}

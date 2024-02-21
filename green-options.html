@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="styles.css" /> -->
+    <!-- <link rel="stylesheet" href="user-input-styles.css" /> -->
+    <link rel="stylesheet" href="green-options-styles.css" />
+    <!-- font awesome library -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <title>GreenFleet</title>
+  </head>
+
+  <body>
+    <!-- header section, where all the navigation options and logo will be placed -->
+    <header>
+      <div class="logo">
+        <a href="/landing.html"><img src="assets/climate1.png" alt="Logo" /></a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/main.html">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li>
+            <a href="#settingsModal" onclick="openSettingsModal()">Settings</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="header2">
+      <h2>Green Options</h2>
+    </div>
+
+    <!-- main section, where all the content will be placed -->
+    <div class="main">
+      <!-- <div class="vehicle-list">
+          <button class="main-button">Vehicle 1</button>
+          <button class="main-button">Vehicle 2</button>
+          <button class="main-button">Vehicle 3</button>
+          <div class="dropdown" id="dropdown">
+            <button class="dropbtn">Select Option</button>
+            <div class="dropdown-content">
+              <a href="#">Ethanol Usage E85</a>
+              <a href="#">BioDiesel Usage B20</a>
+              <a href="#">Switch to Bio-Fuel Car</a>
+              <a href="#">Switch to Bio-Fuel Tank</a>
+              <a href="#">Switch to EV Vehicle</a>
+            </div>
+          </div>
+        </div> -->
+        <div id="dynamic-divs" class="container">
+            <!-- Divs will be added dynamically using JavaScript -->
+        </div>
+    </div>
+    <!-- footer section, where all the content will be placed -->
+
+    <footer class="footer">
+      <div class="footer-start">
+        <div class="line"></div>
+        <div class="footer-icons">
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-linkedin-in"></i>
+        </div>
+        <div class="line"></div>
+      </div>
+
+      <div class="footer-text">
+        <p>MMII Climate Neutral Technologies Inc. 2024</p>
+        <div class="footer-links">
+          <a href="https://climateneutral.ca/termsofservice"
+            >Terms and Conditions</a
+          >
+          <br />
+          <a href="https://climateneutral.ca/privacy-policy">Privacy Policy</a>
+          <br />
+          <a href="https://climateneutral.ca/contact-us-2023">Contact Us</a>
+          <br />
+        </div>
+      </div>
+    </footer>
+
+    <!-- link javascript file -->
+    <!-- <script src="coefficient.js"></script>
+      <script src="index.js"></script>
+      <script src="main.js"></script> -->
+    <script src="green-options.js"></script>
+  </body>
+</html>
