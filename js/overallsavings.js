@@ -10,3 +10,5 @@ overallSavingsBtn.addEventListener('click', () => {
     overallSavingsBtn.classList.add('active');
     individualSavingsBtn.classList.remove('active');
 });
+
+var fleetData = getFleetData();
