@@ -29,7 +29,9 @@ function openSettingsModal() {
 function openOptions() {
   var select = document.getElementById("provinceSelect");
   select.style.display = "block";
-  createOptions();
+  if (select.childElementCount==0) {
+    createOptions();
+  }
 }
 
 // function to create the options for provinces

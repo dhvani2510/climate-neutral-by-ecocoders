@@ -58,17 +58,20 @@
       <div id="table">
         <table id="myTable"></table>
       </div>
+      <div class="direction-buttons">
+        <button id="goto_prevpage" class="button_prev" onclick="previous_page()">Previous</button>
+        <button class="button_next" id="goto_nextpage" onclick="next_page()">Next</button>
+      </div>
     </div>
 
     <!-- modal section, where all the modal content will be placed -->
-
     <div id="settingsModal" class="modal" role="dialog">
       <span onclick="closeSettingsModal()">
         <img class="close" src="assets/icons/close-icon.png" alt="Close Icon" />
       </span>
       <h1 class="modal-header">Settings</h1>
       <div class="modal-content">
-        <img class="settings-icon" src="assets/settings.png" alt="Settings Image" />
+        <img class="settings-icon" src="assets/icons/settings_gif.gif" alt="Settings Image" />
         <div class="modal-col">
           <div class="modal-row">
             <label for="provinceSelect">Select Province</label>
@@ -81,7 +84,7 @@
               </div>
             </div>
           </div>
-
+          
           <div class="modal-row" id="emissionCoefficientRow">
             <label for="emissionCoefficient">Emission Coefficient</label>
             <div class="select-option emission-coefficient">
@@ -92,6 +95,7 @@
       </div>
     </div>
 
+    <!-- data entry section, where all the data modal content will be placed -->
     <div id="dataRowModal" class="dataRowModal">
       <div class="modal-content">
         <span onclick="closeModal()">
@@ -147,7 +151,14 @@
           </div>
           <div class="input_label">
             <label for="modalFuelType">Fuel Type</label>
-            <input type="text" id="modalFuelType" />
+            <div class="select-option">
+              <button class="select-btn" id="fueltypebtn" onclick="openfuelOptions()"></button>
+              <div class="option-dropdown" id="modalFuelType">
+              </div>
+              <div class="select-arrow">
+                <i class="fas fa-chevron-down"></i>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -181,6 +192,8 @@
     </div>
 
     <div id="overlay"></div>
+
+
 
     <!-- footer section, where all the content will be placed -->
 

@@ -158,6 +158,58 @@ function openVehicleModal(vehicle) {
   }
 }
  
+// for data entry in modal
+var selectedfueltype = "E10 Gasoline";
+
+optionsForFueltype = [
+  "Gasoline",
+  "E10 Gasoline",
+  "Diesel",
+];
+
+// fucntion to create the dropdown options for the fuel types
+function openfuelOptions(){
+  var select = document.getElementById("modalFuelType");
+  select.style.display = "block";
+  createOptions();
+}
+
+// function to create the options for fuel type
+function createOptions() {
+  // make E10 Gasoline as a default selected option
+  optionsForFueltype.forEach((item) => {
+    console.log(item);
+    var option = document.createElement("li");
+    option.classList.add("option");
+    option.innerHTML = item;
+    option.value = item;
+    option.setAttribute("data-value", item);
+    option.setAttribute("id", "modalFuelType");
+    option.setAttribute("name", "modalFuelType");
+    option.setAttribute("onclick", `updatefueltype('${item}')`); // Passing item here
+
+    if (item === "E10 Gasoline") {
+      option.selected = true;
+    }
+    document.getElementById("modalFuelType").appendChild(option);
+  });
+}
+function updatefueltype(event) {
+  document.getElementById("fueltypebtn").innerHTML = event;
+  document.getElementById("modalFuelType").style.display = "none";
+}
+
+function openSettingsModal() {
+  var modal = document.getElementById("settingsModal");
+  var overlay = document.getElementById("overlay");
+  modal.style.display = "flex";
+  overlay.style.display = "block";
+  document.body.style.overflow = "hidden"; // Prevent scrolling of main content
+  document.getElementById("provinceBtn").innerHTML = selectedProvince;
+  updateEmissionCoefficient(selectedProvince);
+}
+
+
 // function to close modal
 function closeModal() {
   var modal = document.getElementById("dataRowModal");
@@ -218,7 +270,7 @@ function submitData() {
  const modalModel = document.getElementById('modalModel').value;
  const modalAnnualVKT = document.getElementById('modalAnnualVKT').value;
  const modalAnnualFuel = document.getElementById('modalAnnualFuel').value;
- const modalFuelType = document.getElementById('modalFuelType').value;
+ const modalFuelType = document.getElementById('fueltypebtn').innerHTML;
  const modalFlexFuel = document.getElementById('modalFlexFuel').value;
  const modalQuantity = document.getElementById('modalQuantity').value;
 
