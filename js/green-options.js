@@ -21,6 +21,18 @@ var fleetData = getFleetData();
 
 // Call the function to populate the container
 populateContainer();
+
+evauateGreenOpitions();
+ 
+// Function to get the fleet data from local storage
+function evauateGreenOpitions() {
+    fleetData.forEach(item => {
+        let possibleOptions = getGreenOptions(item);
+        item['possibleOptions'] = possibleOptions.map(option => option.option);
+    });
+    localStorage.setItem('fleetData', JSON.stringify(fleetData));
+    console.log(fleetData);
+}
  
 // Function to populate the container with data
 function populateContainer() {
@@ -116,7 +128,8 @@ function createOptionsDiv(item) {
 function createOptionsList(item) {
     options = getGreenOptions(item);
     options = options.map(option => option.option);
-    console.log(options);
+    fleetData.filter(x => x['id'] == item['id'])['possibleOptions'] = [];
+    fleetData.filter(x => x['id'] == item['id'])['possibleOptions'] = options;
     const selectList = document.createElement("div");
     selectList.id = "select-list-" + item['id'];
     selectList.classList.add("select-list");
@@ -132,9 +145,7 @@ function createOptionsList(item) {
 }
  
 function updateGreenFleetOption(item, option) {
-    console.log(fleetData);
     let i = fleetData.find(x => x['id'] == item);
-    console.log(i);
     i['selectedOption'] = document.querySelector('#button-'+item).textContent = option;
     document.getElementById('select-list-'+item).classList.add('hidden');
 }
@@ -151,7 +162,6 @@ function getGreenOptionById(id)
 }
 
 function getGreenOptions(vehicle) {
-    console.log(vehicle);
     const selectedGreenOptions = [];
 
     greenOptions.forEach(option => {
@@ -170,7 +180,17 @@ function getGreenOptions(vehicle) {
             selectedGreenOptions.push(value); 
         }
     });
-    console.log(selectedGreenOptions);
 
     return selectedGreenOptions;
+}
+
+function goToActionSavings() {
+    console.log(fleetData);
+    if( fleetData.some(x => x['selectedOption'] == "") )
+    {
+        console.error("Please select all green options");
+        return;
+    }
+    localStorage.setItem('fleetData', JSON.stringify(fleetData)); // Update the local storage data
+    window.location.href = "individualsavings.html";
 }

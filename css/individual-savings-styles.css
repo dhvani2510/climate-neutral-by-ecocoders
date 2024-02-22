@@ -2,8 +2,42 @@
     /* padding: 6vw 0vw; */
     /* margin: 6vw 0vw; */
     text-align: center;
+    margin-top: 10px;
 }
 
+.vehicle-item
+ {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 16px;
+}
+ 
+.vehicle-item .description
+ {
+  color: white;
+  font-size: 20px;
+  text-align: left;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.vehicle-list .vehicle-item:hover {
+    border-radius: 50px;
+    background-color: #0b5624;
+    font-size: 22px;
+}
+
+.vehicle-item.selected{
+    border-radius: 50px;
+    background-color: #0b5624;
+    font-size: 22px;
+}
+/* 
 .vehicle-list button {
     color: white;
     border: none;
@@ -20,12 +54,12 @@
 .vehicle-list button:hover {
     background-color: #0b5624;
     font-size: 22px;
-}
+} */
 
 .header2 {
     color: black;
     text-align: center;
-    /* background-color: #94d8e9; */
+    background-color: #94d8e9;
     padding: 20px;
 }
 
@@ -91,6 +125,10 @@
     color: black;
 }
 
+.savings-info.hidden{
+    display: none;
+}
+
 .savings-percentage {
     font-size: 24px;
     font-weight: bold;
@@ -116,9 +154,10 @@
     margin-top: 10px;
     background-color: #FAF3F3;
     align-items: center;
-    width: 60%;
+    width: max-content;
     margin: auto;
     border-radius: 30px;
+    padding: 1vh;
 }
 
 .savings-percentage sup i {
