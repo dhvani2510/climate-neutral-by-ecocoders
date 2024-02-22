@@ -58,10 +58,13 @@
       <div id="table">
         <table id="myTable"></table>
       </div>
+      <div class="direction-buttons">
+        <button id="goto_prevpage" class="button_prev" onclick="previous_page()">Previous</button>
+        <button class="button_next" id="goto_nextpage" onclick="next_page()">Next</button>
+      </div>
     </div>
 
     <!-- modal section, where all the modal content will be placed -->
-
     <div id="settingsModal" class="modal" role="dialog">
       <span onclick="closeSettingsModal()">
         <img class="close" src="assets/icons/close-icon.png" alt="Close Icon" />
@@ -81,7 +84,7 @@
               </div>
             </div>
           </div>
-
+          
           <div class="modal-row" id="emissionCoefficientRow">
             <label for="emissionCoefficient">Emission Coefficient</label>
             <div class="select-option emission-coefficient">
@@ -92,6 +95,7 @@
       </div>
     </div>
 
+    <!-- data entry section, where all the data modal content will be placed -->
     <div id="dataRowModal" class="dataRowModal">
       <div class="modal-content">
         <span onclick="closeModal()">
@@ -188,6 +192,8 @@
     </div>
 
     <div id="overlay"></div>
+
+
 
     <!-- footer section, where all the content will be placed -->
 

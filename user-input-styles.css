@@ -158,6 +158,14 @@
     margin-bottom: 2px;
   }
 
+  .select-arrow {
+    pointer-events: none;
+    background-color: #2FC2E6;
+    border-radius: 50%;
+    padding: 5px;
+    width: 20px;
+  }
+
   .hidden  {
     display: none;
   }

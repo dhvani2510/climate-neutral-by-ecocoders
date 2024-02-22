@@ -171,13 +171,11 @@ optionsForFueltype = [
 function openfuelOptions(){
   var select = document.getElementById("modalFuelType");
   select.style.display = "block";
-  if (select.childElementCount==0) {
-    createfuelOptions();
-  }
+  createOptions();
 }
 
 // function to create the options for fuel type
-function createfuelOptions() {
+function createOptions() {
   // make E10 Gasoline as a default selected option
   optionsForFueltype.forEach((item) => {
     console.log(item);
@@ -197,7 +195,7 @@ function createfuelOptions() {
   });
 }
 function updatefueltype(event) {
-  selectedfueltype = document.getElementById("fueltypebtn").innerHTML = event;
+  document.getElementById("fueltypebtn").innerHTML = event;
   document.getElementById("modalFuelType").style.display = "none";
 }
 
@@ -272,7 +270,7 @@ function submitData() {
  const modalModel = document.getElementById('modalModel').value;
  const modalAnnualVKT = document.getElementById('modalAnnualVKT').value;
  const modalAnnualFuel = document.getElementById('modalAnnualFuel').value;
- const modalFuelType = document.getElementById('modalFuelType').value;
+ const modalFuelType = document.getElementById('fueltypebtn').innerHTML;
  const modalFlexFuel = document.getElementById('modalFlexFuel').value;
  const modalQuantity = document.getElementById('modalQuantity').value;
 
