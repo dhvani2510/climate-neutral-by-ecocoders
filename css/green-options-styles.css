@@ -1,0 +1,180 @@
+/* green-options-styles.css */
+.header2 {
+  background-color: #a7deec;
+  color: black;
+  padding: 20px;
+  text-align: center;
+  font-size: 30px;
+  text-decoration: underline;
+}
+ 
+.main {
+  padding: 0;
+}
+
+#dynamic-divs {
+  background: linear-gradient(180deg, #26b170, #a7deec);
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+}
+ 
+.vehicle-item,
+.vehicle-item-header
+ {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 16px;
+}
+ 
+.vehicle-item .description,
+.vehicle-item-header .description-header
+ {
+  color: white;
+  font-size: 20px;
+  text-align: left;
+  width: 50%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+ 
+.vehicle-item:hover {
+  font-size: 20px;
+  border-radius: 16px;
+  outline: 1px solid white;
+ 
+  .description {
+    background-color: #0b5624;
+    font-size: 20px;
+    border-radius: 16px;  
+  }
+}
+ 
+.vehicle-green-options,
+.vehicle-green-options-header {
+  color: white;
+  width: 30%;
+  background-color: transparent;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-around;
+}
+ 
+.vehicle-green-options.hidden,
+.select-list.hidden {
+  display: none;
+}
+ 
+.select-arrow.white {
+  cursor: none;
+  display: flex;
+  background-color: #d9d9d9;
+  justify-content: center;
+  align-self: center;
+  border: 0;
+  padding: 5px;
+}
+ 
+/* green-options-styles.css */
+.vehicle-list-button {
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: transparent;
+  padding: 2vh;
+  border-radius: 50px;
+  font-size: 20px;
+}
+ 
+.select-list {
+  position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2;
+    width: max-content;
+    overflow-y: auto;
+    min-width: 300px;
+    padding: 2px 10px 0 2px;
+    font-size: 20px;
+    max-height: 300px;
+ 
+  div {
+    color: black;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    &:hover {
+      background-image: linear-gradient(#b1b1b1, #ddd);
+    color: white;
+    font-size: 22px;
+    }
+  }
+}
+ 
+ .main-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+ 
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 120px; /* Adjust this value based on the width of your main buttons */
+}
+ 
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+ 
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+ 
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+ 
+.dropbtn:hover + .dropdown-content,
+.dropdown-content:hover {
+  display: block;
+}
+ 
+/* Add your styles here */
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+ 
+ 
+.options {
+  /* display: none; */
+  background-color: transparent;
+  border: none;
+  padding: 8px;
+  margin-top: 5px;
+}
+ 
+.item:hover .options {
+  display: block;
+}
