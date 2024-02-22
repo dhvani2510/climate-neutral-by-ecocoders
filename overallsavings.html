@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="user-input-styles.css" />
-    <link rel="stylesheet" href="action-savings-styles.css" />
+    <link rel="stylesheet" href="overall-savings-styles.css" />
     <!-- font awesome library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
     <title>GreenFleet</title>
@@ -32,26 +32,24 @@
     <div class="header2">
         <h2 class="h2">Action Savings</h2>
         <div class="action-savings">
-            <a href="actionsavings.html" class="active">Individual Savings</a>
-            <a href="overallsavings.html">Overall Savings</a>
+            <a href="actionsavings.html">Individual Savings</a>
+            <a href="overallsavings.html" class="active">Overall Savings</a>
         </div>
     </div>
 
     <!-- main section, where all the content will be placed -->
     <div class="main1">
-        <div class="row">
-            <div class="col">
-            <div class="vehicle-list">
-                <button>Maintenance 1 - Light Duty Truck - 2018 - Ford - F- 150</button>
-                <button>Maintenance 2 - Light Duty Truck - 2018 - Ford - F- 150</button>
-                <button>Shipping 1 - Light Duty Truck - 2021 - Dodge - Caravan</button>
+            <div class="car">
+                <img src="assets/overallsavings.png" alt="car" />
             </div>
-            </div>
-            <div class="col">
+            <div class="info">
                 <div class="savings-info">
-                    <p class="savings-percentage">Savings: <sup><i class="fas fa-arrow-up"></i></sup><span>83</span><sup>%</sup></p>
-                    <p class="emission-savings">Emission Savings (TCO2e): 344</p>
-                    <p class="option-selected">Option Selected: Ethanol Usage E85</p>
+                    <div class="savings-emissions">Total Emission Savings: <span>25</span><sup>Tonnes / Year</sup></div>
+                    <br>
+                    <div class="savings-percentage">
+                        <div class="emission-savings">Emission Savings Percent: </div>
+                         <div class="Res">10</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -86,7 +84,7 @@
     <!-- <script src="coefficient.js"></script>
     <script src="index.js"></script>
     <script src="main.js"></script> -->
-    <script src="actionsavings.js"></script>
+    <script src="overallsavings.js"></script>
 </body>
 
 </html>
