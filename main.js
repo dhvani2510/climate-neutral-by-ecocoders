@@ -141,7 +141,6 @@ function openVehicleModal(vehicle) {
   }
 
   toggleDeleteButtonVisibility();
-  debugger;
   // set up the data fields in the modal
   if (vehicle) {
     document.getElementById("modalDescription").value = vehicle["description"];
@@ -282,7 +281,6 @@ function submitData() {
  {
    var vehicle= storedData.find(v=>v.id==selectedVehicleId);
    if(!vehicle) throw new Error('Vehicle not found');
-   debugger;
    vehicle.description=modalDescription;
    vehicle.type=modalType;
    vehicle.year=modalYear;
@@ -369,7 +367,6 @@ function deleteVehicleCallBack()
   console.log(`Deleting vehicle ${selectedVehicleId} from datatable`)
   deleteRow();
   var vehicles = getFleetData();
-  debugger;
   var updated_vehicles= deleteObjectFromArray(vehicles, 'id', selectedVehicleId)
   localStorage.setItem('fleetData', JSON.stringify(updated_vehicles));
   console.log("Deleted vehicle from localstorage");
@@ -390,4 +387,8 @@ function selectFlexFuel(option) {
         document.getElementById("no-button").classList.add('selected');
         document.getElementById("yes-button").classList.remove('selected');
       }
+}
+
+function next_page() {
+  window.location.href = "green-options.html";
 }

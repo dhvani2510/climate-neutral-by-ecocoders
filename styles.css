@@ -10,6 +10,7 @@ header {
     background-color: #0077B6;
     position: sticky;
     top: 0;
+    z-index: 1;
     color: #fff;
     padding: 20px;
     display: flex;

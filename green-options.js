@@ -1,3 +1,22 @@
+const greenOptions = [
+    { id: 1, option: "Replace with EV Vehicle" },
+    { id: 2, option: "Right-size to smaller vehicle" },
+    { id: 3, option: "E85 Ethanol Usage" },
+    { id: 4, option: "B20 Biodiesel Usage" },
+    { id: 5, option: "Replace with Biofuel car" },
+    { id: 6, option: "Replace with Biofuel Truck" },
+    { id: 7, option: "Replace with Biofuel Car E85" },
+    { id: 8, option: "Replace with EV Light Duty Truck" },
+    { id: 9, option: "Replace with Biofuel E85 Light Duty Truck" },
+    { id: 10, option: "Right Size to Car" },
+    { id: 11, option: "Right Size to Biofuel Car" },
+    { id: 12, option: "Right Size to Biofuel E85 Car" },
+    { id: 13, option: "E85 Biofuel Usage" },
+    { id: 14, option: "B20 Diesel Usage" },
+    { id: 15, option: "Replace with EV Car" },
+    { id: 16, option: "Nothing" }
+];
+
 var fleetData = getFleetData();
 
 // Call the function to populate the container
@@ -95,7 +114,9 @@ function createOptionsDiv(item) {
  
 // function to create the options list
 function createOptionsList(item) {
-    options = ["Select option", 'Yes', 'No'];
+    options = getGreenOptions(item);
+    options = options.map(option => option.option);
+    console.log(options);
     const selectList = document.createElement("div");
     selectList.id = "select-list-" + item['id'];
     selectList.classList.add("select-list");
@@ -116,4 +137,40 @@ function updateGreenFleetOption(item, option) {
     console.log(i);
     i['selectedOption'] = document.querySelector('#button-'+item).textContent = option;
     document.getElementById('select-list-'+item).classList.add('hidden');
+}
+
+function getGreenOptionById(id)
+{
+    var value= greenOptions.find(option => option.id === id);
+    if(!value)
+    {
+        console.error(`Green option ${id} not found`);
+        return null;
+    }
+    return value;
+}
+
+function getGreenOptions(vehicle) {
+    console.log(vehicle);
+    const selectedGreenOptions = [];
+
+    greenOptions.forEach(option => {
+        const { id } = option;
+        const { type, flexFuel, fuelType } = vehicle;
+
+        if (
+            (type === "Car" && flexFuel === "Yes" && fuelType === "Gasoline" && (id === 1 || id === 3 || id === 16)) ||
+            (type === "Car" && flexFuel === "No" && fuelType === "Gasoline" && (id === 7 || id === 15 || id === 16)) ||
+            (type === "Light Duty Truck" && flexFuel === "No" && fuelType === "Gasoline" && (id === 8 || id === 9 || id === 10 || id === 11 || id === 16)) ||
+            (type === "Light Duty Truck" && flexFuel === "Yes" && fuelType === "Gasoline" && (id === 3 || id === 8 || id === 10 || id === 11 || id === 16)) ||
+            (type === "Light Duty Truck" && flexFuel === "No" && fuelType === "Diesel" && (id === 8 || id === 9 || id === 10 || id === 12 || id === 16)) ||
+            (type === "Light Duty Truck" && flexFuel === "Yes" && fuelType === "Diesel" && (id === 14 || id === 8 || id === 9 || id === 10 || id === 12 || id === 16))
+        ) {
+            var value= greenOptions.find(option => option.id === id)
+            selectedGreenOptions.push(value); 
+        }
+    });
+    console.log(selectedGreenOptions);
+
+    return selectedGreenOptions;
 }

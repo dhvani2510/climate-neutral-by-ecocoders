@@ -9,23 +9,30 @@
 }
  
 .main {
+  padding: 0;
+}
+
+#dynamic-divs {
   background: linear-gradient(180deg, #26b170, #a7deec);
   display: flex;
   flex-direction: column;
-  /* min-height: 100vh; */
+  padding: 10px;
 }
  
-.vehicle-item {
+.vehicle-item,
+.vehicle-item-header
+ {
   display: flex;
   flex-direction: row;
   justify-content: left;
   cursor: pointer;
   font-size: 20px;
   border-radius: 16px;
-  margin: 5px;
 }
  
-.vehicle-item .description {
+.vehicle-item .description,
+.vehicle-item-header .description-header
+ {
   color: white;
   font-size: 20px;
   text-align: left;
@@ -33,25 +40,27 @@
   padding: 5px;
   display: flex;
   align-items: center;
+  margin: 10px 0;
 }
  
 .vehicle-item:hover {
-  font-size: 22px;
+  font-size: 20px;
   border-radius: 16px;
   outline: 1px solid white;
  
   .description {
     background-color: #0b5624;
-    font-size: 22px;
+    font-size: 20px;
     border-radius: 16px;  
   }
 }
  
-.vehicle-green-options {
+.vehicle-green-options,
+.vehicle-green-options-header {
+  color: white;
   width: 30%;
   background-color: transparent;
   border-radius: 16px;
-  padding: 5px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -73,13 +82,6 @@
   border: 0;
   padding: 5px;
 }
- 
-/* green-options-styles.css */
-/* .vehicle-list {
-  padding: 6vw 0vw;
-  text-align: center;
-  position: relative;
-} */
  
 /* green-options-styles.css */
 .vehicle-list-button {
@@ -118,14 +120,7 @@
   }
 }
  
-/* green-options-styles.css */
-/* .vehicle-list button:hover {
-  background-color: #0b5624;
-  font-size: x-large;
-} */
- 
- 
-.main-button {
+ .main-button {
   background-color: transparent;
   border: none;
   cursor: pointer;
