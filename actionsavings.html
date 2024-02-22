@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="user-input-styles.css" />
+    <link rel="stylesheet" href="action-savings-styles.css" />
+    <!-- font awesome library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <title>GreenFleet</title>
+</head>
+
+<body>
+    <!-- header section, where all the navugation options and logo will be placed -->
+    <header>
+        <div class="logo">
+            <a href="/landing.html"><img src="assets/climate1.png" alt="Logo" /></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/main.html">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li>
+                    <a href="#settingsModal" onclick="openSettingsModal()">Settings</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="header2">
+        <h2 class="h2">Action Savings</h2>
+        <div class="action-savings">
+            <a href="actionsavings.html" class="active">Individual Savings</a>
+            <a href="overallsavings.html">Overall Savings</a>
+        </div>
+    </div>
+
+    <!-- main section, where all the content will be placed -->
+    <div class="main1">
+        <div class="row">
+            <div class="col">
+            <div class="vehicle-list">
+                <button>Maintenance 1 - Light Duty Truck - 2018 - Ford - F- 150</button>
+                <button>Maintenance 2 - Light Duty Truck - 2018 - Ford - F- 150</button>
+                <button>Shipping 1 - Light Duty Truck - 2021 - Dodge - Caravan</button>
+            </div>
+            </div>
+            <div class="col">
+                <div class="savings-info">
+                    <p class="savings-percentage">Savings: <sup><i class="fas fa-arrow-up"></i></sup><span>83</span><sup>%</sup></p>
+                    <p class="emission-savings">Emission Savings (TCO2e): 344</p>
+                    <p class="option-selected">Option Selected: Ethanol Usage E85</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer section, where all the content will be placed -->
+
+    <footer class="footer">
+        <div class="footer-start">
+            <div class="line"></div>
+            <div class="footer-icons">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-linkedin-in"></i>
+            </div>
+            <div class="line"></div>
+        </div>
+
+        <div class="footer-text">
+            <p>MMII Climate Neutral Technologies Inc. 2024</p>
+            <div class="footer-links">
+                <a href="https://climateneutral.ca/termsofservice">Terms and Conditions</a>
+                <br />
+                <a href="https://climateneutral.ca/privacy-policy">Privacy Policy</a>
+                <br />
+                <a href="https://climateneutral.ca/contact-us-2023">Contact Us</a>
+                <br />
+            </div>
+        </div>
+    </footer>
+
+    <!-- link javascript file -->
+    <!-- <script src="coefficient.js"></script>
+    <script src="index.js"></script>
+    <script src="main.js"></script> -->
+    <script src="actionsavings.js"></script>
+</body>
+
+</html>
