@@ -40,3 +40,9 @@ function sweetAlert(title, icon="success", timer=0){
       }
     });
   }
+
+  if (typeof test === 'function'){
+    module.exports = {
+        getFleetData
+    };
+}

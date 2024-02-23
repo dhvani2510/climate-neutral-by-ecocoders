@@ -1,3 +1,8 @@
+
+//This will help with the unit test
+const { getFleetData } = typeof test === 'function' ? require('./index') : {}; 
+var fleetData = getFleetData();
+
 const greenOptions = [
     { id: 1, option: "Replace with EV Vehicle" },
     { id: 2, option: "Right-size to smaller vehicle" },
@@ -16,8 +21,6 @@ const greenOptions = [
     { id: 15, option: "Replace with EV Car" },
     { id: 16, option: "Nothing" }
 ];
-
-var fleetData = getFleetData();
 
 // Call the function to populate the container
 populateContainer();
@@ -193,4 +196,19 @@ function goToActionSavings() {
     }
     localStorage.setItem('fleetData', JSON.stringify(fleetData)); // Update the local storage data
     window.location.href = "individualsavings.html";
+}
+
+if (typeof test === 'function'){
+  
+    module.exports = {
+        evauateGreenOpitions,
+        populateContainer,
+        createDescriptionDiv,
+        createOptionsDiv,
+        createOptionsList,
+        updateGreenFleetOption,
+        getGreenOptionById,
+        getGreenOptions,
+        goToActionSavings
+    };
 }
