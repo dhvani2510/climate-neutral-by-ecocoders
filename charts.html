@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/green-options-styles.css" />
+    <!-- font awesome library -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <title>GreenFleet</title>
+  </head>
+ 
+  <body>
+    <!-- header section, where all the navigation options and logo will be placed -->
+    <header>
+      <div class="logo">
+        <a href="/landing.html"><img src="assets/climate1.png" alt="Logo" /></a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/main.html">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li>
+            <a href="#settingsModal" onclick="openSettingsModal()">Settings</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!-- main section, where all the content will be placed -->
+    <div class="main" id="main">
+      <div class="header2">Charts</div>
+      <div id="dynamic-divs">
+        <h3 style="text-align: center;color: white;">Identify NA manufactured Vehicles</h3>
+        <div style="background-color:white;margin: 20px;">
+          <canvas id="myChart"></canvas>
+        </div>
+        <div id="plotlyChart" ></div>
+        </div>
+        <div class="direction-buttons">
+          <button id="goto_prevpage" class="button_prev" onclick="previous_page()">Previous</button>
+          <button class="button_next" id="goto_nextpage" onclick="goToActionSavings()">Next</button>
+        </div>
+    </div>
+    <!-- footer section, where all the content will be placed -->
+ 
+    <footer class="footer">
+      <div class="footer-start">
+        <div class="line"></div>
+        <div class="footer-icons">
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-linkedin-in"></i>
+        </div>
+        <div class="line"></div>
+      </div>
+
+      <div class="footer-text">
+        <p>MMII Climate Neutral Technologies Inc. 2024</p>
+        <div class="footer-links">
+          <a href="https://climateneutral.ca/termsofservice"
+            >Terms and Conditions</a
+          >
+          <br />
+          <a href="https://climateneutral.ca/privacy-policy">Privacy Policy</a>
+          <br />
+          <a href="https://climateneutral.ca/contact-us-2023">Contact Us</a>
+          <br />
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.29.1.min.js" charset="utf-8"></script>
+    <!-- link javascript file -->
+    <script src="js/coefficient.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/charts.js"></script>
+  </body>
+</html>
