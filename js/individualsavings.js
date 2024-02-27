@@ -90,3 +90,14 @@ async function calculateSavings(item) {
     }
   }
 }
+
+
+function goToResultsPage() {
+    localStorage.setItem('fleetData', JSON.stringify(fleetData)); // Update the local storage data
+    window.location.href = ".html";
+}
+
+function goToGreenOptions() {
+    localStorage.setItem('fleetData', JSON.stringify(fleetData)); // Update the local storage data
+    window.location.href = "/green-options.html";
+}

@@ -144,23 +144,21 @@ function openVehicleModal(vehicle) {
   // set up the data fields in the modal
   if (vehicle) {
     document.getElementById("modalDescription").value = vehicle["description"];
-    document.getElementById("modalType").value = vehicle["type"];
+    document.getElementById("typebtn").innerHTML = vehicle["type"];
     document.getElementById("modalYear").value = vehicle["year"];
     document.getElementById("modalMake").value = vehicle['make'];
     document.getElementById("modalModel").value = vehicle['model'];
     document.getElementById("modalAnnualVKT").value = vehicle['annualVKT'];
     document.getElementById("modalAnnualFuel").value = vehicle['annualFuel'];
-    document.getElementById("modalFuelType").value = vehicle['fuelType'];
+    document.getElementById("fueltypebtn").innerHTML = vehicle['fuelType'];
     var flexFuel = vehicle['flexFuel'];
     document.getElementById("modalFlexFuel").value = flexFuel; selectFlexFuel(flexFuel);
     document.getElementById("modalQuantity").value = vehicle['quantity'];
   }
 }
  
-// for data entry in modal
-var selectedfueltype = "E10 Gasoline";
 
-optionsForFueltype = [
+const optionsForFueltype = [
   "Gasoline",
   "E10 Gasoline",
   "Diesel",
@@ -198,6 +196,40 @@ function createFuelTypeOptions() {
 function updatefueltype(event) {
   document.getElementById("fueltypebtn").innerHTML = event;
   document.getElementById("modalFuelType").style.display = "none";
+}
+
+const optionsForType = [
+  "Light Duty Truck",
+  "Car",
+];
+
+function openTypeOptions() {
+  var select1 = document.getElementById("modalType");
+  select1.style.display = "block";
+  if (select1.childElementCount == 0) {
+    createTypeOptions();
+  }
+}
+
+function createTypeOptions() {
+  optionsForType.forEach((item) => {
+    var option1 = document.createElement("li");
+    option1.classList.add("option");
+    option1.innerHTML = item;
+    option1.value = item;
+    option1.setAttribute("data-value", item);
+    option1.setAttribute("id", "modalType");
+    option1.setAttribute("name", "modalType");
+    option1.setAttribute("onclick", `updateType('${item}')`);
+
+    document.getElementById("modalType").appendChild(option1);
+    console.log(option1);
+  });
+}
+
+function updateType(event) {
+  document.getElementById("typebtn").innerHTML = event;
+  document.getElementById("modalType").style.display = "none";
 }
 
 function openSettingsModal() {
@@ -265,7 +297,7 @@ function submitData() {
 
  // Get input values from the modal
  const modalDescription = document.getElementById('modalDescription').value;
- const modalType = document.getElementById('modalType').value;
+ const modalType = document.getElementById('typebtn').innerHTML;
  const modalYear = document.getElementById('modalYear').value;
  const modalMake = document.getElementById('modalMake').value;
  const modalModel = document.getElementById('modalModel').value;
