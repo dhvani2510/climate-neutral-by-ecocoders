@@ -1,21 +1,33 @@
-function getRandomNumber(){
-    return Math.floor(Math.random() * 20) + 1;
+const canvas = document.getElementById('myChart');
+const ctx = canvas.getContext('2d');
+var gradient = ctx ? ctx.createLinearGradient(0, 0, 600, 0) : null;
+if (gradient) {
+    gradient.addColorStop(0, '#07354d');
+    gradient.addColorStop(1, '#95cdeb');
 }
-const ctx = document.getElementById('myChart');
+var vehicles =[];
+var emmisionCoefficient = localStorage.getItem("emissionCoefficient") || "30";
 
-var vehicles = getFleetData();
+window.onload = () => {
+  vehicles = getFleetData();
+  vehicles.forEach(async element => {
+     await calculateEmissions(element);
+     calculateCharts();
+  });
+  console.log(vehicles);
+  localStorage.setItem('fleetData', JSON.stringify(vehicles));
+}
 
-if(vehicles){
+function calculateCharts() {
+  if(vehicles){
 
   
-   var labels = vehicles.map(v=> { return v.description; });
-   var initValue= 175;
-   var data = labels.map(l=>{ initValue -= getRandomNumber(); return initValue; }); //Getting data 
-   
+   var labels = vehicles.map(v=> { return v.description + " - " + v.type + " - " + v.year + " - " + v.make + " - " + v.model; });
+   var data = vehicles.map(v=> { return v.totalCurrentEmissions }); //Getting data 
    var data ={
         labels,
         datasets: [{
-          label: 'Vehicle Replacement Emissions Intensities',
+          label: 'Current Emissions',
           data,
           fill: true,
           backgroundColor: [
@@ -39,62 +51,23 @@ if(vehicles){
           borderWidth: 1
         }]
       };
-    // const config = {
-    //     type: 'bar',
-    //     data,
-    //     options: {
-    //       indexAxis: 'y',
-    //     }
-    //   };
-
     new Chart(ctx, {
         type: 'bar',
         data,
         options: {
             indexAxis: 'y',
           }
-        // options: {
-        //   scales: {
-        //     y: {
-        //       beginAtZero: true
-        //     }
-        //   }
-        // }
-      });
-
-      //Using Plotly
-
-      var colors = [
-        'rgba(255, 99, 132, 0.6)',
-        'rgba(255, 159, 64, 0.6)',
-        'rgba(255, 205, 86, 0.6)',
-        'rgba(75, 192, 192, 0.6)',
-        'rgba(54, 162, 235, 0.6)',
-        'rgba(153, 102, 255, 0.6)',
-        'rgba(201, 203, 207, 0.6)'
-    ];
-
-      var data = [{
-        x: data, //values
-        y: labels,
-        type: 'bar',
-        orientation: 'h',
-        marker: {
-            //color: 'rgba(255, 99, 132, 0.6)',
-            color: colors,
-            line: {
-                color: 'rgba(255, 99, 132, 1)',
-                width: 1
-            }
-        }
-    }];
-
-    var layout = {
-        title: 'Vehicle Replacement Emissions Intensities',
-        xaxis: { title: 'Emissions Intensity' },
-        //yaxis: { title: 'Vehicle Description' }
-    };
-
-    Plotly.newPlot('plotlyChart', data, layout);
+        });   
+  }
 }
  
+function calculateEmissions(fleet) {
+    current_fuel_efficiency = fleet["annualFuel"] / fleet["annualVKT"];
+    current_annual_emission = fleet["annualFuel"] * emmisionCoefficient;
+    current_emission_intensity = current_annual_emission / fleet["annualVKT"];
+    total_current_emissions = current_annual_emission * fleet["quantity"];
+    fleet['currentFuelEfficiency'] = current_fuel_efficiency;
+    fleet['currentEmissionIntensity'] = current_emission_intensity;
+    fleet['totalCurrentEmissions'] = total_current_emissions;
+    fleet['currentAnnualEmissions'] = (current_annual_emission/44.01);
+  }
