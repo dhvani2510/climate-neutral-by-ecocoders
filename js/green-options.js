@@ -198,6 +198,11 @@ function goToActionSavings() {
     window.location.href = "individualsavings.html";
 }
 
+function goToUserInputPage() {
+    localStorage.setItem('fleetData', JSON.stringify(fleetData)); // Update the local storage data
+    window.location.href = "/main.html";
+}
+
 if (typeof test === 'function'){
   
     module.exports = {

@@ -1,6 +1,7 @@
-#table{
-  overflow: auto;
-  max-height: 100vh;
+#table {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .main-content-head {

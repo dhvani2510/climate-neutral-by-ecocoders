@@ -117,15 +117,9 @@ nav ul li a:hover {
     flex-direction: column;
     background-color: #a7deec;
     padding: 20px;
-    position: relative;
-    padding-bottom: 70px;
 }
 
 .main .direction-buttons{
-    position: absolute;
-  bottom: 0px; 
-  left: 0;
-  right: 0;
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
