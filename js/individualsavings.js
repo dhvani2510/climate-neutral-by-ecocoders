@@ -12,9 +12,14 @@ overallSavingsBtn.addEventListener('click', () => {
 });
 
 var fleetData = getFleetData();
-console.log(fleetData);
+var emmisionCoefficient = localStorage.getItem("emissionCoefficient") || "30";
+var ev_data = [];
 
-populateContainer();
+window.onload = async () => {
+  populateContainer();
+  ev_data = await callAPI();
+  console.log(ev_data);
+};
 
 function populateContainer() {
     const container = document.querySelector(".vehicle-list");
@@ -26,9 +31,10 @@ function populateContainer() {
         let descDiv = createDescriptionDiv(item);
         div.appendChild(descDiv);
         container.appendChild(div);
- 
+        calculateEmissions(item);
         // the options div should only be visible when either the row is hovered or clicked
         div.addEventListener("click", () => {
+          calculateSavings(item);
                 const infoDiv = document.querySelector(".savings-info");
                 document.querySelectorAll('.vehicle-item').forEach(item => {
                     item.classList.remove('selected');
@@ -47,4 +53,40 @@ function createDescriptionDiv(item) {
     descDiv.textContent = item['description'] + " - " + item['type'] + " - " +
         item['year'] + " - " + item['make'] + " - " + item['model'];
     return descDiv;
+}
+
+function calculateEmissions(fleet) {
+  current_fuel_efficiency = fleet["annualFuel"] / fleet["annualVKT"];
+  current_annual_emission = fleet["annualFuel"] * emmisionCoefficient;
+  current_emission_intensity = current_annual_emission / fleet["annualVKT"];
+  total_current_emissions = current_annual_emission * fleet["quantity"];
+  fleet['currentFuelEfficiency'] = current_fuel_efficiency;
+  fleet['currentEmissionIntensity'] = current_emission_intensity;
+  fleet['totalCurrentEmissions'] = total_current_emissions;
+  fleet['currentAnnualEmissions'] = (current_annual_emission/44.01);
+}
+
+carsClassId = ["T", "I", "S","C","M","L","WS","WM"];
+
+async function calculateSavings(item) {
+  console.log(item);
+  year = item["year"];
+  make = item["make"];
+  model = item["model"];
+  optionOpted = item["selectedOption"];
+  if (optionOpted == "Nothing") {
+    return;
+  } else {
+    console.log(ev_data);
+    if(item['type'] == "Light Duty Truck") {
+      console.log("light duty");
+      ev_data == ev_data.filter ( x => x['ClassId'] == "PS" || x['ClassId'] == "PL");
+      console.log(ev_data);
+    }
+    else if(item['type'] == "Car") {
+      console.log("Car");
+      ev_data = ev_data.filter(x => carsClassId.includes(x['ClassId']));
+      console.log(ev_data);
+    }
+  }
 }
