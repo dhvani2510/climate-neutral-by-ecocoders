@@ -60,6 +60,8 @@ function updateEmissionCoefficient(event) {
   document.getElementById("emissionCoefficient").innerHTML =
     emissionCoefficient;
   document.getElementById("provinceSelect").style.display = "none";
+  localStorage.setItem('province', event);
+  localStorage.setItem('emissionCoefficient', emissionCoefficient);
 }
 
 // function to get the emission coefficient
