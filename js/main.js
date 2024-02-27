@@ -170,11 +170,13 @@ optionsForFueltype = [
 function openfuelOptions(){
   var select = document.getElementById("modalFuelType");
   select.style.display = "block";
-  createOptions();
+  if(select.childElementCount==0){
+    createFuelTypeOptions();
+  }
 }
 
 // function to create the options for fuel type
-function createOptions() {
+function createFuelTypeOptions() {
   // make E10 Gasoline as a default selected option
   optionsForFueltype.forEach((item) => {
     console.log(item);
