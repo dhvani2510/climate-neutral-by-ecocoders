@@ -422,7 +422,7 @@ function selectFlexFuel(option) {
 }
 
 function next_page() {
-  window.location.href = "green-options.html";
+  window.location.href = "charts.html";
 }
 
 // Function to handle CSV file upload
