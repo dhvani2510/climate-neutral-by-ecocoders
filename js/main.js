@@ -135,14 +135,6 @@ function openVehicleModal(vehicle) {
   var modalHeader = document.getElementById("data-modal-header");
   if (vehicle) {
     modalHeader.innerHTML = "Edit Details";
-  }
-  else {
-    modalHeader.innerHTML = "Add Details";
-  }
-
-  toggleDeleteButtonVisibility();
-  // set up the data fields in the modal
-  if (vehicle) {
     document.getElementById("modalDescription").value = vehicle["description"];
     document.getElementById("typebtn").innerHTML = vehicle["type"];
     document.getElementById("modalYear").value = vehicle["year"];
@@ -155,6 +147,12 @@ function openVehicleModal(vehicle) {
     document.getElementById("modalFlexFuel").value = flexFuel; selectFlexFuel(flexFuel);
     document.getElementById("modalQuantity").value = vehicle['quantity'];
   }
+  else {
+    modalHeader.innerHTML = "Add Details";
+    selectedVehicleId = null;
+  }
+
+  toggleDeleteButtonVisibility();
 }
  
 
@@ -426,3 +424,89 @@ function selectFlexFuel(option) {
 function next_page() {
   window.location.href = "green-options.html";
 }
+
+// Function to handle CSV file upload
+function handleFileUpload(event) {
+  const file = event.target.files[0];
+  const reader = new FileReader();
+  
+  // Event listener for when the file is loaded
+  reader.onload = function(e) {
+    const contents = e.target.result;
+    processCSV(contents);
+  };
+
+  // Read the file as text
+  reader.readAsText(file);
+}
+
+// Function to process CSV data
+function processCSV(contents) {
+  const rows = contents.split('\n').slice(1); // Split rows and remove header row
+  const storedData = getFleetData(); // Get current fleet data
+  
+  // Process each row of the CSV
+  rows.forEach(row => {
+    // Skip empty rows
+    if (row.trim() === '') return;
+
+    var [description, type, year, make, model, annualVKT, annualFuel, fuelType, flexFuel, quantity] = row.split(',');
+
+    // Check if any field is empty
+    if (!description || !type || !year || !make || !model || !annualVKT || !annualFuel || !fuelType || !flexFuel || !quantity) {
+      console.log('Skipping row: Missing data');
+      return;
+    }
+
+    // trim all the variables created for new lines tabs or carriage returns
+
+    description = description.trim();
+    type = type.trim();
+    year = year.trim();
+    make = make.trim();
+    model = model.trim();
+    annualVKT = annualVKT.trim();
+    annualFuel = annualFuel.trim();
+    fuelType = fuelType.trim();
+    flexFuel = flexFuel.trim();
+    quantity = quantity.trim();
+
+    // Check if the vehicle already exists in stored data
+    const existingVehicle = storedData.find(vehicle => vehicle.description === description && vehicle.type === type && vehicle.year === year && vehicle.make === make && vehicle.model === model);
+
+    if (existingVehicle) {
+      // Update existing vehicle
+      existingVehicle.annualVKT = annualVKT;
+      existingVehicle.annualFuel = annualFuel;
+      existingVehicle.fuelType = fuelType;
+      existingVehicle.flexFuel = flexFuel;
+      existingVehicle.quantity = quantity;
+      updateRow(existingVehicle);
+    } else {
+      // Add new vehicle
+      const newRow = {
+        id: storedData.length + 1,
+        description,
+        type,
+        year,
+        make,
+        model,
+        annualVKT,
+        annualFuel,
+        fuelType,
+        flexFuel,
+        quantity,
+      };
+      console.log(newRow);
+      storedData.push(newRow);
+      createRow(newRow);
+    }
+  });
+
+  // Update local storage
+  localStorage.setItem('fleetData', JSON.stringify(storedData));
+}
+
+
+// Event listener for file input change
+document.getElementById('fileInput').addEventListener('change', handleFileUpload);
