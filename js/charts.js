@@ -102,6 +102,7 @@ function calculateCharts() {
           : 0;
     });
   
+
     var data = {
       labels,
       datasets: [
