@@ -43,7 +43,7 @@ function calculateCharts() {
         v.model
       );
     });
-    var data = vehicles.map((v) => {
+    var totalCurrentEmissionsData = vehicles.map((v) => {
       return v.totalCurrentEmissions;
     }); //Getting data
     var data = {
@@ -51,7 +51,7 @@ function calculateCharts() {
       datasets: [
         {
           label: "Current Emissions",
-          data,
+          data:totalCurrentEmissionsData,
           fill: true,
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
@@ -76,7 +76,7 @@ function calculateCharts() {
       ],
     };
 
-  canvas.height=vehicles.length *100;
+  canvas.height= canvas2.height =vehicles.length *100;
 
    var options =  {
     indexAxis: "y",
@@ -108,7 +108,7 @@ function calculateCharts() {
       datasets: [
         {
           label: "Total Emission Intensity",
-          currentEmissionIntensityData,
+          data:currentEmissionIntensityData,
           fill: true,
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
