@@ -17,7 +17,7 @@ return storedData;
 
 function sweetAlert(title, icon="success", timer=0){
     Swal.fire({
-      position: "top-end",
+      position: "center",
       icon,
       title,
       showConfirmButton: false,

@@ -1,6 +1,6 @@
 
 //This will help with the unit test
-const { getFleetData } = typeof test === 'function' ? require('./index') : {}; 
+// const { getFleetData } = typeof test === 'function' ? require('./index') : {}; 
 var fleetData = getFleetData();
 
 const greenOptions = [
@@ -77,6 +77,7 @@ function createDescriptionDiv(item) {
  
 // Function to create the options div
 function createOptionsDiv(item) {
+    console.log(item);
     const optionsDiv = document.createElement("div");
     // Add class
     optionsDiv.classList.add("vehicle-green-options");
