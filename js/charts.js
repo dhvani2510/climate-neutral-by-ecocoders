@@ -54,24 +54,13 @@ function calculateCharts() {
           data:totalCurrentEmissionsData,
           fill: true,
           backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 205, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(201, 203, 207, 0.2)",
+            "rgba(255, 99, 132, 0.2)"
           ],
           borderColor: [
-            "rgb(255, 99, 132)",
-            "rgb(255, 159, 64)",
-            "rgb(255, 205, 86)",
-            "rgb(75, 192, 192)",
-            "rgb(54, 162, 235)",
-            "rgb(153, 102, 255)",
-            "rgb(201, 203, 207)",
+            "rgb(255, 99, 132)"
           ],
-          borderWidth: 1,
+          borderWidth: 1.5,
+          borderRadius: 8
         },
       ],
     };
@@ -80,13 +69,89 @@ function calculateCharts() {
 
    var options =  {
     indexAxis: "y",
-    //barThickness:'flex' ,// 20,
-    //maxBarThickness:20,
-    //barPercentage:0.5,
-    //categoryercentage:1,
     responsive: true,
     maintainAspectRatio: false, // This will take css or js height, canvas element height
-  }
+    scales: {
+      y: {
+        title: {
+          display: true,
+          text: "Fleet Data",
+          font: {
+            size: 16
+          },
+          padding: 10,
+        },
+      },
+      x: {
+        title: {
+          display: true,
+          text: "Emissions",
+          font: {
+            size: 16
+          },
+        },
+        grid: {
+          display: false
+        }
+      }
+    },
+    plugins: {
+      legend: {
+        display: false
+      },
+      title: {
+        display: true,
+        text: "Total Emissions",
+        font: {
+          size: 20
+        },
+        padding: 20
+      }
+    }
+  };
+
+  var intensityOptions =  {
+    indexAxis: "y",
+    responsive: true,
+    maintainAspectRatio: false, // This will take css or js height, canvas element height
+    scales: {
+      y: {
+        title: {
+          display: true,
+          text: "Fleet Data",
+          font: {
+            size: 16
+          },
+          padding: 10,
+        },
+      },
+      x: {
+        title: {
+          display: true,
+          text: "Emissions Intensity",
+          font: {
+            size: 16
+          },
+        },
+        grid: {
+          display: false
+        }
+      }
+    },
+    plugins: {
+      legend: {
+        display: false
+      },
+      title: {
+        display: true,
+        text: "Total Emission Intensity",
+        font: {
+          size: 20
+        },
+        padding: 20
+      }
+    }
+  };
 
     new Chart(ctx, {
       type: "bar",
@@ -111,31 +176,20 @@ function calculateCharts() {
           data:currentEmissionIntensityData,
           fill: true,
           backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 205, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(201, 203, 207, 0.2)",
+            "rgba(255, 159, 64, 0.2)"
           ],
           borderColor: [
-            "rgb(255, 99, 132)",
-            "rgb(255, 159, 64)",
-            "rgb(255, 205, 86)",
-            "rgb(75, 192, 192)",
-            "rgb(54, 162, 235)",
-            "rgb(153, 102, 255)",
-            "rgb(201, 203, 207)",
+            "rgb(255, 159, 64)"
           ],
-          borderWidth: 1,
+          borderWidth: 1.5,
+          borderRadius: 8
         },
       ],
     };
     new Chart(ctx2, {
       type: "bar",
       data,
-      options
+      options: intensityOptions
     });
   }
 }

@@ -32,6 +32,12 @@ function openOptions() {
   if (select.childElementCount==0) {
     createOptions();
   }
+  // add selected class to the selected option
+  var selectedOption = select.querySelector(".selected");
+  if (selectedOption) {
+    selectedOption.classList.remove("selected");
+  }
+  select.querySelector(`[data-value="${selectedProvince}"]`).classList.add("selected");
 }
 
 // function to create the options for provinces
@@ -46,9 +52,6 @@ function createOptions() {
     option.setAttribute("id", "provinceSelect");
     option.setAttribute("name", "provinceSelect");
     option.setAttribute("onclick", `updateEmissionCoefficient('${item}')`); // Passing item here
-    if (item === "Ontario") {
-      option.selected = true;
-    }
     document.getElementById("provinceSelect").appendChild(option);
   });
 }
@@ -81,3 +84,26 @@ function closeSettingsModal() {
   overlay.style.display = "none";
   document.body.style.overflow = ""; // Restore scrolling of main content
 }
+
+window.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    if(document.getElementById("provinceSelect").style.display == "block") {
+      document.getElementById("provinceSelect").style.display = "none";
+    }
+    else if(document.getElementById("settingsModal").style.display != "nonw") {
+      document.getElementById("settingsModal").style.display = "none";
+      document.getElementById("overlay").style.display = "none";
+      document.getElementById("provinceSelect").style.display = "none";
+    }
+  }
+})
+
+window.addEventListener('mousedown', function(event) {
+  if (document.getElementById("provinceSelect").style.display == "block" && !document.getElementById("provinceSelect").contains(event.target)) {
+    document.getElementById("provinceSelect").style.display = "none";
+  }
+  else if (document.getElementById("settingsModal").style.display != "none" && !document.getElementById("settingsModal").contains(event.target)) {
+    document.getElementById("settingsModal").style.display = "none";
+    document.getElementById("overlay").style.display = "none";
+  }
+});
