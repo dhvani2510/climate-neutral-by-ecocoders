@@ -1,0 +1,41 @@
+.header2 {
+    background-color: #a7deec;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    font-size: 30px;
+    text-decoration: underline;
+}
+ 
+.main {
+    padding: 0;
+}
+ 
+#buttons{
+    display: flex;
+    justify-content: flex-end;
+}
+ 
+#dynamic-divs {
+    background: linear-gradient(180deg, #26b170, #a7deec);
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    flex-grow: 1;
+}
+ 
+.print-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    padding: 10px;
+    margin-left: 10px;
+}
+ 
+  .print-button i {
+    margin-right: 5px;
+    background: none;
+    border: none;
+}
