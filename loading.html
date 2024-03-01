@@ -1,36 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading Animation</title>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title> Loading</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/loading.css" />
+  </head>
+  <body>
+    <div class="bar">
+        <div class="circle"></div>
+        <p>Loading</p>
+      </div>
     
-    <link rel="stylesheet" href="css/loading.css">
-
-</head>
-
-<body>
-
-<div class="loading-window">
-    <div class="car">
-        <div class="strike"></div>
-        <div class="strike strike2"></div>
-        <div class="strike strike3"></div>
-        <div class="strike strike4"></div>
-        <div class="strike strike5"></div>
-        <div class="car-detail spoiler"></div>
-        <div class="car-detail back"></div>
-        <div class="car-detail center"></div>
-        <div class="car-detail center1"></div>
-        <div class="car-detail front"></div>
-        <div class="car-detail wheel"></div>
-        <div class="car-detail wheel wheel2"></div>
-    </div>
-
-    <div class="text">
-        <span>Loading</span><span class = "dots">...</span>
-    </div>
-</div>
-
-</body>
+      <script>
+        setTimeout(function() {
+            window.location.href= "main.html";
+        }, 3000);
+    </script>
+  </body>
 </html>

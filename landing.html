@@ -23,8 +23,14 @@
         <div class="landing-content">
             <h1 class="h1">Welcome to Climate Neutral: Empowering Green Transportation Solutions</h1>
             <p class="p">At Climate Neutral, we're committed to driving change, quite literally. Our innovative software solution is at the forefront of empowering corporations and municipalities to navigate the transition towards sustainable transportation practices.</p>
-            <a href="/main.html" class="get-started-btn">Get Started</a>
+            <a class="get-started-btn" id="redirectbtn">Get Started</a>
         </div>
+        
+        <script>
+            document.getElementById("redirectbtn").addEventListener("click", function(){
+                window.location.href="loading.html";
+            });
+        </script>
     </div>
 </body>
 </html>

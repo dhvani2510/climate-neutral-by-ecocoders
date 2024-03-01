@@ -1,86 +1,44 @@
-/* Variables */
-:root {
-    --border-color: #ffe4e1;
-    --background-color: #333;
-    --border-radius-big: 6px;
-    --font-size-header: 16px;
-    --car-color: var(--border-color);
-    --spin-deg: 36deg;
+html, body {
+	background: #347fc3;
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: hidden;
   }
   
-  /* Keyframes */
-  @keyframes spin {
-    0% { transform: translate(2px, 1px) rotate(calc(var(--spin-deg) * 0)); }
-    10% { transform: translate(-1px, -3px) rotate(calc(var(--spin-deg) * 1)); }
-    20% { transform: translate(-2px, 0px) rotate(calc(var(--spin-deg) * 2)); }
-    /* Remaining keyframes */
+  .bar {
+	position: relative;
+	height: 2px;
+	width: 500px;
+	margin: 0 auto;
+	background: #fff;
+	margin-top: 380px;
   }
   
-  @keyframes speed {
-    /* Keyframes definition */
+  .circle {
+	position: absolute;
+	top: -30px;
+	margin-left: -30px;
+	height: 60px;
+	width: 60px;
+	left: 0;
+	background: #fff;
+	border-radius: 30%;
+	-webkit-animation: move 5s infinite;
   }
   
-  @keyframes strikes {
-    /* Keyframes definition */
+  p {
+	position: absolute;
+	top: -35px;
+	right: -85px;
+	text-transform: uppercase;
+	color: #347fc3;
+	font-family: helvetica, sans-serif;
+	font-weight: bold;
   }
   
-  @keyframes dots {
-    /* Keyframes definition */
-  }
-  
-  @keyframes fadeIn {
-    /* Keyframes definition */
-  }
-  
-  /* Body */
-  body {
-    background: var(--background-color);
-    font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
-  }
-  
-  /* Classes */
-  .fadeIn {
-    animation: fadeIn 0.4s both;
-  }
-  
-  .loading-window {
-    animation: fadeIn 0.4s both;
-    background: var(--background-color);
-    border-radius: var(--border-radius-big);
-    border: 3px solid var(--border-color);
-    color: var(--car-color);
-    height: 200px;
-    left: 50%;
-    margin-left: -150px;
-    margin-top: -100px;
-    position: fixed;
-    top: 50%;
-    width: 300px;
-    z-index: 99;
-  }
-  
-  .loading-window .text {
-    font-size: var(--font-size-header);
-    position: absolute;
-    width: auto;
-    top: 75%;
-    left: 38%;
-    margin: 0 auto;
-  }
-  
-  .loading-window .dots {
-    display: inline-block;
-    width: 5px;
-    overflow: hidden;
-    vertical-align: bottom;
-    animation: dots 1.5s linear infinite;
-  }
-  
-  .car {
-    position: absolute;
-    width: 117px;
-    height: 42px;
-    left: 92px;
-    top: 70px;
-  }
-  
+  @-webkit-keyframes move {
+	0% {left: 0;}
+	50% {left: 100%; -webkit-transform: rotate(450deg); width: 150px; height: 150px;}
+	75% {left: 100%; -webkit-transform: rotate(450deg); width: 150px; height: 150px;}
+	100% {right: 100%;}
+  } 
