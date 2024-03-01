@@ -1,0 +1,75 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 1vh; /* Set a fixed height for the wrapper */
+}
+
+.wrapper > *:nth-child(1) {
+    flex: 1; /* Use flex-grow: 1 to fill remaining space */
+    background-color: #77c3d6; /* Light blue color */
+}
+
+.wrapper > *:nth-child(2) {
+    flex: 1; /* Use flex-grow: 1 to fill remaining space */
+    background-color: #2FC2E6; /* White orche color */
+}
+
+.main-title {
+    position: absolute;
+    top: 5%; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px; /* Adjust font size as needed */
+}
+
+.main-description {
+    position: absolute;
+    top: 20%; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px; /* Adjust font size as needed */
+    text-align: center;
+}
+
+.button-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 58vh; /* Adjust as needed */
+}
+
+.next-link {
+    text-decoration: none; /* Remove underline from link */
+}
+
+.next-button {
+    padding: 10px 20px; /* Adjust padding as needed */
+    border: none;
+    border-radius: 10px; /* Adjust border radius for curved edges */
+    background-color: #4CAF50; /* Default background color */
+    color: white; /* Text color */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition for color change */
+}
+
+.next-button:hover {
+    background-color: #45a049; /* Background color on hover */
+}
+
+.main-video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh; /* Adjust as needed */
+}
+
+.bee-measurement_video {
+    max-width: 130vh; /* Adjust the maximum width as needed */
+    height: auto;
+}
