@@ -6,24 +6,30 @@
     font-size: 30px;
     text-decoration: underline;
 }
- 
+
 .main {
     padding: 0;
 }
- 
-#buttons{
+
+#buttons {
     display: flex;
     justify-content: flex-end;
 }
- 
+
 #dynamic-divs {
     background: linear-gradient(180deg, #26b170, #a7deec);
     display: flex;
     flex-direction: column;
-    padding: 10px 20px;
+    padding: 10px 30px;
     flex-grow: 1;
 }
- 
+
+.charts-canvas {
+    background-color: white;
+    margin: 20px;
+    border-radius: 16px;
+}
+
 .print-button {
     background: none;
     border: none;
@@ -33,9 +39,25 @@
     padding: 10px;
     margin-left: 10px;
 }
- 
-  .print-button i {
+
+.print-button i {
     margin-right: 5px;
     background: none;
     border: none;
+}
+
+@media print {
+    @page {
+        background-color: #26b170 !important;
+        size: 420mm 594mm;
+        margin: 0;
+    }
+
+    .print-button *,
+    .logo *,
+    .footer *,
+    .direction-buttons *,
+    .nav * {
+        visibility: hidden;
+    }
 }
