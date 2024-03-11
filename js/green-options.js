@@ -196,7 +196,8 @@ function goToActionSavings() {
         return;
     }
     localStorage.setItem('fleetData', JSON.stringify(fleetData)); // Update the local storage data
-    window.location.href = "individualsavings.html";
+    localStorage.setItem("next", "individualsavings.html");
+    window.location.href = "loading.html";
 }
 
 function goToUserInputPage() {

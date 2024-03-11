@@ -422,7 +422,8 @@ function selectFlexFuel(option) {
 }
 
 function next_page() {
-  window.location.href = "charts.html";
+  localStorage.setItem("next", "charts.html");
+  window.location.href = "loading.html";
 }
 
 // Function to handle CSV file upload

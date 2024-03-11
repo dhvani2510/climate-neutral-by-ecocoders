@@ -15,7 +15,9 @@
     
       <script>
         setTimeout(function() {
-            window.location.href= "main.html";
+          var next = localStorage.getItem('next');
+            window.location.href= next;
+            localStorage.removeItem('next');
         }, 3000);
     </script>
   </body>

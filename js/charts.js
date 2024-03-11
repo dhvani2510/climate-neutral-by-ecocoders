@@ -53,12 +53,8 @@ function calculateCharts() {
           label: "Current Emissions",
           data:totalCurrentEmissionsData,
           fill: true,
-          backgroundColor: [
-            "rgba(255, 99, 132, 0.2)"
-          ],
-          borderColor: [
-            "rgb(255, 99, 132)"
-          ],
+          backgroundColor:gradient,
+          borderColor: '#07354d',
           borderWidth: 1.5,
           borderRadius: 8
         },
@@ -175,12 +171,8 @@ function calculateCharts() {
           label: "Total Emission Intensity",
           data:currentEmissionIntensityData,
           fill: true,
-          backgroundColor: [
-            "rgba(255, 159, 64, 0.2)"
-          ],
-          borderColor: [
-            "rgb(255, 159, 64)"
-          ],
+          backgroundColor: gradient,
+          borderColor: '#07354d',
           borderWidth: 1.5,
           borderRadius: 8
         },
@@ -206,7 +198,8 @@ function calculateEmissions(fleet) {
 }
 
 function goToGreenOptionsPage() {
-  window.location.href = "green-options.html";
+  localStorage.setItem("next", "green-options.html");
+  window.location.href = "loading.html";
 }
 
 function goToUserInputPage() {
