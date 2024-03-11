@@ -10,16 +10,18 @@ const greenOptions = [
     { id: 4, option: "B20 Biodiesel Usage" },
     { id: 5, option: "Replace with Biofuel car" },
     { id: 6, option: "Replace with Biofuel Truck" },
-    { id: 7, option: "Replace with Biofuel Car E85" },
-    { id: 8, option: "Replace with EV Light Duty Truck" },
-    { id: 9, option: "Replace with Biofuel E85 Light Duty Truck" },
-    { id: 10, option: "Right Size to Car" },
-    { id: 11, option: "Right Size to Biofuel Car" },
-    { id: 12, option: "Right Size to Biofuel E85 Car" },
-    { id: 13, option: "E85 Biofuel Usage" },
-    { id: 14, option: "B20 Diesel Usage" },
-    { id: 15, option: "Replace with EV Car" },
-    { id: 16, option: "Nothing" }
+    { id: 7, option: "Nothing" }
+
+    // { id: 7, option: "Replace with Biofuel Car E85" },
+    // { id: 8, option: "Replace with EV Light Duty Truck" },
+    // { id: 9, option: "Replace with Biofuel E85 Light Duty Truck" },
+    // { id: 10, option: "Right Size to Car" },
+    // { id: 11, option: "Right Size to Biofuel Car" },
+    // { id: 12, option: "Right Size to Biofuel E85 Car" },
+    // { id: 13, option: "E85 Biofuel Usage" },
+    // { id: 14, option: "B20 Diesel Usage" },
+    // { id: 15, option: "Replace with EV Car" },
+    // { id: 16, option: "Nothing" }
 ];
 
 // Call the function to populate the container
@@ -173,17 +175,29 @@ function getGreenOptions(vehicle) {
         const { type, flexFuel, fuelType } = vehicle;
 
         if (
-            (type === "Car" && flexFuel === "Yes" && fuelType === "Gasoline" && (id === 1 || id === 3 || id === 16)) ||
-            (type === "Car" && flexFuel === "No" && fuelType === "Gasoline" && (id === 7 || id === 15 || id === 16)) ||
-            (type === "Light Duty Truck" && flexFuel === "No" && fuelType === "Gasoline" && (id === 8 || id === 9 || id === 10 || id === 11 || id === 16)) ||
-            (type === "Light Duty Truck" && flexFuel === "Yes" && fuelType === "Gasoline" && (id === 3 || id === 8 || id === 10 || id === 11 || id === 16)) ||
-            (type === "Light Duty Truck" && flexFuel === "No" && fuelType === "Diesel" && (id === 8 || id === 9 || id === 10 || id === 12 || id === 16)) ||
-            (type === "Light Duty Truck" && flexFuel === "Yes" && fuelType === "Diesel" && (id === 14 || id === 8 || id === 9 || id === 10 || id === 12 || id === 16))
+            // (type === "Car" && flexFuel === "Yes" && fuelType === "Gasoline" && (id === 1 || id === 3 || id === 16)) ||
+            // (type === "Car" && flexFuel === "No" && fuelType === "Gasoline" && (id === 7 || id === 15 || id === 16)) ||
+            // (type === "Light Duty Truck" && flexFuel === "No" && fuelType === "Gasoline" && (id === 8 || id === 9 || id === 10 || id === 11 || id === 16)) ||
+            // (type === "Light Duty Truck" && flexFuel === "Yes" && fuelType === "Gasoline" && (id === 3 || id === 8 || id === 10 || id === 11 || id === 16)) ||
+            // (type === "Light Duty Truck" && flexFuel === "No" && fuelType === "Diesel" && (id === 8 || id === 9 || id === 10 || id === 12 || id === 16)) ||
+            // (type === "Light Duty Truck" && flexFuel === "Yes" && fuelType === "Diesel" && (id === 14 || id === 8 || id === 9 || id === 10 || id === 12 || id === 16))
+
+            (type === "Car" && flexFuel === "Yes" && fuelType === "Gasoline" && (id === 1 || id === 3 || id === 7)) ||
+            (type === "Car" && flexFuel === "No" && fuelType === "Gasoline" && (id === 5 || id === 1 || id === 7)) ||
+            (type === "Light Duty Truck" && flexFuel === "No" && fuelType === "Gasoline" && (id === 1 || id === 6 || id === 2 || id === 2 || id === 7)) ||
+            (type === "Light Duty Truck" && flexFuel === "Yes" && fuelType === "Gasoline" && (id === 3 || id === 1 || id === 2 || id === 2 || id === 7)) ||
+            (type === "Light Duty Truck" && flexFuel === "No" && fuelType === "Diesel" && (id === 1 || id === 6 || id === 2 || id === 2 || id === 7)) ||
+            (type === "Light Duty Truck" && flexFuel === "Yes" && fuelType === "Diesel" && (id === 4 || id === 1 || id === 6 || id === 2 || id === 2 || id === 7))
         ) {
             var value= greenOptions.find(option => option.id === id)
             selectedGreenOptions.push(value); 
         }
+        
     });
+    if(selectedGreenOptions.length == 0) {
+        var value= greenOptions.find(option => option.id === 7)
+        selectedGreenOptions.push(value); 
+    }
 
     return selectedGreenOptions;
 }
