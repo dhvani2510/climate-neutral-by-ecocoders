@@ -73,6 +73,7 @@ carsClassId = ["T", "I", "S","C","M","L","WS","WM"];
 async function calculateSavings(item) {  
   let optionOpted = item['selectedOption'];
   if (optionOpted == "Nothing") {
+    item['percent_savings'] = 0;
     item['savings'] = 0;
     return;
   } else {
