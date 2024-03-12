@@ -206,7 +206,7 @@ function goToActionSavings() {
     console.log(fleetData);
     if( fleetData.some(x => x['selectedOption'] == "") )
     {
-        console.error("Please select all green options");
+        sweetAlert("Please select all options", "warning");
         return;
     }
     localStorage.setItem('fleetData', JSON.stringify(fleetData)); // Update the local storage data

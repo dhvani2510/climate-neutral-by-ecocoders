@@ -44,7 +44,7 @@ function calculateCharts() {
       );
     });
     var totalCurrentEmissionsData = vehicles.map((v) => {
-      return v.totalCurrentEmissions;
+      return v.currentAnnualEmissionsInTons;
     }); //Getting data
     var data = {
       labels,
@@ -186,15 +186,25 @@ function calculateCharts() {
   }
 }
 
+var fuel_emissions_factor = {
+  'Gasoline':2299,
+  "E10 Gasoline": 2071,
+  'Diesel': 2730
+}
+
 function calculateEmissions(fleet) {
-  current_fuel_efficiency = fleet["annualFuel"] / fleet["annualVKT"];
-  current_annual_emission = fleet["annualFuel"] * emmisionCoefficient;
-  current_emission_intensity = current_annual_emission / fleet["annualVKT"];
-  total_current_emissions = current_annual_emission * fleet["quantity"];
+  current_fuel_efficiency = fleet["annualFuel"] / fleet["annualVKT"]; //L/km
+  console.log(fuel_emissions_factor[fleet["fuelType"]]);
+  current_annual_emission = fleet["annualFuel"] * fuel_emissions_factor[fleet["fuelType"]]; //gCO2e
+  current_emission_intensity = current_annual_emission / fleet["annualVKT"]; //gC02e/km
+  // total_current_emissions = current_annual_emission * fleet["quantity"]; // for all vehicles gCO2e/km
+  cae_in_tons = current_annual_emission / 1000000;
+  
   fleet["currentFuelEfficiency"] = current_fuel_efficiency;
   fleet["currentEmissionIntensity"] = current_emission_intensity;
-  fleet["totalCurrentEmissions"] = total_current_emissions;
-  fleet["currentAnnualEmissions"] = current_annual_emission / 44.01;
+  // fleet["totalCurrentEmissions"] = total_current_emissions;
+  fleet["currentAnnualEmissions"] = current_annual_emission;
+  fleet["currentAnnualEmissionsInTons"] = cae_in_tons;
 }
 
 function goToGreenOptionsPage() {

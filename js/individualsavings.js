@@ -16,9 +16,9 @@ var emmisionCoefficient = localStorage.getItem("emissionCoefficient") || "30";
 var ev_data = [];
 
 window.onload = async () => {
+  ev_data = await getEVData();
   populateContainer();
-  ev_data = await callAPI();
-  console.log(ev_data);
+  localStorage.setItem('fleetData', JSON.stringify(fleetData));
 };
 
 function populateContainer() {
@@ -31,20 +31,22 @@ function populateContainer() {
         let descDiv = createDescriptionDiv(item);
         div.appendChild(descDiv);
         container.appendChild(div);
-        calculateEmissions(item);
         // the options div should only be visible when either the row is hovered or clicked
-        div.addEventListener("click", () => {
-          calculateSavings(item);
+        div.addEventListener("click", async () => {
+          await calculateSavings(item);
                 const infoDiv = document.querySelector(".savings-info");
                 document.querySelectorAll('.vehicle-item').forEach(item => {
                     item.classList.remove('selected');
                 });
                 div.classList.add('selected');
-                infoDiv.classList.remove('hidden');    
+                infoDiv.classList.remove('hidden');
+                document.querySelector('.percentage-value').innerHTML= item['percent_savings'];
+                document.querySelector('.savings-value').innerHTML= item['savings'];
                 console.log(item['selectedOption']);
                 document.querySelector('.option-selected').innerHTML = "Option Selected :" + item['selectedOption'];          
         });
     });
+    document.querySelectorAll('.vehicle-item')[0].click();
 }
 
 function createDescriptionDiv(item) {
@@ -68,26 +70,14 @@ function calculateEmissions(fleet) {
 
 carsClassId = ["T", "I", "S","C","M","L","WS","WM"];
 
-async function calculateSavings(item) {
-  console.log(item);
-  year = item["year"];
-  make = item["make"];
-  model = item["model"];
-  optionOpted = item["selectedOption"];
+async function calculateSavings(item) {  
+  let optionOpted = item['selectedOption'];
   if (optionOpted == "Nothing") {
+    item['savings'] = 0;
     return;
   } else {
-    console.log(ev_data);
-    if(item['type'] == "Light Duty Truck") {
-      console.log("light duty");
-      ev_data == ev_data.filter ( x => x['ClassId'] == "PS" || x['ClassId'] == "PL");
-      console.log(ev_data);
-    }
-    else if(item['type'] == "Car") {
-      console.log("Car");
-      ev_data = ev_data.filter(x => carsClassId.includes(x['ClassId']));
-      console.log(ev_data);
-    }
+    item['savings'] = 12;
+    evaluateSavings(item, ev_data);
   }
 }
 
