@@ -121,11 +121,9 @@ header {
     margin: 0 2%;
 }
 
-
-
 /* For the speedometer */
 
-  #canvas {
+#canvas {
     position: absolute;
     top: 50%;
     margin-left: 30%;
