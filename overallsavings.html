@@ -40,15 +40,24 @@
     <div class="main1">
         <div class="overall">
             <div class="car">
-                <img src="assets/overallsavings.png" alt="car" />
+                <img src="assets/icons/car234.png" alt="car" />
             </div>
             <div class="info">
                 <div class="savings-info">
                     <div class="savings-emissions">Total Emission Savings: <span>25</span><sup>Tonnes / Year</sup></div>
                     <br>
                     <div class="savings-percentage">
-                        <div class="emission-savings">Emission Savings Percent: </div>
-                        <div class="Res">10</div>
+                        <div class="emission-savings">
+                            <h4>Emission Savings:</h4> 
+                            <div class="speedo">
+                                <canvas id="canvas" height="175" width="350" class="m-auto">
+                                </canvas>
+                                <p class="text">0 %</p>
+                                <script src="js/speedo.js"></script>
+                            </div>
+                        </div>
+                        <!-- <div class="Res">10</div> -->
+                         
                     </div>
                 </div>
             </div>

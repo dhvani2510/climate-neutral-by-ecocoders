@@ -202,16 +202,25 @@ function getGreenOptions(vehicle) {
     return selectedGreenOptions;
 }
 
-function goToActionSavings() {
-    console.log(fleetData);
+// function goToActionSavings() {
+//     console.log(fleetData);
+//     if( fleetData.some(x => x['selectedOption'] == "") )
+//     {
+//         console.error("Please select all green options");
+//         return;
+//     }
+//     localStorage.setItem('fleetData', JSON.stringify(fleetData)); // Update the local storage data
+//     window.location.href = "individualsavings.html";
+// }
+
+function goToAnalyser() {
     if( fleetData.some(x => x['selectedOption'] == "") )
     {
         console.error("Please select all green options");
         return;
     }
     localStorage.setItem('fleetData', JSON.stringify(fleetData)); // Update the local storage data
-    localStorage.setItem("next", "individualsavings.html");
-    window.location.href = "loading.html";
+    window.location.href = "analyser.html";
 }
 
 function goToUserInputPage() {
