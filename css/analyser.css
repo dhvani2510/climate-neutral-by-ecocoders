@@ -22,26 +22,22 @@ body, html {
 
 .main-title {
     position: absolute;
-    top: 2%; /* Adjust as needed */
+    top: 5%; /* Adjust as needed */
     left: 50%;
     transform: translateX(-50%);
     font-size: 24px; /* Adjust font size as needed */
 }
 
-.text1 {
+.main-description {
     position: absolute;
-    top: 18%; /* Adjust as needed */
+    top: 20%; /* Adjust as needed */
     left: 50%;
     transform: translateX(-50%);
     font-size: 18px; /* Adjust font size as needed */
     text-align: center;
-    color: black;
 }
 
-
-
 .button-section {
-    margin-top: 0.5%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,7 +51,6 @@ body, html {
 .next-button {
     padding: 10px 20px; /* Adjust padding as needed */
     border: none;
-    font-size: medium;
     border-radius: 10px; /* Adjust border radius for curved edges */
     background-color: #4CAF50; /* Default background color */
     color: white; /* Text color */
