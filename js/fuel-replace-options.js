@@ -6,7 +6,7 @@ async function callAPI(year,make,model) {
         'Access-Control-Allow-Origin': '*'
     };
     const payload = {
-        ResultsPerPage: 1000,
+        ResultsPerPage: 500000,
         VehicleType: 'ICE,BEV,PHEV',
         SelectedModelYears: 'ALL',
         SelectedClasses: 'ALL',

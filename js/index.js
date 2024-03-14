@@ -1,8 +1,5 @@
 //index.js is for  general functions that can be called from the layout or multiple pages
 
-// variable to store all the data
-var fleetData = [];
- 
 // This function gets the fleet data from local storage
 function getFleetData()
 {
@@ -45,4 +42,8 @@ function sweetAlert(title, icon="success", timer=0){
     module.exports = {
         getFleetData
     };
+}
+
+async function getEVData() {
+  return await callAPI(2022, "Tesla", "Model 3");
 }
