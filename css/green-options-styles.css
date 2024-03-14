@@ -1,19 +1,22 @@
 /* green-options-styles.css */
 .header2 {
-  background-color: #a7deec;
+  background: linear-gradient(180deg, #D1FFE9 , #BBECD5);
   color: black;
   padding: 20px;
   text-align: center;
   font-size: 30px;
   text-decoration: underline;
 }
- 
+
 .main {
   padding: 0;
 }
 
+.main{
+  background: linear-gradient(180deg, #BBECD5, #005a30);
+}
 #dynamic-divs {
-  background: linear-gradient(180deg, #26b170, #a7deec);
+  /* background: linear-gradient(180deg, #BBECD5, #005a30); */
   display: flex;
   flex-direction: column;
   padding: 10px 20px;
@@ -50,7 +53,7 @@
   outline: 1px solid white;
  
   .description {
-    background-color: #0b5624;
+    background-color: #0077b6;
     font-size: 20px;
     border-radius: 16px;  
   }
@@ -178,4 +181,37 @@
  
 .item:hover .options {
   display: block;
+}
+
+
+.footer2 {
+  background: linear-gradient(180deg, #005a30, #609b7f);
+  color: black;
+  font-size: 20px;
+  width: -webkit-fill-available;
+  bottom: 0;
+  text-align: left;
+  padding: 20px 2% 10px 2%;
+}
+
+.direction-buttons1{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+
+  button {
+    background-color: #0077b6;
+    color: white;
+    border: 0;
+    border-radius: 16px;
+    padding: 10px;
+    font-size: 20px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #004a72;
+    }
+  }
+
+    
 }
