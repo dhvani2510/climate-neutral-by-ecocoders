@@ -1,7 +1,19 @@
+header {
+    background-color: #0077B6;
+    position: relative;
+    top: 0;
+    z-index: 1;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between; 
+}
+
 .header2 {
     color: black;
     text-align: center;
-    background-color: #94d8e9;
+    /* background: linear-gradient(180deg, #D1FFE9 , #BBECD5); */
+    background-color: #a7deec;
     padding: 20px;
 }
 
@@ -42,7 +54,8 @@
 }
 
 .main1 {
-    background: linear-gradient(180deg, #26B170, #a7deec);
+    /* background: linear-gradient(180deg, #BBECD5, #005a30); */
+    background-color: #a7deec;
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -120,7 +133,7 @@
 
 /* For the speedometer */
 
-  canvas {
+canvas {
     position: absolute;
     top: 50%;
     margin-left: 35%;
@@ -140,3 +153,87 @@
     transform: translate(-50%, -50%);
   }
   
+
+.footer2 {
+    /* background: linear-gradient(180deg, #005a30, #609b7f); */
+    background-color: #0077B6;
+    color: white;
+    font-size: 20px;
+    width: -webkit-fill-available;
+    bottom: 0;
+    text-align: left;
+    padding: 0 2% 10px 2%;
+}
+
+
+.footer-text p {
+    text-align: center;
+    color: white;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none; 
+}
+
+.footer-links a:hover {
+    text-decoration: underline; 
+}
+
+.footer-icons {
+    display: flex;
+    align-items: center;
+}
+
+.footer-icons i {
+    margin: 0 10px; 
+    color: white;
+}
+
+.footer-text {
+    margin: 10px 0;
+}
+
+
+.footer-start {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+
+.line {
+    height: 2px;
+    width: 50%;
+    background-color: white;
+}
+
+.direction-buttons1{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  
+    button {
+      background-color: #0077b6;
+      color: white;
+      border: 0;
+      border-radius: 16px;
+      padding: 10px;
+      font-size: 20px;
+  
+      &:hover {
+        cursor: pointer;
+        background-color: #004a72;
+      }
+    }
+  
+      
+  }

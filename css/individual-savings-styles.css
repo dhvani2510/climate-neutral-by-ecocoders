@@ -1,3 +1,14 @@
+header {
+    background-color: #105157;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between; 
+}
+
 .vehicle-list {
     /* padding: 6vw 0vw; */
     /* margin: 6vw 0vw; */
@@ -17,7 +28,7 @@
  
 .vehicle-item .description
  {
-  color: white;
+  color: #105157;
   font-size: 20px;
   text-align: left;
   padding: 5px;
@@ -26,17 +37,15 @@
   margin: 10px 0;
 }
 
-.vehicle-list .vehicle-item:hover {
+.vehicle-item.selected .description, .vehicle-item:hover .description {
+    color: white;
+}
+.vehicle-list .vehicle-item:hover, .vehicle-item.selected {
     border-radius: 50px;
-    background-color: #0b5624;
+    background-color: #105157;
     font-size: 22px;
 }
 
-.vehicle-item.selected{
-    border-radius: 50px;
-    background-color: #0b5624;
-    font-size: 22px;
-}
 /* 
 .vehicle-list button {
     color: white;
@@ -59,13 +68,14 @@
 .header2 {
     color: black;
     text-align: center;
-    background-color: #94d8e9;
+    background-color: #bfd7b7;
     padding: 20px;
 }
 
 .h2 {
     text-decoration: underline;
     margin-top: 0%;
+    color: #105157;
 }
 
 .action-savings {
@@ -74,12 +84,12 @@
     width: 40%;
     display: flex;
     border-radius: 40px;
-    background-color: #D9D9D9;
+    background-color: white;
     justify-content: space-around;
 }
 
 .action-savings a {
-    color: black;
+    color: #105157;
     border: none;
     font-weight: bold;
     cursor: pointer;
@@ -90,17 +100,14 @@
     text-decoration: none;
 }
 
-.action-savings a:hover {
-    background-color: #0077B6;
-}
-
-.action-savings a.active {
-    background-color: #0077B6; 
+.action-savings a:hover,  .action-savings a.active {
+    background-color: #105157;
     color: white;
 }
 
 .main1 {
-    background: linear-gradient(180deg, #26B170, #a7deec);
+    /* background: linear-gradient(180deg, #26B170, #a7deec); */
+    background-color: #bfd7b7;
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -122,7 +129,7 @@
 
 .savings-info {
     text-align: center;
-    color: black;
+    color: #105157;
 }
 
 .savings-info.hidden{
@@ -152,7 +159,8 @@
 .option-selected {
     font-size: 17px;
     margin-top: 10px;
-    background-color: #FAF3F3;
+    background-color: #105157;
+    color: white;
     align-items: center;
     width: max-content;
     margin: auto;
@@ -164,4 +172,88 @@
     display: inline-block; 
     transform: rotate(45deg);
     font-size: smaller;
+}
+
+.footer1 {
+    background-color: #105157;
+    color: whitex;
+    font-size: 20px;
+    width: -webkit-fill-available;
+    bottom: 0;
+    text-align: left;
+    padding: 0 2% 10px 2%;
+}
+
+.footer-text p {
+    text-align: center;
+    color: white;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none; 
+}
+
+.footer-links a:hover {
+    text-decoration: underline; 
+}
+
+.footer-icons {
+    display: flex;
+    align-items: center;
+}
+
+.footer-icons i {
+    margin: 0 10px; 
+    color: white;
+}
+
+.footer-text {
+    margin: 10px 0;
+}
+
+
+.footer-start {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+  
+.line {
+    height: 2px;
+    width: 50%;
+    background-color: white;
+}
+
+.direction-buttons1{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+
+  button {
+    background-color: #105157;
+    border : 2px solid #105157;
+    color: white;
+    border-radius: 16px;
+    padding: 10px;
+    font-size: 20px;
+
+    &:hover {
+      cursor: pointer;
+      border : 2px solid #105157;
+      /* background-color: #004a72; */
+      background-color: transparent;
+      color: #105157;
+    }
+  }
+
+    
 }
