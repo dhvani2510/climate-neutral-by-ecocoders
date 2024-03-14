@@ -61,8 +61,7 @@ function calculateCharts() {
       ],
     };
 
-  canvas.height= canvas2.height =vehicles.length *100;
-
+    canvas.height= canvas2.height= vehicles.length===1? 200: canvas2.height =vehicles.length *100;
    var options =  {
     indexAxis: "y",
     responsive: true,
