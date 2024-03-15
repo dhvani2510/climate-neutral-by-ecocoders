@@ -18,7 +18,7 @@
         </div>
         <div class="button-section">
           <a href="individualsavings.html" class="next-link">
-            <button class="next-button">Start Analyzing</button>
+            <button class="next-button" id="analyzeButton" disabled>Start Analyzing</button>
           </a>
         </div>
       </div>
@@ -33,5 +33,22 @@
         </div>
       </div>
     </main>
+
+    <script src="js/index.js"></script>
+    <script src="js/savings.js"></script>
+    <script src="js/fuel-replace-options.js"></script>
+    <script>
+      var ev_data = [];
+      var fleetData = getFleetData();
+      window.onload = async () => {
+        ev_data = await getEVData();
+        fleetData.forEach(async (item) => {
+          await calculateSavings(item);
+        });
+        console.log(fleetData);
+        localStorage.setItem("fleetData", JSON.stringify(fleetData));
+        document.getElementById("analyzeButton").disabled = false; // Enable the button after data is written
+      }
+    </script>
   </body>
 </html>
