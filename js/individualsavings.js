@@ -22,7 +22,7 @@ var ev_data = [];
 window.onload = async () => {
   ev_data = await getEVData();
   fleetData.forEach(async (item) => {
-    await evaluateSavings(item, ev_data);
+    await calculateSavings(item);
   })
   populateContainer();
   console.log(fleetData);
