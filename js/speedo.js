@@ -1,5 +1,6 @@
 //Change this Value to set the percentage
-let totalRot = ((95 / 100) * 180 * Math.PI) / 180;
+let percent = parseFloat(localStorage.getItem('percent_overall_savings'));
+let totalRot = ((percent / 100) * 180 * Math.PI) / 180;
 
 let rotation = 0;
 let doAnim = true;

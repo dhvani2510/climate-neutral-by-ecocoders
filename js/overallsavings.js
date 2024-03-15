@@ -38,7 +38,7 @@ document.querySelector(".savings-value").innerHTML = total_saving
 
 percent_overall_savings = ((total_current_emissions - total_saving) / total_current_emissions)*100
 
-document.querySelector('.Res').innerHTML = percent_overall_savings.toFixed(1)
+localStorage.setItem('percent_overall_savings', percent_overall_savings);
 getOverallSavingsPieChart();
 }
 

@@ -120,7 +120,7 @@
 
 /* For the speedometer */
 
-  canvas {
+  #canvas {
     position: absolute;
     top: 50%;
     margin-left: 35%;
