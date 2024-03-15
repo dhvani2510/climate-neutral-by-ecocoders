@@ -123,7 +123,7 @@ header {
 
 /* For the speedometer */
 
-canvas {
+#canvas {
     position: absolute;
     top: 50%;
     margin-left: 30%;
@@ -142,15 +142,7 @@ canvas {
     left: 50%;
     transform: translate(-50%, -50%);
   }
-
-  .charts-canvas {
-    background-color: white;
-    margin: 20px;
-    border-radius: 16px;
-    padding: 20px;
-}
   
-
 
 .footer2 {
     /* background: linear-gradient(180deg, #005a30, #609b7f); */
