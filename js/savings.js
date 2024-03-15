@@ -8,6 +8,19 @@ var fuelTypes = {
 var emmisionCoefficient = localStorage.getItem("emissionCoefficient") || "30";
 
 
+async function calculateSavings(item) {
+    console.log(item);
+    let optionOpted = item["selectedOption"];
+    if (optionOpted == "Nothing") {
+      item["percent_savings"] = 0;
+      item["savings"] = 0;
+      return;
+    } else {
+      item["savings"] = 12;
+      evaluateSavings(item, ev_data);
+    }
+  }
+
 function evaluateSavings(item, ev_data) {
     let optionOpted = item['selectedOption'];
     let fuelType = item['fuelType'];

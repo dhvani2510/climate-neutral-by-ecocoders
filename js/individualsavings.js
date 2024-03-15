@@ -20,10 +20,6 @@ var emmisionCoefficient = localStorage.getItem("emissionCoefficient") || "30";
 var ev_data = [];
 
 window.onload = async () => {
-  ev_data = await getEVData();
-  fleetData.forEach(async (item) => {
-    await calculateSavings(item);
-  })
   populateContainer();
   console.log(fleetData);
   localStorage.setItem("fleetData", JSON.stringify(fleetData));
@@ -86,17 +82,6 @@ function calculateEmissions(fleet) {
 
 carsClassId = ["T", "I", "S", "C", "M", "L", "WS", "WM"];
 
-async function calculateSavings(item) {
-  let optionOpted = item["selectedOption"];
-  if (optionOpted == "Nothing") {
-    item["percent_savings"] = 0;
-    item["savings"] = 0;
-    return;
-  } else {
-    item["savings"] = 12;
-    evaluateSavings(item, ev_data);
-  }
-}
 
 
 function goToResultsPage() {

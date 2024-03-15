@@ -95,16 +95,8 @@
 
 .emission-savings{
     font-size: 30px;
-    margin-right: 35%;
-    margin-top: 90px;
 }
 
-.Res {
-    padding: 40px;
-    font-size: 40px;
-    border-radius: 50%;
-    background: linear-gradient(#0065A2, #08A6FA);
-}
 
 .savings-percentage {
     display: flex;
@@ -112,8 +104,8 @@
     justify-content: space-around;
     align-items: center;
     padding: 20px 0px;
-    margin: auto;
     width: 50%;
+    margin: 0 2%;
 }
 
 
@@ -123,7 +115,7 @@
   #canvas {
     position: absolute;
     top: 50%;
-    margin-left: 35%;
+    margin-left: 30%;
     left: 50%;
     margin-top: 100px;
     transform: translate(-50%, -50%);
@@ -131,7 +123,7 @@
   .text {
     color: white;
     font-weight: 600;
-    margin-left: 35%;
+    margin-left: 30%;
     font-size: 24px;
     position: absolute;
     margin-top: 120px;
@@ -139,4 +131,11 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
+  .charts-canvas {
+    background-color: white;
+    margin: 20px;
+    border-radius: 16px;
+    padding: 20px;
+}
   
