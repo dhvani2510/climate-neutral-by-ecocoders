@@ -1,3 +1,5 @@
+const mainHtmlFile ="../../main.html"
+
 describe('GreenFleet Application', () => {
     beforeEach(() => {
       cy.visit('../../main.html')
@@ -61,4 +63,56 @@ describe('GreenFleet Application', () => {
         .should('contain', 'Next');
     });
   });
+  
+
+  describe('createTable', () => {
+    it('should create the table with header and rows', () => {
+      cy.visit(mainHtmlFile);
+  
+      cy.window().then((win) => {
+        const spy = cy.spy(win, 'createTable').as('createTableSpy');
+        // Call the function directly
+        win.createTable();
+  
+        // Check if the function was called
+        cy.wrap(spy).should('have.been.called');
+  
+        // Check if the table, header, and rows are created
+        cy.get('#myTable').should('exist');
+        cy.get('#myTable thead tr').should('exist');
+        cy.get('#myTable tbody tr').should('exist');
+      });
+    });
+  });
+  
+  describe.skip('updateRow', () => {
+    it('should update the row with the provided vehicle data', () => {
+      cy.visit(mainHtmlFile);
+  
+      cy.window().then((win) => {
+        // Assuming you have a function to get sample vehicle data
+        const vehicle = getSampleVehicleData();
+  
+        // Call the updateRow function with sample data
+        win.updateRow(vehicle);
+  
+        // Check if the row is updated with the provided data
+        cy.get(`#row_${vehicle.id}`).should('exist');
+  
+        // Check if the row cells are updated correctly
+        cy.get(`#row_${vehicle.id} td`).eq(0).should('contain.text', vehicle.description);
+        cy.get(`#row_${vehicle.id} td`).eq(1).should('contain.text', vehicle.type);
+        cy.get(`#row_${vehicle.id} td`).eq(2).should('contain.text', vehicle.year);
+        cy.get(`#row_${vehicle.id} td`).eq(3).should('contain.text', vehicle.make);
+        cy.get(`#row_${vehicle.id} td`).eq(4).should('contain.text', vehicle.model);
+        cy.get(`#row_${vehicle.id} td`).eq(5).should('contain.text', vehicle.annualVKT);
+        cy.get(`#row_${vehicle.id} td`).eq(6).should('contain.text', vehicle.annualFuel);
+        cy.get(`#row_${vehicle.id} td`).eq(7).should('contain.text', vehicle.fuelType);
+        cy.get(`#row_${vehicle.id} td`).eq(8).should('contain.text', vehicle.flexFuel);
+        cy.get(`#row_${vehicle.id} td`).eq(9).should('contain.text', vehicle.quantity);
+      });
+    });
+  });
+  
+  // Add more test cases as needed for other functions
   
