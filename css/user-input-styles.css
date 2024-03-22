@@ -74,6 +74,8 @@
 #myTable thead {
     border: 0;
     border: 1px solid #333;
+    background-color: #0077B6;
+    color: white;
 }
 
 #myTable th, #myTable td {
