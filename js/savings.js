@@ -157,4 +157,10 @@ function evaluateSavings(item, ev_data) {
         }
         return item;
     }
+
+    if (optionOpted == 'B20 Biodiesel Usage') {
+        item['percent_savings'] = 15;
+        item['savings'] =(( 0.15 * item['currentAnnualEmissions'])/1000000).toFixed(2);
+        return item;
+    }
 }
