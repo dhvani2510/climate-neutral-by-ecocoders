@@ -1,37 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
-    <link rel="stylesheet" href="css/landing-styles.css">
-</head>
-<body>
-        <div class="landing">
-            <header>
-                <div class="logo">
-                    <img src="assets/climate1.png" alt="Logo">
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="/main.html">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </nav>
-            </header>
-        <div class="landing-content">
-            <h1 class="h1">Welcome to Climate Neutral: Empowering Green Transportation Solutions</h1>
-            <p class="p">At Climate Neutral, we're committed to driving change, quite literally. Our innovative software solution is at the forefront of empowering corporations and municipalities to navigate the transition towards sustainable transportation practices.</p>
-            <a class="get-started-btn" id="redirectbtn">Get Started</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoCoders</title>
+    <link rel="stylesheet" href="css/common-styles.css" />
+    <link rel="stylesheet" href="css/landing-styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">
+          <img src="assets/climate1.png" alt="Logo" />
         </div>
+        <nav>
+          <ul>
+            <li><a href="/main.html">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div class="landing-content">
+        <h1 class="h1">
+          Welcome to Climate Neutral: Empowering Green Transportation Solutions
+        </h1>
+        <p class="p">
+          At Climate Neutral, we're committed to driving change, quite
+          literally. Our innovative software solution is at the forefront of
+          empowering corporations and municipalities to navigate the transition
+          towards sustainable transportation practices.
+        </p>
+        <a class="get-started-btn" id="redirectbtn">Get Started</a>
+        <!-- on clicking this button show the loader and then redirect to main.html page -->
+
+        <div class="overlay"></div>
         
-        <script>
-            document.getElementById("redirectbtn").addEventListener("click", function(){
-                localStorage.setItem("next", "main.html");
-                window.location.href="loading.html";
-            });
-        </script>
+      </div>
+      <div id="loader" class="modal">
+        <div class="loading-window">
+          <div class="car">
+              <div class="strike"></div>
+              <div class="strike strike2"></div>
+              <div class="strike strike3"></div>
+              <div class="strike strike4"></div>
+              <div class="strike strike5"></div>
+              <div class="car-detail spoiler"></div>
+              <div class="car-detail back"></div>
+              <div class="car-detail center"></div>
+              <div class="car-detail center1"></div>
+              <div class="car-detail front"></div>
+              <div class="car-detail wheel"></div>
+              <div class="car-detail wheel wheel2"></div>
+          </div>
+      
+          <div class="text">
+              <span>Loading</span><span class = "dots">...</span>
+          </div>
+      </div>
+      </div>
     </div>
-</body>
+    <script src="js/landing.js"></script>
+
+  </body>  
 </html>

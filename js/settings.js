@@ -13,7 +13,7 @@ optionsForProvinces = [
   "Saskatchewan",
   "Northwest Territories",
   "Nunavut",
-  "Yukon",
+  "Yukon"
 ];
 
 function openSettingsModal() {
