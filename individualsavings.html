@@ -29,16 +29,16 @@
         </nav>
     </header>
 
-    <div class="header2">
-        <h2 class="h2">Action Savings</h2>
-        <div class="action-savings">
-            <a href="individualsavings.html" class="active">Individual Savings</a>
-            <a href="overallsavings.html">Overall Savings</a>
-        </div>
-    </div>
-
     <!-- main section, where all the content will be placed -->
     <div class="main1">
+        <div class="header2">
+            <h2 class="h2">Action Savings</h2>
+            <div class="action-savings">
+                <a href="individualsavings.html" class="active">Individual Savings</a>
+                <a href="overallsavings.html">Overall Savings</a>
+            </div>
+        </div>
+        <div id="dynamic-divs">
         <div class="row">
             <div class="col">
             <div class="vehicle-list">
@@ -61,10 +61,12 @@
                 </div>
             </div>
         </div>
+       
         <div class="direction-buttons">
             <button id="goto_prevpage" class="button_prev" onclick="goToGreenOptions()">Previous</button>
             <button class="button_next" id="goto_nextpage" onclick="goToResultsPage()">Next</button>
         </div>
+    </div>
     </div>
     <!-- footer section, where all the content will be placed -->
 

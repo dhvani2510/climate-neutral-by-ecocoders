@@ -12,14 +12,6 @@
   padding: 0;
 }
 
-#dynamic-divs {
-  background: linear-gradient(180deg, #26b170, #a7deec);
-  display: flex;
-  flex-direction: column;
-  padding: 10px 20px;
-  flex-grow: 1;
-}
- 
 .vehicle-item,
 .vehicle-item-header
  {

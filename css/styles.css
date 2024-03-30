@@ -119,6 +119,14 @@ nav ul li a:hover {
     padding: 20px;
 }
 
+#dynamic-divs {
+    background: linear-gradient(180deg, #26b170, #a7deec);
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    flex-grow: 1;
+  }
+  
 .direction-buttons{
   display: flex;
   justify-content: space-around;
@@ -164,7 +172,7 @@ nav ul li a:hover {
     justify-content: space-around;
     border-bottom: 1.5px solid #0077B6;
     /* padding: 4px; */
-    font-family: "India-sans";
+    font-family: Arial, sans-serif;
 }
 
 #data-modal-header {
