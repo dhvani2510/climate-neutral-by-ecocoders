@@ -216,7 +216,7 @@ function getGreenOptions(vehicle) {
 function goToAnalyser() {
     if( fleetData.some(x => x['selectedOption'] == "") )
     {
-        sweetAlert("Please select all options", "warning");
+        enteralldata("Please select your preferences", "warning");
         return;
     }
     localStorage.setItem('fleetData', JSON.stringify(fleetData)); // Update the local storage data
