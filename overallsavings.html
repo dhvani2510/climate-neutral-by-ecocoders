@@ -38,10 +38,14 @@
 
     <!-- main section, where all the content will be placed -->
     <div class="main1">
-        <div class="overall">
+        <div id="dynamic-divs">
+        <div class="row">
+            <div class="col">
             <div class="car">
                 <img src="assets/icons/car234.png" alt="car" />
             </div>
+            </div>
+            <div class="col">
             <div class="info">
                 <div class="savings-info">
                     <div class="savings-emissions">Total Emission Savings: 
@@ -61,6 +65,7 @@
                     </div>
                 </div>
             </div>
+            </div>
            
         </div>
         <div class="charts-canvas">
@@ -69,6 +74,7 @@
         <div class="direction-buttons">
             <button id="goto_prevpage" class="button_prev" onclick="goToGreenOptions()">Previous</button>
             <button class="button_next" id="goto_nextpage" onclick="goToResultsPage()">Next</button>
+        </div>
         </div>
     </div>
     <!-- footer section, where all the content will be placed -->

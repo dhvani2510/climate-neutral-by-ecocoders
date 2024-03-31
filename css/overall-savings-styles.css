@@ -41,18 +41,6 @@
     color: white;
 }
 
-.main1 {
-    background: linear-gradient(180deg, #26B170, #a7deec);
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-}
-
-.overall{
-    display: flex;
-    flex-direction: row;
-}
-
 .main-content-head {
     display: flex;
 }

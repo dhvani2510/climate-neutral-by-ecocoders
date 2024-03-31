@@ -16,14 +16,6 @@
     justify-content: flex-end;
 }
 
-#dynamic-divs {
-    background: linear-gradient(180deg, #26b170, #a7deec);
-    display: flex;
-    flex-direction: column;
-    padding: 10px 30px;
-    flex-grow: 1;
-}
-
 .charts-canvas {
     background-color: white;
     margin: 20px;

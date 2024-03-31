@@ -71,6 +71,7 @@ function calculateCharts() {
         title: {
           display: true,
           text: "Fleet Data",
+          color: "black",
           font: {
             size: 16
           },
@@ -81,6 +82,7 @@ function calculateCharts() {
         title: {
           display: true,
           text: "Emissions",
+          color: "black",
           font: {
             size: 16
           },
@@ -97,6 +99,7 @@ function calculateCharts() {
       title: {
         display: true,
         text: "Total Emissions",
+        color: "black",
         font: {
           size: 20
         },
@@ -114,6 +117,7 @@ function calculateCharts() {
         title: {
           display: true,
           text: "Fleet Data",
+          color: "black",
           font: {
             size: 16
           },
@@ -124,6 +128,7 @@ function calculateCharts() {
         title: {
           display: true,
           text: "Emissions Intensity",
+          color: "black",
           font: {
             size: 16
           },
@@ -140,6 +145,7 @@ function calculateCharts() {
       title: {
         display: true,
         text: "Total Emission Intensity",
+        color: "black",
         font: {
           size: 20
         },
