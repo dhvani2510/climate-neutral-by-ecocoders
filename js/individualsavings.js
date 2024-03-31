@@ -21,7 +21,6 @@ var ev_data = [];
 
 window.onload = async () => {
   populateContainer();
-  console.log(fleetData);
   localStorage.setItem("fleetData", JSON.stringify(fleetData));
 };
 
@@ -50,7 +49,6 @@ function populateContainer() {
     });
   });
   document.querySelectorAll(".vehicle-item")[0].click();
-  console.log(fleetData);
 }
 
 function createDescriptionDiv(item) {

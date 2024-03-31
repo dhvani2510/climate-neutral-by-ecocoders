@@ -26,7 +26,6 @@ function goToGreenOptions() {
 window.onload = ()  =>{
 var total_saving = 0;
 var total_current_emissions = 0;
-console.log(fleetData);
 fleetData.forEach(item => {
     total_saving += parseFloat(item['savings']);
     total_current_emissions += parseFloat(item['currentAnnualEmissionsInTons']);
@@ -34,9 +33,6 @@ fleetData.forEach(item => {
 document.querySelector(".savings-value").innerHTML = total_saving.toFixed(2);
 
 percent_overall_savings =  (((total_current_emissions - total_saving) / total_current_emissions)*100).toFixed(0);
-
-console.log(total_saving);
-console.log(percent_overall_savings);
 
 localStorage.setItem('percent_overall_savings', percent_overall_savings);
 getOverallSavingsPieChart();

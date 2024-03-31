@@ -9,7 +9,6 @@ window.onload = function() {
         for (let i = 0; i < best_ev_vehicles.length; i++) {
             addRowToTable(tbody, best_ev_vehicles[i]);
         }
-        console.log("Done");
     } else {
         addEmptyRow();
     }
@@ -28,14 +27,12 @@ function addEmptyRow() {
   }
   
   function addRowToTable(tbody, fleet) {
-    console.log(fleet);
     let row = document.createElement("tr");
     row.setAttribute("data-id", fleet.id);
     createTdFor(row, "Make", fleet.Make);
     createTdFor(row, "Model", fleet.Model);
     createTdFor(row, "Year", fleet.Year);
     if(carTypes.includes(fleet.ClassId)) {
-        console.log(fleet.Class);
         createTdFor(row, "Class", "Car");
     }
     else if(truckTypes.includes(fleet.ClassId)) {
@@ -61,11 +58,11 @@ function addEmptyRow() {
   const canvas = document.getElementById("myChart");
   const ctx = canvas.getContext("2d");
   
-  var gradient = ctx ? ctx.createLinearGradient(0, 0, 600, 0) : null;
-  if (gradient) {
-    gradient.addColorStop(0, "#07354d");
-    gradient.addColorStop(1, "#95cdeb");
-  }
+  var gradient = ctx ? ctx.createLinearGradient(0, 0, 800, 0) : null;
+if (gradient) {
+  gradient.addColorStop(0, "#26b170");
+  gradient.addColorStop(1, "#a7deec");
+}
   
   var emmisionCoefficient = localStorage.getItem("emissionCoefficient") || "30";
   
@@ -155,12 +152,7 @@ function addEmptyRow() {
     }
   }
   
-  function goToGreenOptionsPage() {
-    localStorage.setItem("next", "green-options.html");
-    window.location.href = "loading.html";
-  }
-  
-  function goToUserInputPage() {
-    window.location.href = "main.html";
+  function goToIndividualSavingsPage() {
+    window.location.href = "individualsavings.html";
   }
   

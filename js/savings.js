@@ -11,7 +11,6 @@ var emmisionCoefficient = localStorage.getItem("emissionCoefficient") || "30";
 
 
 async function calculateSavings(item) {
-    console.log(item);
     let optionOpted = item["selectedOption"];
     if (optionOpted == "Nothing") {
       item["percent_savings"] = 0;
@@ -82,7 +81,6 @@ function evaluateSavings(item, ev_data) {
         
         ev_data = ev_data.sort((x,y) => x['total_emissions_savings'] - y['total_emissions_savings']);
         let selectedEV = ev_data[0];
-        console.log(selectedEV);
         if(selectedEV) {
             item['percent_savings'] = Math.trunc(selectedEV['percent_savings']);
             item['savings'] = (selectedEV['total_emissions_savings'] / 1000000).toFixed(2);    
@@ -138,7 +136,6 @@ function evaluateSavings(item, ev_data) {
             ev_data = ev_data_nobiofuel.slice(0,ev_data_nobiofuel.length-1);
             ev_data = ev_data.concat(ev_data_biofuel.slice(0, ev_data_biofuel.length-1));
         }
-        console.log(ev_data);
         ev_data.map(element => {
             element.electical_efficiency = (element['CombGasConsumption']  ) / 100;
             element.ev_emissions_intensity = element.electical_efficiency * emmisionCoefficient;
@@ -150,7 +147,6 @@ function evaluateSavings(item, ev_data) {
         
         ev_data = ev_data.sort((x,y) => x['total_emissions_savings'] - y['total_emissions_savings']);
         let selectedEV = ev_data[0];
-        console.log(selectedEV);
         if(selectedEV) {
             item['percent_savings'] = Math.trunc(selectedEV['percent_savings']);
             item['savings'] = (selectedEV['total_emissions_savings'] / 1000000).toFixed(2);    

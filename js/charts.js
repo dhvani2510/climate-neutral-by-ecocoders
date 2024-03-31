@@ -1,18 +1,18 @@
 const canvas = document.getElementById("myChart");
 const ctx = canvas.getContext("2d");
 
-var gradient = ctx ? ctx.createLinearGradient(0, 0, 600, 0) : null;
+var gradient = ctx ? ctx.createLinearGradient(0, 0, 800, 0) : null;
 if (gradient) {
-  gradient.addColorStop(0, "#07354d");
-  gradient.addColorStop(1, "#95cdeb");
+  gradient.addColorStop(0, "#26b170");
+  gradient.addColorStop(1, "#a7deec");
 }
 
 const canvas2 = document.getElementById("myChart2");
 const ctx2 = canvas2.getContext("2d");
-var gradient2 = ctx2 ? ctx2.createLinearGradient(0, 0, 600, 0) : null;
+var gradient2 = ctx2 ? ctx2.createLinearGradient(0, 0, 2500, 0) : null;
 if (gradient2) {
-  gradient2.addColorStop(0, "#07354d");
-  gradient2.addColorStop(1, "#95cdeb");
+  gradient2.addColorStop(0, "#a7deec");
+  gradient2.addColorStop(1, "#26b170");
 }
 
 var vehicles = [];
@@ -24,7 +24,6 @@ window.onload = () => {
      calculateEmissions(element); 
   });
   calculateCharts();
-  //console.log(vehicles);
   localStorage.setItem("fleetData", JSON.stringify(vehicles));
 };
 
@@ -188,7 +187,7 @@ function calculateCharts() {
           label: "Total Emission Intensity",
           data:currentEmissionIntensityData,
           fill: true,
-          backgroundColor: gradient,
+          backgroundColor: gradient2,
           borderColor: '#07354d',
           borderWidth: 1.5,
           borderRadius: 8
@@ -211,7 +210,6 @@ var fuel_emissions_factor = {
 
 function calculateEmissions(fleet) {
   current_fuel_efficiency = fleet["annualFuel"] / fleet["annualVKT"]; //L/km
-  console.log(fuel_emissions_factor[fleet["fuelType"]]);
   current_annual_emission = fleet["annualFuel"] * fuel_emissions_factor[fleet["fuelType"]]; //gCO2e
   current_emission_intensity = current_annual_emission / fleet["annualVKT"]; //gC02e/km
   // total_current_emissions = current_annual_emission * fleet["quantity"]; // for all vehicles gCO2e/km

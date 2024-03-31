@@ -36,7 +36,6 @@ function evauateGreenOpitions() {
         item['possibleOptions'] = possibleOptions.map(option => option.option);
     });
     localStorage.setItem('fleetData', JSON.stringify(fleetData));
-    console.log(fleetData);
 }
  
 // Function to populate the container with data
@@ -79,7 +78,6 @@ function createDescriptionDiv(item) {
  
 // Function to create the options div
 function createOptionsDiv(item) {
-    console.log(item);
     const optionsDiv = document.createElement("div");
     // Add class
     optionsDiv.classList.add("vehicle-green-options");
@@ -201,17 +199,6 @@ function getGreenOptions(vehicle) {
 
     return selectedGreenOptions;
 }
-
-// function goToActionSavings() {
-//     console.log(fleetData);
-//     if( fleetData.some(x => x['selectedOption'] == "") )
-//     {
-//         console.error("Please select all green options");
-//         return;
-//     }
-//     localStorage.setItem('fleetData', JSON.stringify(fleetData)); // Update the local storage data
-//     window.location.href = "individualsavings.html";
-// }
 
 function goToAnalyser() {
     if( fleetData.some(x => x['selectedOption'] == "") )

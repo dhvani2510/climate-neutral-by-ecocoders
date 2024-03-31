@@ -2,14 +2,12 @@ window.onload = createTable;
  
 // function to create the user-input table
 function createTable() {
-  console.log("Creating table");
   fleetData=getFleetData();
 
   createHeaderRow();
   if (fleetData.length === 0) {
       createEmptyTableRow();
   } else {
-    var table = document.getElementById('myTable')
     fleetData.forEach(vehicle => {
         createRow(vehicle)
     });
@@ -81,7 +79,6 @@ function createRow(vehicle) {
 
   // Add onclick function to the row
   row.onclick = function() {
-      console.log(`Clicked on vehicle ${vehicle.id}`);
       selectedVehicleId=vehicle.id;
       openVehicleModal(vehicle); // Edit or Delete
   }
@@ -175,7 +172,6 @@ function openfuelOptions(){
 function createFuelTypeOptions() {
   // make E10 Gasoline as a default selected option
   optionsForFueltype.forEach((item) => {
-    console.log(item);
     var option = document.createElement("li");
     option.classList.add("option");
     option.innerHTML = item;
@@ -221,7 +217,6 @@ function createTypeOptions() {
     option1.setAttribute("onclick", `updateType('${item}')`);
 
     document.getElementById("modalType").appendChild(option1);
-    console.log(option1);
   });
 }
 
@@ -271,7 +266,6 @@ var selectedVehicleId=null;
 
 // function to validate input
 function validateInput() {
-  console.log("Validating input");
   return true;
 }
  
@@ -396,12 +390,10 @@ function deleteObjectFromArray(array, property, value) {
 
 function deleteVehicleCallBack()
 {
-  console.log(`Deleting vehicle ${selectedVehicleId} from datatable`)
   deleteRow();
   var vehicles = getFleetData();
   var updated_vehicles= deleteObjectFromArray(vehicles, 'id', selectedVehicleId)
   localStorage.setItem('fleetData', JSON.stringify(updated_vehicles));
-  console.log("Deleted vehicle from localstorage");
   closeModal();
   vehicledeleted("Vehicle deleted successfully","success",3000 );
 }
@@ -455,7 +447,6 @@ function processCSV(contents) {
 
     // Check if any field is empty
     if (!description || !type || !year || !make || !model || !annualVKT || !annualFuel || !fuelType || !flexFuel || !quantity) {
-      console.log('Skipping row: Missing data');
       return;
     }
 
@@ -498,7 +489,6 @@ function processCSV(contents) {
         flexFuel,
         quantity,
       };
-      console.log(newRow);
       storedData.push(newRow);
       createRow(newRow);
     }
