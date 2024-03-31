@@ -348,7 +348,7 @@ function submitData() {
 
  localStorage.setItem('fleetData', JSON.stringify(storedData)); // Update the local storage data
 
- sweetAlert(`Vehicle ${selectedVehicleId? "updated": "added"} successfully`, "success",3000);
+ vehicleadded(`Vehicle ${selectedVehicleId? "updated": "added"} successfully!!`, "success",3000);
  // Close the modal after submission
  closeModal();
 }
@@ -372,7 +372,7 @@ function getVehicleById(id) {
   var vehicles = getFleetData();
   var vehicle = vehicles.find(v => v.id == id);
   if(!vehicle){
-    sweetAlert("Vehicle not found", "error");
+    vehiclenotfound("Vehicle not found", "error");
     throw new Error(`Vehicle ${id} not found`);
   }
    
@@ -403,7 +403,7 @@ function deleteVehicleCallBack()
   localStorage.setItem('fleetData', JSON.stringify(updated_vehicles));
   console.log("Deleted vehicle from localstorage");
   closeModal();
-  sweetAlert("Vehicle deleted successfully","success",3000 );
+  vehicledeleted("Vehicle deleted successfully","success",3000 );
 }
 
 // function to select the flexfuel option and work them as toggle
