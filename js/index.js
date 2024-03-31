@@ -19,6 +19,7 @@ function vehicleadded(title, icon="success", timer=0){
     Swal.fire({
       position: "center",
       title,
+      // padding: 100,
       showConfirmButton: false,
       animation: true,
       timer,
