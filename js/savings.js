@@ -1,3 +1,5 @@
+var best_ev_vehicle = [];
+
 var carTypes = ['T','I','S','C','M','L', 'WS', 'WM'];
 var truckTypes = ['PS','PL','US','UL','V','VC','VP','SP']
 var fuelTypes = {
@@ -32,7 +34,7 @@ function evaluateSavings(item, ev_data) {
         else
             ev_data = ev_data.filter(x => truckTypes.includes(x['ClassId']));
         ev_data = ev_data.sort((x,y) => x['RankingAll'] - y['RankingAll']);
-        ev_data = ev_data.slice(0,10);
+        ev_data = ev_data.slice(0,15);
 
         // CombElectricLeConsumption
         ev_data.map(element => {
@@ -45,6 +47,8 @@ function evaluateSavings(item, ev_data) {
         });
 
         ev_data = ev_data.sort((x,y) => x['total_emissions_savings'] - y['total_emissions_savings']);
+        best_ev_vehicle = ev_data;
+        localStorage.setItem("best_ev_vehicles", JSON.stringify(best_ev_vehicle));
 
         let selectedEV = ev_data[0];
 

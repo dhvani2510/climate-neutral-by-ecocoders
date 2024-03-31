@@ -15,7 +15,7 @@ var fleetData = getFleetData();
 
 function goToResultsPage() {
     localStorage.setItem('fleetData', JSON.stringify(fleetData)); // Update the local storage data
-    window.location.href = ".html";
+    window.location.href = "best-ev-options.html";
 }
 
 function goToGreenOptions() {

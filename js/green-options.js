@@ -223,9 +223,9 @@ function goToAnalyser() {
     window.location.href = "analyser.html";
 }
 
-function goToUserInputPage() {
+function goToChartsPage() {
     localStorage.setItem('fleetData', JSON.stringify(fleetData)); // Update the local storage data
-    window.location.href = "/main.html";
+    window.location.href = "charts.html";
 }
 
 if (typeof test === 'function'){

@@ -77,6 +77,9 @@ function calculateCharts() {
           },
           padding: 10,
         },
+        ticks: {
+          color: "black"
+        }
       },
       x: {
         title: {
@@ -89,6 +92,9 @@ function calculateCharts() {
         },
         grid: {
           display: false
+        },
+        ticks: {
+          color: "black"
         }
       }
     },
@@ -123,6 +129,9 @@ function calculateCharts() {
           },
           padding: 10,
         },
+        ticks: {
+          color: "black"
+        }
       },
       x: {
         title: {
@@ -135,7 +144,10 @@ function calculateCharts() {
         },
         grid: {
           display: false
-        }
+        },
+        ticks: {
+          color: "black"
+        },
       }
     },
     plugins: {
