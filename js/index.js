@@ -15,107 +15,76 @@ return storedData;
 
 //For adding vehicle
 function vehicleadded(title, icon="success", timer=0){
-  // let imageUrl = customImage;
-  // let imageClass = 'left-aligned-image'; // Assign 'left-aligned-image' by default
   
     Swal.fire({
       position: "center",
-      icon,
       title,
-      // padding: 100,
       showConfirmButton: false,
       animation: true,
       timer,
       imageUrl: "assets/gadi22.png",
-      imageWidth: 400, // Set the width of the custom image
-      imageHeight: 200, // Set the height of the custom image
-      // imageClass,
-      background: 'linear-gradient(to right, #6DEFB2 40%, #D0D5FD 20%)',
-      // imageClass // Apply the custom class to the image
+      imageWidth: 400, 
+      imageHeight: 200, 
+      background: 'linear-gradient(to bottom, #6DEFB2 80%, #D0D5FD 20%)',
     });
   }
 
   
   //For deleting vehicles
-
   function vehicledeleted(title, icon="success", timer=0){
-    // let imageUrl = customImage;
-    // let imageClass = 'left-aligned-image'; // Assign 'left-aligned-image' by default
     
       Swal.fire({
         position: "center",
-        icon,
         title,
-        // padding: 100,
         showConfirmButton: false,
         animation: true,
         timer,
         imageUrl: "assets/gadi22.png",
-        imageWidth: 400, // Set the width of the custom image
-        imageHeight: 200, // Set the height of the custom image
-        // imageClass,
-        background: 'linear-gradient(to right, #FFAAAA 40%, #D0D5FD 20%)',
-        // imageClass // Apply the custom class to the image
+        imageWidth: 400, 
+        imageHeight: 200, 
+        background: 'linear-gradient(to bottom, #FFAAAA 80%, #D0D5FD 20%)',
       });
     }
   
 
     // If no vehicle found
     function vehiclenotfound(title, icon="error", timer=0){
-      // let imageUrl = customImage;
-      // let imageClass = 'left-aligned-image'; // Assign 'left-aligned-image' by default
-      
+
         Swal.fire({
           position: "center",
-          icon,
           title,
-          // padding: 100,
-          // showConfirmButton: false,
           animation: true,
           timer,
           imageUrl: "assets/trunk.png",
-          imageWidth: 400, // Set the width of the custom image
-          imageHeight: 200, // Set the height of the custom image
-          // imageClass,
+          imageWidth: 400, 
+          imageHeight: 200, 
           background: '#D0D5FD',
-          // imageClass // Apply the custom class to the image
         });
       }
     
       // To prompt user to choose all preferences
       function enteralldata(title, icon="error", timer=0){
-        // let imageUrl = customImage;
-        // let imageClass = 'left-aligned-image'; // Assign 'left-aligned-image' by default
         
           Swal.fire({
             position: "center",
-            // icon,
             title,
-            // padding: 100,
-            // showConfirmButton: false,
             animation: true,
             timer,
             imageUrl: "assets/cars-all.png",
-            imageWidth: 400, // Set the width of the custom image
-            imageHeight: 200, // Set the height of the custom image
-            // imageClass,
+            imageWidth: 400, 
+            imageHeight: 200, 
             background: '#D0D5FD',
-            // imageStyle: 'border-radius: 10px'
-            // imageClass // Apply the custom class to the image
           });
         }
       
   // confirmation button to delete vehicle
   function confirmation(callback){
     Swal.fire({
-      // title: "Are you sure?",
-      // text: "You won't be able to revert htis!",
-      // icon: "warning",
       imageUrl: "assets/eko03.webp",
       showCancelButton: true,
       cancelButtontext: "No",
-      confirmButtonColor: "#26b170", // "#3085d6",
-      cancelButtonColor: "#0c1c81",//"#d33",
+      confirmButtonColor: "#26b170", 
+      cancelButtonColor: "#0c1c81",
       background: '#C4DAE9',
       confirmButtonText: "Yes"
     }).then((result) => {
