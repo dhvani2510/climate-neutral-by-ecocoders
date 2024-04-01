@@ -39,40 +39,73 @@
     <!-- main section, where all the content will be placed -->
     <div class="main1">
         <div id="dynamic-divs">
-        <div class="row">
-            <div class="car">
-                <img src="assets/icons/car234.png" alt="car" />
-            </div>
-            <div class="info">
-                <div class="savings-info">
-                    <div class="savings-emissions">Total Emission Savings: 
-                        <span class="savings-value">25</span>
-                        <sup>Tonnes / Year</sup>
-                    </div>
-                    <br>
-                    <div class="savings-percentage">
-                        <div class="emission-savings">
-                            <h4>Emission Savings:</h4> 
-                            <div class="speedo">
-                                <canvas id="canvas" height="175" width="350" class="m-auto">
+            <div class="row">
+                <div class="car">
+                    <img src="assets/icons/car234.png" alt="car" />
+                </div>
+                <div class="info">
+                    <div class="savings-info">
+                        <div class="savings-emissions">Total Emission Savings:
+                            <span class="savings-value">25</span>
+                            <sup>Tonnes / Year</sup>
+                        </div>
+                        <br>
+                        <div class="savings-percentage">
+                            <div class="emission-savings">
+                                <h4>Emission Savings:</h4>
+                                <div class="speedo">
+                                    <canvas id="canvas" height="175" width="350" class="m-auto">
                                 </canvas>
-                                <p class="text">0 %</p>
+                                    <p class="text">0 %</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
-           
-        </div>
-        <div class="charts-canvas">
-            <canvas id="overallSavingsChart"></canvas>
-        </div>
-        <div class="direction-buttons">
-            <button id="goto_prevpage" class="button_prev" onclick="goToGreenOptions()">Previous</button>
-            <button class="button_next" id="goto_nextpage" onclick="goToResultsPage()">Next</button>
-        </div>
+            <div class="charts-canvas">
+                <canvas id="overallSavingsChart"></canvas>
+            </div>
+            <div class="direction-buttons">
+                <button id="goto_prevpage" class="button_prev" onclick="goToGreenOptions()">Previous</button>
+                <button class="button_next" id="goto_nextpage" onclick="goToResultsPage()">Next</button>
+            </div>
         </div>
     </div>
+
+    <!-- modal section, where all the modal content will be placed -->
+    <div id="settingsModal" class="modal" role="dialog">
+        <span onclick="closeSettingsModal()">
+        <img class="close" src="assets/icons/close-icon.png" alt="Close Icon" />
+      </span>
+        <h1 class="modal-header">Settings</h1>
+        <div class="modal-content">
+            <img class="settings-icon" src="assets/icons/settings_car.gif" alt="Settings Image" />
+            <div class="modal-col">
+                <div class="modal-row">
+                    <label for="provinceSelect">Select Province</label>
+                    <div class="select-option">
+                        <button class="select-btn" id="provinceBtn" onclick="openOptions()"></button>
+                        <div class="option-dropdown" id="provinceSelect">
+                        </div>
+                        <div class="select-arrow">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-row" id="emissionCoefficientRow">
+                    <label for="emissionCoefficient">Emission Coefficient</label>
+                    <div class="select-option emission-coefficient">
+                        <div id="emissionCoefficient"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay"></div>
     <!-- footer section, where all the content will be placed -->
 
     <footer class="footer">
@@ -102,9 +135,9 @@
     <!-- link javascript file -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- <script src="coefficient.js"></script> -->
+    <script src="js/coefficient.js"></script>
+    <script src="js/settings.js"></script>
     <script src="js/index.js"></script>
-    <!-- <script src="main.js"></script> -->
     <script src="js/overallsavings.js"></script>
     <script src="js/speedo.js"></script>
 </body>

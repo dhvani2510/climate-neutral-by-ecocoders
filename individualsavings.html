@@ -39,35 +39,68 @@
             </div>
         </div>
         <div id="dynamic-divs">
-        <div class="row">
-            <div class="col">
-            <div class="vehicle-list">
+            <div class="row">
+                <div class="col">
+                    <div class="vehicle-list">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="savings-info hidden">
+                        <p class="savings-percentage">Savings:
+                            <sup><i class="fas fa-arrow-up"></i></sup>
+                            <span class="percentage-value">83</span>
+                            <sup>%</sup>
+                        </p>
+                        <p class="emission-savings">Emission Savings (TCO2e):
+                            <span class="savings-value">1,000</span>
+                        </p>
+                        <p class="option-selected">
+                            <strong>Option Selected:</strong>
+                            <span class="selected-option"></span>
+                        </p>
+                    </div>
+                </div>
             </div>
+
+            <div class="direction-buttons">
+                <button id="goto_prevpage" class="button_prev" onclick="goToGreenOptions()">Previous</button>
+                <button class="button_next" id="goto_nextpage" onclick="goToResultsPage()">Next</button>
             </div>
-            <div class="col">
-                <div class="savings-info hidden">
-                    <p class="savings-percentage">Savings: 
-                        <sup><i class="fas fa-arrow-up"></i></sup>
-                        <span class="percentage-value">83</span>
-                        <sup>%</sup>
-                    </p>
-                    <p class="emission-savings">Emission Savings (TCO2e): 
-                        <span class="savings-value">1,000</span>
-                    </p>
-                    <p class="option-selected">
-                        <strong>Option Selected:</strong>
-                        <span class="selected-option"></span>
-                    </p>
+        </div>
+    </div>
+
+    <!-- modal section, where all the modal content will be placed -->
+    <div id="settingsModal" class="modal" role="dialog">
+        <span onclick="closeSettingsModal()">
+        <img class="close" src="assets/icons/close-icon.png" alt="Close Icon" />
+      </span>
+        <h1 class="modal-header">Settings</h1>
+        <div class="modal-content">
+            <img class="settings-icon" src="assets/icons/settings_car.gif" alt="Settings Image" />
+            <div class="modal-col">
+                <div class="modal-row">
+                    <label for="provinceSelect">Select Province</label>
+                    <div class="select-option">
+                        <button class="select-btn" id="provinceBtn" onclick="openOptions()"></button>
+                        <div class="option-dropdown" id="provinceSelect">
+                        </div>
+                        <div class="select-arrow">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-row" id="emissionCoefficientRow">
+                    <label for="emissionCoefficient">Emission Coefficient</label>
+                    <div class="select-option emission-coefficient">
+                        <div id="emissionCoefficient"></div>
+                    </div>
                 </div>
             </div>
         </div>
-       
-        <div class="direction-buttons">
-            <button id="goto_prevpage" class="button_prev" onclick="goToGreenOptions()">Previous</button>
-            <button class="button_next" id="goto_nextpage" onclick="goToResultsPage()">Next</button>
-        </div>
     </div>
-    </div>
+
+    <div id="overlay"></div>
     <!-- footer section, where all the content will be placed -->
 
     <footer class="footer">
@@ -95,6 +128,8 @@
     </footer>
 
     <!-- link javascript file -->
+    <script src="js/coefficient.js"></script>
+    <script src="js/settings.js"></script>
     <script src="js/index.js"></script>
     <script src="js/savings.js"></script>
     <script src="js/individualsavings.js"></script>
