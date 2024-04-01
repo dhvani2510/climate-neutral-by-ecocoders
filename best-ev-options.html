@@ -5,7 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/best-ev-options-styles.css" />
     <link rel="stylesheet" href="css/charts-styles.css" />
+    <script src="js/best-ev-options.js" defer></script>
     <!-- font awesome library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
     <title>GreenFleet</title>
@@ -30,27 +32,37 @@
     <!-- main section, where all the content will be placed -->
     <div class="main" id="main">
         <div class="header2">
-            Current Emissions
+            Climate Neutral Alternatives
         </div>
         <div id="dynamic-divs">
-            <div id="buttons">
-                <button class="print-button" onclick="window.print()">
-          <i class="fas fa-print"></i>
-        </button>
-            </div>
+            <section class="table__body">
+                <table id="fleetTable">
+                    <thead>
+                        <tr>
+                            <th>Make <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Model <span class="icon-arrow">&UpArrow;</span></th>
+                            <!-- <th>Make & Model <span class="icon-arrow">&UpArrow;</span></th> -->
+                            <th>Year <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Class <span class="icon-arrow">&UpArrow;</span></th>
+                            <!-- <th>Fuel <span class="icon-arrow">&UpArrow;</span></th> -->
+                            <th>Consumption (L/100km) <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Annual Emissions (gCO<sub>2</sub>e) <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Annual Emission Intensity (gCO<sub>2</sub>/km)<span class="icon-arrow">&UpArrow;</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </section>
             <div class="charts-canvas">
                 <canvas id="myChart"></canvas>
             </div>
-            <div class="charts-canvas">
-                <canvas id="myChart2"></canvas>
-            </div>
-            <!-- <div id="plotlyChart" ></div> -->
         </div>
         <div class="direction-buttons">
-            <button id="goto_prevpage" class="button_prev" onclick="goToUserInputPage()">
+            <button id="goto_prevpage" class="button_prev" onclick="goToIndividualSavingsPage()">
         Previous
       </button>
-            <button class="button_next" id="goto_nextpage" onclick="goToGreenOptionsPage()">
+            <button class="button_next" style="display:none;" id="goto_nextpage" onclick="goToGreenOptionsPage()">
         Next
       </button>
         </div>
@@ -59,8 +71,8 @@
     <!-- modal section, where all the modal content will be placed -->
     <div id="settingsModal" class="modal" role="dialog">
         <span onclick="closeSettingsModal()">
-        <img class="close" src="assets/icons/close-icon.png" alt="Close Icon" />
-      </span>
+          <img class="close" src="assets/icons/close-icon.png" alt="Close Icon" />
+        </span>
         <h1 class="modal-header">Settings</h1>
         <div class="modal-content">
             <img class="settings-icon" src="assets/icons/settings_car.gif" alt="Settings Image" />
@@ -88,8 +100,8 @@
     </div>
 
     <div id="overlay"></div>
-
     <!-- footer section, where all the content will be placed -->
+
     <footer class="footer">
         <div class="footer-start">
             <div class="line"></div>
@@ -118,8 +130,8 @@
     <!-- link javascript file -->
     <script src="js/coefficient.js"></script>
     <script src="js/settings.js"></script>
+    <script src="js/coefficient.js"></script>
     <script src="js/index.js"></script>
-    <script src="js/charts.js"></script>
 </body>
 
 </html>

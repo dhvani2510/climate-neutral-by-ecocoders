@@ -21,7 +21,6 @@ var ev_data = [];
 
 window.onload = async () => {
   populateContainer();
-  console.log(fleetData);
   localStorage.setItem("fleetData", JSON.stringify(fleetData));
 };
 
@@ -50,7 +49,6 @@ function populateContainer() {
     });
   });
   document.querySelectorAll(".vehicle-item")[0].click();
-  console.log(fleetData);
 }
 
 function createDescriptionDiv(item) {
@@ -86,7 +84,7 @@ carsClassId = ["T", "I", "S", "C", "M", "L", "WS", "WM"];
 
 function goToResultsPage() {
   localStorage.setItem("fleetData", JSON.stringify(fleetData)); // Update the local storage data
-  window.location.href = ".html";
+  window.location.href = "best-ev-options.html";
 }
 
 function goToGreenOptions() {

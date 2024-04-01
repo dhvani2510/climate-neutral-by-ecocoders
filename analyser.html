@@ -45,7 +45,6 @@
         fleetData.forEach(async (item) => {
           await calculateSavings(item);
         });
-        console.log(fleetData);
         localStorage.setItem("fleetData", JSON.stringify(fleetData));
         document.getElementById("analyzeButton").disabled = false; // Enable the button after data is written
       }

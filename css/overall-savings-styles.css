@@ -126,4 +126,7 @@
     border-radius: 16px;
     padding: 20px;
 }
-  
+
+.row {
+    display: flex;
+}
