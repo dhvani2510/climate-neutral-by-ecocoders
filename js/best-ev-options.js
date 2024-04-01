@@ -3,7 +3,7 @@ var best_ev_vehicles = JSON.parse(localStorage.getItem("best_ev_vehicles")) || [
 var carTypes = ['T', 'I', 'S', 'C', 'M', 'L', 'WS', 'WM'];
 var truckTypes = ['PS', 'PL', 'US', 'UL', 'V', 'VC', 'VP', 'SP']
     // list of NA manufacturer 
-var NA_manufactured = ["Tesla", "Ford", "Chevrolet"];
+var NA_manufactured = ["Tesla", "Lucid", "Ford", "Chevrolet"];
 window.onload = function() {
     if (best_ev_vehicles.length != 0) {
         let tbody = document.getElementById("fleetTable").tBodies[0];
@@ -57,47 +57,46 @@ function createTdFor(row, fieldName, content) {
 const canvas = document.getElementById("myChart");
 const ctx = canvas.getContext("2d");
 
-var gradient = ctx ? ctx.createLinearGradient(0, 0, 800, 0) : null;
+var gradient = ctx ? ctx.createLinearGradient(0, 0, 2500, 0) : null;
 if (gradient) {
-    gradient.addColorStop(0, "#26b170");
-    gradient.addColorStop(1, "#a7deec");
+    gradient.addColorStop(0, "#a7deec");
+    gradient.addColorStop(1, "#26b170");
+}
+
+var gradient2 = ctx ? ctx.createLinearGradient(0, 0, 3500, 0) : null;
+if (gradient2) {
+    gradient2.addColorStop(0, "#2BD231");
+    gradient2.addColorStop(1, "#178A53");
 }
 
 var emmisionCoefficient = localStorage.getItem("emissionCoefficient") || "30";
 
 function calculateCharts() {
     if (best_ev_vehicles) {
-        var labels = best_ev_vehicles.map((v) => {
-            return (
-                v.MakeModel
-            );
-        });
-        var totalCurrentEmissionsData = best_ev_vehicles.map((v) => {
-            return v.ev_emissions_intensity;
-        }); //Getting data
-
-        // Highlight data points where manufacturer is "NA"
-        var backgroundColors = best_ev_vehicles.map((v) =>
-            NA_manufactured.includes(v.Make) ? "#FFC107" : gradient
-        );
+        var labels = best_ev_vehicles.map((v) => v.MakeModel);
+        var totalCurrentEmissionsData = best_ev_vehicles.map((v) => v.ev_emissions_intensity);
+ 
         var data = {
             labels,
             datasets: [{
-                label: "Current Emissions",
+                label: "Vehicles",
                 data: totalCurrentEmissionsData,
                 fill: true,
-                backgroundColor: backgroundColors,
+                backgroundColor: function(context) {
+                    var index = context.dataIndex;
+                    return NA_manufactured.includes(best_ev_vehicles[index].Make) ? gradient2 : gradient;
+                },
                 borderColor: '#07354d',
                 borderWidth: 1.5,
                 borderRadius: 8
-            }, ],
+            }],
         };
-
+ 
         canvas.height = best_ev_vehicles.length === 1 ? 200 : best_ev_vehicles.length * 100;
         var options = {
             indexAxis: "y",
             responsive: true,
-            maintainAspectRatio: false, // This will take css or js height, canvas element height
+            maintainAspectRatio: false,
             scales: {
                 y: {
                     title: {
@@ -132,11 +131,35 @@ function calculateCharts() {
             },
             plugins: {
                 legend: {
-                    display: false
+                    display: true,
+                    labels: {
+                        generateLabels: function(chart) {
+                            var labels = [];
+                            labels.push({
+                                text: "Other Vehicles",
+                                fillStyle: gradient,
+                                hidden: false,
+                                lineCap: 'butt',
+                                strokeStyle: gradient,
+                                lineWidth: 1,
+                                pointStyle: undefined
+                            });
+                            labels.push({
+                                text: "NA Manufactured Vehicles",
+                                fillStyle: gradient2,
+                                hidden: false,
+                                lineCap: 'butt',
+                                strokeStyle: gradient2,
+                                lineWidth: 1,
+                                pointStyle: undefined
+                            });
+                            return labels;
+                        }
+                    }
                 },
                 title: {
                     display: true,
-                    text: "Total Emissions",
+                    text: "Emission Intensities",
                     color: "black",
                     font: {
                         size: 20
@@ -145,7 +168,7 @@ function calculateCharts() {
                 }
             }
         };
-
+ 
         new Chart(ctx, {
             type: "bar",
             data,
