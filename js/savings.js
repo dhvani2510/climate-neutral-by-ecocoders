@@ -1,199 +1,49 @@
-var best_ev_vehicle = [];
+// Function to call the third-party API
+async function callAPI() {
+    const url = 'https://fcrapi.azurewebsites.net/VehiclesPublic';
+    const header = {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+    };
+    const payload = {
+        ResultsPerPage: 500000,
+        VehicleType: 'ICE,BEV,PHEV',
+        SelectedModelYears: 'ALL',
+        SelectedClasses: 'ALL',
+        SelectedMakes: 'ALL',
+        SelectedModels: 'ALL',
+        SelectedTransmissions: 'ALL',
+        SelectedFuels: 'ALL',
+        SelectedCylinderRanges: 'ALL',
+        Units: 'Metric',
+        UsePersonalizeValues: false,
+        PersKilometersPerYear: 20000,
+        PersPercentageCityDriving: 55,
+        PersRegGasoline: 1.45,
+        PersPremGasoline: 1.70,
+        PersDiesel: 1.70,
+        PersElectricity: 0.16,
+        PageIndexIce: 1,
+        PageIndexBev: 1,
+        pageIndexPhev: 1,
+        SortBy: 'DefaultSortBy',
+        IsAscending: true
+    };
 
-var carTypes = ['T', 'I', 'S', 'C', 'M', 'L', 'WS', 'WM'];
-var truckTypes = ['PS', 'PL', 'US', 'UL', 'V', 'VC', 'VP', 'SP']
-var fuelTypes = {
-    'Gasoline': 'X',
-    "E10 Gasoline": 'Z',
-    'Diesel': 'D'
-}
-var emmisionCoefficient = localStorage.getItem("emissionCoefficient") || "30";
-
-
-async function calculateSavings(item) {
-    let optionOpted = item["selectedOption"];
-    if (optionOpted == "Nothing") {
-        item["percent_savings"] = 0;
-        item["savings"] = 0;
-        return;
-    } else {
-        item["savings"] = 12;
-        evaluateSavings(item, ev_data);
-    }
-}
-
-function evaluateSavings(item, ev_data) {
-    let optionOpted = item['selectedOption'];
-    let fuelType = item['fuelType'];
-    let type = item['type'];
-    if (optionOpted == 'Replace with EV Vehicle') {
-        bestEVOptions(ev_data, item);
-        ev_data = ev_data.filter(x => x['VehicleTypeId'] == 'BEV' || x['VehicleTypeId'] == 'PHEV');
-        if (type == 'Car')
-            ev_data = ev_data.filter(x => carTypes.includes(x['ClassId']));
-        else
-            ev_data = ev_data.filter(x => truckTypes.includes(x['ClassId']));
-        ev_data = ev_data.sort((x, y) => x['RankingAll'] - y['RankingAll']);
-        ev_data = ev_data.slice(0, 15);
-
-        // CombElectricLeConsumption
-        ev_data.map(element => {
-            element.electical_efficiency = (element['CombElectricLeConsumption'] * 8.9) / 100;
-            element.ev_emissions_intensity = element.electical_efficiency * emmisionCoefficient;
-            element.savings = ((item['currentEmissionIntensity'] - element.ev_emissions_intensity) / item['currentEmissionIntensity']);
-            element.percent_savings = (element.savings * 100);
-            element.total_emissions_savings = element.savings * item['currentAnnualEmissions']
-            element.new_annual_emissions = item['currentAnnualEmissions'] - element.total_emissions_savings
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: header,
+            body: JSON.stringify(payload)
         });
 
-        ev_data = ev_data.sort((x, y) => x['total_emissions_savings'] - y['total_emissions_savings']);
-        let selectedEV = ev_data[0];
-
-        item['percent_savings'] = Math.trunc(selectedEV['percent_savings']);
-
-        item['savings'] = (selectedEV['total_emissions_savings'] / 1000000).toFixed(2);
-
-        return item;
-    }
-    if (optionOpted == 'E85 Ethanol Usage') {
-        item['percent_savings'] = 79;
-        item['savings'] = ((0.8 * item['currentAnnualEmissions']) / 1000000).toFixed(2);
-        return item;
-    }
-
-    if (optionOpted == 'Replace with Biofuel car') {
-        ev_data = ev_data.filter(x => x['VehicleTypeId'] == 'ICE');
-        ev_data = ev_data.filter(x => carTypes.includes(x['ClassId']));
-        ev_data = ev_data.filter(x => x['FuelTypeId'] == 'E');
-        ev_data = ev_data.sort((x, y) => x['RankingAll'] - y['RankingAll']);
-        ev_data = ev_data.slice(0, 10);
-
-        ev_data.map(element => {
-            element.electical_efficiency = (element['CombGasConsumption']) / 100;
-            element.ev_emissions_intensity = element.electical_efficiency * emmisionCoefficient;
-            element.savings = ((item['currentEmissionIntensity'] - element.ev_emissions_intensity) / item['currentEmissionIntensity']);
-            element.percent_savings = (element.savings * 100);
-            element.total_emissions_savings = element.savings * item['currentAnnualEmissions']
-            element.new_annual_emissions = item['currentAnnualEmissions'] - element.total_emissions_savings
-        });
-
-        ev_data = ev_data.sort((x, y) => x['total_emissions_savings'] - y['total_emissions_savings']);
-        let selectedEV = ev_data[0];
-        if (selectedEV) {
-            item['percent_savings'] = Math.trunc(selectedEV['percent_savings']);
-            item['savings'] = (selectedEV['total_emissions_savings'] / 1000000).toFixed(2);
-        } else {
-            item['percent_savings'] = 0;
-            item['savings'] = 0;
+        if (!response.ok) {
+            throw new Error('Failed to fetch data from the API');
         }
-        return item;
+
+        const data = await response.json();
+        return data.VehiclesList;
+    } catch (error) {
+        console.error('Error fetching data:', error);
     }
-
-    if (optionOpted == 'Replace with Biofuel Truck') {
-        ev_data = ev_data.filter(x => x['VehicleTypeId'] == 'ICE');
-        ev_data = ev_data.filter(x => truckTypes.includes(x['ClassId']));
-        ev_data = ev_data.filter(x => x['FuelTypeId'] == 'E');
-        ev_data = ev_data.sort((x, y) => x['RankingAll'] - y['RankingAll']);
-        ev_data = ev_data.slice(0, 10);
-
-        ev_data.map(element => {
-            element.electical_efficiency = (element['CombGasConsumption']) / 100;
-            element.ev_emissions_intensity = element.electical_efficiency * emmisionCoefficient;
-            element.savings = ((item['currentEmissionIntensity'] - element.ev_emissions_intensity) / item['currentEmissionIntensity']);
-            element.percent_savings = (element.savings * 100);
-            element.total_emissions_savings = element.savings * item['currentAnnualEmissions']
-            element.new_annual_emissions = item['currentAnnualEmissions'] - element.total_emissions_savings
-        });
-
-        ev_data = ev_data.sort((x, y) => x['total_emissions_savings'] - y['total_emissions_savings']);
-        let selectedEV = ev_data[0];
-        if (selectedEV) {
-            item['percent_savings'] = Math.trunc(selectedEV['percent_savings']);
-            item['savings'] = (selectedEV['total_emissions_savings'] / 1000000).toFixed(2);
-        } else {
-            item['percent_savings'] = 0;
-            item['savings'] = 0;
-        }
-        return item;
-    }
-
-    if (optionOpted == 'Right-size to smaller vehicle') {
-        ev_data = ev_data.filter(x => x['VehicleTypeId'] == 'ICE');
-        ev_data = ev_data.filter(x => carTypes.includes(x['ClassId']));
-        ev_data = ev_data.sort((x, y) => x['RankingAll'] - y['RankingAll']);
-        ev_data_nobiofuel = ev_data.filter(x => x['FuelTypeId'] != 'E');
-        ev_data_biofuel = ev_data.filter(x => x['FuelTypeId'] == 'E');
-        const midIndex_biofuel = Math.floor(ev_data_biofuel.length / 2);
-        const midIndex_nobiofuel = Math.floor(ev_data_nobiofuel.length / 2);
-        if (midIndex_nobiofuel >= 5 && midIndex_biofuel >= 5) {
-            ev_data = ev_data_nobiofuel.slice(midIndex_nobiofuel - 3, midIndex_nobiofuel + 2);
-            ev_data = ev_data.concat(ev_data_biofuel.slice(midIndex_biofuel - 3, midIndex_biofuel + 2));
-        } else {
-            ev_data = ev_data_nobiofuel.slice(0, ev_data_nobiofuel.length - 1);
-            ev_data = ev_data.concat(ev_data_biofuel.slice(0, ev_data_biofuel.length - 1));
-        }
-        ev_data.map(element => {
-            element.electical_efficiency = (element['CombGasConsumption']) / 100;
-            element.ev_emissions_intensity = element.electical_efficiency * emmisionCoefficient;
-            element.savings = ((item['currentEmissionIntensity'] - element.ev_emissions_intensity) / item['currentEmissionIntensity']);
-            element.percent_savings = (element.savings * 100);
-            element.total_emissions_savings = element.savings * item['currentAnnualEmissions']
-            element.new_annual_emissions = item['currentAnnualEmissions'] - element.total_emissions_savings
-        });
-
-        ev_data = ev_data.sort((x, y) => x['total_emissions_savings'] - y['total_emissions_savings']);
-        let selectedEV = ev_data[0];
-        if (selectedEV) {
-            item['percent_savings'] = Math.trunc(selectedEV['percent_savings']);
-            item['savings'] = (selectedEV['total_emissions_savings'] / 1000000).toFixed(2);
-        } else {
-            item['percent_savings'] = 0;
-            item['savings'] = 0;
-        }
-        return item;
-    }
-
-    if (optionOpted == 'B20 Biodiesel Usage') {
-        item['percent_savings'] = 15;
-        item['savings'] = ((0.15 * item['currentAnnualEmissions']) / 1000000).toFixed(2);
-        return item;
-    }
-}
-
-
-function bestEVOptions(ev_data, item) {
-    ev_data = ev_data.filter(x => x['VehicleTypeId'] == 'BEV' || x['VehicleTypeId'] == 'PHEV');
-    ev_data = ev_data.sort((x, y) => x['RankingAll'] - y['RankingAll']);
-    // remove the rows that have same MakeModel
-
-    let uniqueMakeModels = new Set();
-
-    // Filtering out rows with same MakeModel
-    ev_data = ev_data.filter(element => {
-        if (!uniqueMakeModels.has(element.MakeModel)) {
-            uniqueMakeModels.add(element.MakeModel);
-            return true;
-        }
-        return false;
-    });
-
-    let car_evs = ev_data.filter(x => carTypes.includes(x['ClassId']));
-    let truck_evs = ev_data.filter(x => truckTypes.includes(x['ClassId']));
-
-    ev_data = [];
-    ev_data = ev_data.concat(car_evs.slice(0, 5));
-    ev_data = ev_data.concat(truck_evs.slice(0, 5));
-
-    ev_data.map(element => {
-        element.electical_efficiency = (element['CombElectricLeConsumption'] * 8.9) / 100;
-        element.ev_emissions_intensity = element.electical_efficiency * emmisionCoefficient;
-        element.savings = ((item['currentEmissionIntensity'] - element.ev_emissions_intensity) / item['currentEmissionIntensity']);
-        element.percent_savings = (element.savings * 100);
-        element.total_emissions_savings = element.savings * item['currentAnnualEmissions']
-        element.new_annual_emissions = item['currentAnnualEmissions'] - element.total_emissions_savings
-    });
-
-    ev_data = ev_data.sort((x, y) => x['total_emissions_savings'] - y['total_emissions_savings']);
-    best_ev_vehicle = ev_data;
-    localStorage.setItem("best_ev_vehicles", JSON.stringify(best_ev_vehicle));
 }

@@ -2,223 +2,237 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/user-input-styles.css" />
-  <!-- font awesome library -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
-  <title>GreenFleet</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Climate Neutral - Home</title>
+    <link rel="stylesheet" href="css/common-styles.css" />
+    <link rel="stylesheet" href="css/main-styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <script src="js/common.js" defer></script>
+    <script src="js/main.js" defer></script>
 </head>
 
 <body>
-  <!-- header section, where all the navugation options and logo will be placed -->
-  <header>
-    <div class="logo">
-      <a href="/landing.html"><img src="assets/climate1.png" alt="Logo" /></a>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="/main.html">Home</a></li>
-        <li><a href="#">About Us</a></li>
-        <li>
-          <a href="#settingsModal" onclick="openSettingsModal()">Settings</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
+    <!-- Header -->
+    <header>
+        <img class="logo" onclick="window.location.href='/landing.html'" src="assets/climate1.png" alt="Logo" />
+        <nav>
+            <ul>
+                <li><a class="active" href="/main.html">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li>
+                    <a href="#settingsModal" onclick="openSettingsModal()">Settings</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- main section, where all the content will be placed -->
-  <div class="main" role="main">
-    <div class="main-content-head">
-      <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search" />
-        <span class="search-icon">|</span>
-        <i class="fas fa-search"></i>
-      </div>
-      <div class="row-icons">
-        <div>
-          <img class="add-icon" src="assets/icons/add.png" alt="Add Icon" onclick="openVehicleModal()" />
+    <!-- Main Section -->
+    <main class="main">
+        <div class="table">
+            <section class="table__header">
+                <div class="input-group search col">
+                    <input type="search" placeholder="Search Data..." />
+                    <img src="assets/icons/search.png" alt="" />
+                </div>
+                <div class="actions col">
+                    <div class="export__file" onclick="openDataModal()">
+                        <button class="add_record-btn"></button>
+                    </div>
+                    <div class="export__file" onclick="openImportModal()">
+                        <button class="import-btn"></button>
+                        <input type="file" id="importFile" hidden accept=".csv" />
+                    </div>
+                    <div class="export__file">
+                        <button id="downloadCSVBtn" class="export__file-btn"></button>
+                    </div>
+                </div>
+            </section>
+            <section class="table__body">
+                <table id="fleetTable">
+                    <thead>
+                        <tr>
+                            <th>Id <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Description <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Type <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Year <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Make <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Model <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Annual VKT <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Annual Fuel <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Fuel Type <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Flex Fuel <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Quantity <span class="icon-arrow">&UpArrow;</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </section>
         </div>
-        <div>
-          <input type="file" id="fileInput" accept=".csv" style="display: none" />
-          <label for="fileInput">
-            <img class="upload-icon" src="assets/icons/flie-upload.png" alt="Upload Icon" />
-          </label>
+        <div class="row buttons">
+            <button id="prevButton" style="display: none" class="button">Previous</button>
+            <button class="button" id="nextButton">Next</button>
         </div>
-      </div>
-    </div>
-    <div id="table">
-      <table id="myTable"></table>
-    </div>
-    <div class="direction-buttons">
-      <button id="goto_prevpage" style="display: none;" class="button_prev" onclick="previous_page()">Previous</button>
-      <button class="button_next" id="goto_nextpage" onclick="next_page()">Next</button>
-    </div>
-  </div>
+    </main>
 
-  <!-- modal section, where all the modal content will be placed -->
-  <div id="settingsModal" class="modal" role="dialog">
-    <span onclick="closeSettingsModal()">
-      <img class="close" src="assets/icons/close-icon.png" alt="Close Icon" />
-    </span>
-    <h1 class="modal-header">Settings</h1>
-    <div class="modal-content">
-      <img class="settings-icon" src="assets/icons/settings_car.gif" alt="Settings Image" />
-      <div class="modal-col">
-        <div class="modal-row">
-          <label for="provinceSelect">Select Province</label>
-          <div class="select-option">
-            <button class="select-btn" id="provinceBtn" onclick="openOptions()"></button>
-            <div class="option-dropdown" id="provinceSelect">
-            </div>
-            <div class="select-arrow">
-              <i class="fas fa-chevron-down"></i>
-            </div>
-          </div>
-        </div>
-
-        <div class="modal-row" id="emissionCoefficientRow">
-          <label for="emissionCoefficient">Emission Coefficient</label>
-          <div class="select-option emission-coefficient">
-            <div id="emissionCoefficient"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- data entry section, where all the data modal content will be placed -->
-  <div id="dataRowModal" class="dataRowModal">
-    <div class="modal-content">
-      <span onclick="closeModal()">
+    <!-- setting modal -->
+    <div id="settingsModal" class="modal" role="dialog">
+        <span onclick="closeSettingsModal()">
         <img class="close" src="assets/icons/close-icon.png" alt="Close Icon" />
       </span>
-      <div class="modal-header" id="data-modal-header"></div>
-      <div class="modal-row">
-        <div class="input_label">
-          <label for="modalDescription">Description</label>
-          <input type="text" id="modalDescription" />
-        </div>
-        <div class="input_label">
-          <label for="modalType">Type</label>
-          <div class="select-option">
-            <button class="select-btn" id="typebtn" onclick="openTypeOptions()"></button>
-            <div class="option-dropdown" id="modalType">
+        <h1 class="modal-header">Settings</h1>
+        <div class="modal-row">
+            <img class="settings-icon" src="assets/icons/settings_car.gif" alt="Settings Image" />
+            <div class="modal-col">
+                <label for="provinceSelect">Select Province</label>
+                <div class="input-field">
+                    <div class="option-dropdown" id="provinceSelect">
+                        <span class="selected" id="selectedProvince" onclick="openOptions()"></span>
+                        <div class="options" id="provinceOptionsDiv"></div>
+                        <div class="select-arrow" onclick="openOptions()">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <label for="emissionCoefficient">Emission Coefficient</label>
+                <div class="input-field">
+                    <div id="emissionCoefficient"></div>
+                </div>
             </div>
-            <div class="select-arrow">
-              <i class="fas fa-chevron-down"></i>
-            </div>
-          </div>
         </div>
-      </div>
-
-      <!-- Second row of inputs -->
-      <div class="modal-row">
-        <div class="input_label">
-          <label for="modalYear">Year</label>
-          <input type="number" id="modalYear" min="2000" />
-        </div>
-        <div class="input_label">
-          <label for="modalMake">Make</label>
-          <input type="text" id="modalMake" />
-        </div>
-      </div>
-
-      <div class="modal-row">
-        <div class="input_label">
-          <label for="modalModel">Model</label>
-          <input type="text" id="modalModel" />
-        </div>
-        <div class="input_label">
-          <label for="modalAnnualVKT">Annual VKT</label>
-          <input type="number" id="modalAnnualVKT" />
-        </div>
-      </div>
-
-      <!-- Third row of inputs -->
-      <div class="modal-row">
-        <div class="input_label">
-          <label for="modalAnnualFuel">Annual Fuel</label>
-          <input type="number" id="modalAnnualFuel" />
-        </div>
-        <div class="input_label">
-          <label for="modalFuelType">Fuel Type</label>
-          <div class="select-option">
-            <button class="select-btn" id="fueltypebtn" onclick="openfuelOptions()"></button>
-            <div class="option-dropdown" id="modalFuelType">
-            </div>
-            <div class="select-arrow">
-              <i class="fas fa-chevron-down"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Fourth row of inputs -->
-      <div class="modal-row">
-        <div class="input_label">
-          <label for="modalFlexFuel">Flex Fuel</label>
-          <input type="text" id="modalFlexFuel" value="Yes" class="hidden" />
-          <div class="yes-no-select">
-            <button id="yes-button" class="selected" onclick="selectFlexFuel('Yes')">
-              <i class="fas fa-check"></i> Yes</button>
-            <button id="no-button" onclick="selectFlexFuel('No')">
-              <i class="fas fa-times"></i> No</button>
-          </div>
-        </div>
-        <div class="input_label">
-          <label for="modalQuantity">Quantity</label>
-          <input type="number" id="modalQuantity" />
-        </div>
-      </div>
-
-
-    </div>
-    <div class="modal-buttons">
-      <button class="button">Validate</button>
-      <button class="button" id="vehicle_modal_submit_button" onclick="submitData()">
-        Save
-      </button>
-      <button id="deleteButton" class="button red" onclick="deleteVehicle()">Delete</button>
-    </div>
-  </div>
-
-  <div id="overlay"></div>
-
-
-
-  <!-- footer section, where all the content will be placed -->
-
-  <footer class="footer">
-    <div class="footer-start">
-      <div class="line"></div>
-      <div class="footer-icons">
-        <i class="fab fa-facebook-f"></i>
-        <i class="fab fa-twitter"></i>
-        <i class="fab fa-linkedin-in"></i>
-      </div>
-      <div class="line"></div>
     </div>
 
-    <div class="footer-text">
-      <p>MMII Climate Neutral Technologies Inc. 2024</p>
-      <div class="footer-links">
-        <a href="https://climateneutral.ca/termsofservice">Terms and Conditions</a>
-        <br />
-        <a href="https://climateneutral.ca/privacy-policy">Privacy Policy</a>
-        <br />
-        <a href="https://climateneutral.ca/contact-us-2023">Contact Us</a>
-        <br />
-      </div>
-    </div>
-  </footer>
-  <!-- script section, where all scripts will be placed -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <div id="dataRowModal" class="dataRowModal">
+        <div class="modal-content">
+            <span onclick="closeModal()">
+          <img
+            class="close"
+            src="assets/icons/close-icon.png"
+            alt="Close Icon"
+          />
+        </span>
+            <h1 class="modal-header" id="data-modal-header"></h1>
+            <div class="modal-row">
+                <div class="fields">
+                    <label for="modalDescription">Description</label>
+                    <input class="input-field" type="text" id="modalDescription" />
+                </div>
+                <div class="fields">
+                    <label for="modalType">Type</label>
+                    <div class="input-field" id="type">
+                        <div class="option-dropdown">
+                            <span class="selected" id="modalType" onclick="openTypeOptions()"></span>
+                            <div class="options" id="typeOptionsDiv"></div>
+                            <div class="select-arrow" onclick="openTypeOptions()">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-  <script src="js/coefficient.js"></script>
-  <script src="js/settings.js"></script>
-  <script src="js/index.js"></script>
-  <script src="js/main.js"></script>
+            <!-- Second row of inputs -->
+            <div class="modal-row">
+                <div class="fields">
+                    <label for="modalYear">Year</label>
+                    <input class="input-field" type="number" id="modalYear" min="1990" max="2025" />
+                </div>
+                <div class="fields">
+                    <label for="modalMake">Make</label>
+                    <input class="input-field" type="text" id="modalMake" />
+                </div>
+            </div>
+
+            <div class="modal-row">
+                <div class="fields">
+                    <label for="modalModel">Model</label>
+                    <input class="input-field" type="text" id="modalModel" />
+                </div>
+                <div class="fields">
+                    <label for="modalAnnualVKT">Annual VKT</label>
+                    <input class="input-field" type="number" id="modalAnnualVKT" />
+                </div>
+            </div>
+
+            <!-- Third row of inputs -->
+            <div class="modal-row">
+                <div class="fields">
+                    <label for="modalAnnualFuel">Annual Fuel</label>
+                    <input class="input-field" type="number" id="modalAnnualFuel" />
+                </div>
+                <div class="fields">
+                    <label for="modalFuelType">Fuel Type</label>
+                    <div class="input-field" id="fueltype">
+                        <div class="option-dropdown">
+                            <span class="selected" id="modalFuelType" onclick="openFuelOptions()"></span>
+                            <div class="options" id="fuelOptionsDiv"></div>
+                            <div class="select-arrow" onclick="openFuelOptions()">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fourth row of inputs -->
+            <div class="modal-row">
+                <div class="fields" id="flexfuel">
+                    <label for="modalFlexFuel">Flex Fuel</label>
+                    <input type="text" id="modalFlexFuel" value="" class="hidden" hidden/>
+                    <div class="yes-no-select">
+                        <button id="yes-button" onclick="selectFlexFuel('Yes')">
+                <i class="fas fa-check"></i> Yes
+              </button>
+                        <button id="no-button" onclick="selectFlexFuel('No')">
+                <i class="fas fa-times"></i> No
+              </button>
+                    </div>
+                </div>
+                <div class="fields">
+                    <label for="modalQuantity">Quantity</label>
+                    <input class="input-field" type="number" id="modalQuantity" min="1" />
+                </div>
+            </div>
+        </div>
+        <div class="modal-buttons">
+            <button class="button" onclick="validateData()">Validate</button>
+            <button class="button" id="vehicle_modal_submit_button" onclick="submitData()">
+          Save
+        </button>
+            <button id="deleteButton" class="button red" onclick="deleteVehicle()">
+          Delete
+        </button>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-start">
+            <div class="line"></div>
+            <div class="footer-icons">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-linkedin-in"></i>
+            </div>
+            <div class="line"></div>
+        </div>
+
+        <div class="footer-text">
+            <p>MMII Climate Neutral Technologies Inc. 2024</p>
+            <div class="footer-links">
+                <a href="https://climateneutral.ca/termsofservice">Terms & Conditions</a>
+                <br> 
+                <a href="https://climateneutral.ca/privacy-policy">Privacy Policy</a>
+                <br>
+                <a href="https://climateneutral.ca/contact-us-2023">Contact Us</a>
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>

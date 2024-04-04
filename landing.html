@@ -1,37 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
-    <link rel="stylesheet" href="css/landing-styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoCoders</title>
+    <link rel="stylesheet" href="css/common-styles.css" />
+    <link rel="stylesheet" href="css/landing-styles.css" />
 </head>
+
 <body>
-        <div class="landing">
-            <header>
-                <div class="logo">
-                    <img src="assets/climate1.png" alt="Logo">
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="/main.html">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </nav>
-            </header>
+    <div class="container">
+        <header class="landing">
+            <img class="logo" onclick="window.location.href='/landing.html'" src="assets/climate1.png" alt="Logo" />
+            <nav>
+                <ul>
+                    <li><a href="/main.html">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
         <div class="landing-content">
-            <h1 class="h1">Welcome to Climate Neutral: Empowering Green Transportation Solutions</h1>
-            <p class="p">At Climate Neutral, we're committed to driving change, quite literally. Our innovative software solution is at the forefront of empowering corporations and municipalities to navigate the transition towards sustainable transportation practices.</p>
+            <h1 class="h1">
+                Welcome to Climate Neutral: Empowering Green Transportation Solutions
+            </h1>
+            <p class="p">
+                At Climate Neutral, we're committed to driving change, quite literally. Our innovative software solution is at the forefront of empowering corporations and municipalities to navigate the transition towards sustainable transportation practices.
+            </p>
             <a class="get-started-btn" id="redirectbtn">Get Started</a>
+            <!-- on clicking this button show the loader and then redirect to main.html page -->
+
+            <div class="overlay"></div>
+
         </div>
-        
-        <script>
-            document.getElementById("redirectbtn").addEventListener("click", function(){
-                localStorage.setItem("next", "main.html");
-                window.location.href="loading.html";
-            });
-        </script>
-    </div>
+        <script src="js/common.js"></script>
+        <script src="js/landing.js"></script>
 </body>
+
 </html>

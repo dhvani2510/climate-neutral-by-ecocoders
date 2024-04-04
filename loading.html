@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title> Loading</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="css/loading.css" />
-  </head>
-  <body>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/loader.css" />
+</head>
+
+<body>
     <div class="bar">
         <div class="circle"></div>
         <p>Loading</p>
-      </div>
-    
-      <script>
+    </div>
+    <script src="js/common.js"></script>
+    <script>
         setTimeout(function() {
-          var next = localStorage.getItem('next');
-            window.location.href= next;
-            localStorage.removeItem('next');
+            var page = localStorage.getItem("page");
+            console.log(page);
+            window.location.href = "/" + page + ".html";;
         }, 3000);
     </script>
-  </body>
+</body>
+
 </html>

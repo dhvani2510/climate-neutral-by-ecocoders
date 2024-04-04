@@ -1,15 +1,3 @@
-.header2 {
-    color: black;
-    text-align: center;
-    background-color: #94d8e9;
-    padding: 20px;
-}
-
-.h2 {
-    text-decoration: underline;
-    margin-top: 0%;
-}
-
 .action-savings {
     margin: 0 auto;
     text-align: center;
@@ -18,6 +6,7 @@
     border-radius: 40px;
     background-color: #D9D9D9;
     justify-content: space-around;
+    font-size: initial;
 }
 
 .action-savings a {
@@ -37,27 +26,23 @@
 }
 
 .action-savings a.active {
-    background-color: #0077B6; 
+    background-color: #0077B6;
     color: white;
-}
-
-.main-content-head {
-    display: flex;
 }
 
 .car {
     flex: 0 0 35%;
-    max-width: 35%; 
+    max-width: 35%;
 }
 
 .car img {
     padding-left: 10%;
-    max-width: 90%; 
+    max-width: 90%;
 }
 
 .info {
     flex: 0 0 65%;
-    max-width: 65%; 
+    max-width: 65%;
     padding-top: 5%;
     text-align: left;
 }
@@ -81,10 +66,9 @@
     vertical-align: top;
 }
 
-.emission-savings{
+.emission-savings {
     font-size: 30px;
 }
-
 
 .savings-percentage {
     display: flex;
@@ -96,19 +80,16 @@
     margin: 0 2%;
 }
 
-
-
-/* For the speedometer */
-
-  #canvas {
+#canvas {
     position: absolute;
     top: 50%;
     margin-left: 30%;
     left: 50%;
     margin-top: 100px;
     transform: translate(-50%, -50%);
-  }
-  .text {
+}
+
+.text {
     color: white;
     font-weight: 600;
     margin-left: 30%;
@@ -118,15 +99,4 @@
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
-
-  .charts-canvas {
-    background-color: white;
-    margin: 20px;
-    border-radius: 16px;
-    padding: 20px;
-}
-
-.row {
-    display: flex;
 }

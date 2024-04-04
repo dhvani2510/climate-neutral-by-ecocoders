@@ -4,20 +4,20 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/styles.css" />
+    <title>Climate Neutral - Green Option</title>
+    <link rel="stylesheet" href="css/common-styles.css" />
     <link rel="stylesheet" href="css/green-options-styles.css" />
-    <!-- font awesome library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
-    <title>GreenFleet</title>
+    <script src="js/common.js" defer></script>
+    <script src="js/green-options.js" defer></script>
 </head>
 
 <body>
-    <!-- header section, where all the navigation options and logo will be placed -->
+    <!-- Header -->
     <header>
-        <div class="logo">
-            <a href="/landing.html"><img src="assets/climate1.png" alt="Logo" /></a>
-        </div>
-        <nav class="nav">
+        <img class="logo" onclick="window.location.href='/landing.html'" src="assets/climate1.png" alt="Logo" />
+        <nav>
             <ul>
                 <li><a href="/main.html">Home</a></li>
                 <li><a href="#">About Us</a></li>
@@ -27,59 +27,57 @@
             </ul>
         </nav>
     </header>
-    <!-- main section, where all the content will be placed -->
-    <div class="main" id="main">
-        <div class="header2">Select your Preference</div>
-        <div id="dynamic-divs">
-            <div class="vehicle-item-header">
-                <div class="description-header">
-                    <h3>Fleet Vehicle</h3>
+    <div class="heading">
+        Select your Preference
+    </div>
+
+    <main id="dynamic-divs">
+        <div style="flex-grow: 1;" id="green-options">
+            <div class="row">
+                <div class="col">
+                    <h3> Fleet Data</h3>
                 </div>
-                <div class="vehicle-green-options-header">
-                    <h3>Green Option</h3>
+                <div class="col">
+                    <h3>Green Options</h3>
                 </div>
             </div>
         </div>
-        <div class="direction-buttons">
-            <button id="goto_prevpage" class="button_prev" onclick="goToChartsPage()">Previous</button>
-            <button class="button_next" id="goto_nextpage" onclick="goToAnalyser()">Next</button>
+        <div class="row buttons">
+            <button id="prevButton" class="button">Previous</button>
+            <button class="button" id="nextButton">Next</button>
         </div>
-    </div>
+    </main>
 
-    <!-- modal section, where all the modal content will be placed -->
     <div id="settingsModal" class="modal" role="dialog">
         <span onclick="closeSettingsModal()">
-        <img class="close" src="assets/icons/close-icon.png" alt="Close Icon" />
-      </span>
+          <img class="close" src="assets/icons/close-icon.png" alt="Close Icon" />
+        </span>
         <h1 class="modal-header">Settings</h1>
-        <div class="modal-content">
+        <div class="modal-row">
             <img class="settings-icon" src="assets/icons/settings_car.gif" alt="Settings Image" />
             <div class="modal-col">
-                <div class="modal-row">
-                    <label for="provinceSelect">Select Province</label>
-                    <div class="select-option">
-                        <button class="select-btn" id="provinceBtn" onclick="openOptions()"></button>
-                        <div class="option-dropdown" id="provinceSelect">
-                        </div>
-                        <div class="select-arrow">
+                <label for="provinceSelect">Select Province</label>
+                <div class="input-field">
+                    <div class="option-dropdown" id="provinceSelect">
+                        <span class="selected" id="selectedProvince" onclick="openOptions()"></span>
+                        <div class="options" id="provinceOptionsDiv"></div>
+                        <div class="select-arrow" onclick="openOptions()">
                             <i class="fas fa-chevron-down"></i>
                         </div>
                     </div>
                 </div>
 
-                <div class="modal-row" id="emissionCoefficientRow">
-                    <label for="emissionCoefficient">Emission Coefficient</label>
-                    <div class="select-option emission-coefficient">
-                        <div id="emissionCoefficient"></div>
-                    </div>
+                <label for="emissionCoefficient">Emission Coefficient</label>
+                <div class="input-field">
+                    <div id="emissionCoefficient"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="overlay"></div>
-    <!-- footer section, where all the content will be placed -->
+    <div class="overlay" id="overlay"></div>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-start">
             <div class="line"></div>
@@ -95,21 +93,13 @@
             <p>MMII Climate Neutral Technologies Inc. 2024</p>
             <div class="footer-links">
                 <a href="https://climateneutral.ca/termsofservice">Terms and Conditions</a>
-                <br />
+                <br/>
                 <a href="https://climateneutral.ca/privacy-policy">Privacy Policy</a>
-                <br />
+                <br/>
                 <a href="https://climateneutral.ca/contact-us-2023">Contact Us</a>
-                <br />
             </div>
         </div>
     </footer>
-
-    <!-- link javascript file -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="js/coefficient.js"></script>
-    <script src="js/settings.js"></script>
-    <script src=" js/index.js "></script>
-    <script src="js/green-options.js "></script>
 </body>
 
 </html>

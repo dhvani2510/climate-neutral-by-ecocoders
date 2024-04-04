@@ -4,21 +4,19 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/best-ev-options-styles.css" />
-    <link rel="stylesheet" href="css/charts-styles.css" />
-    <script src="js/best-ev-options.js" defer></script>
-    <!-- font awesome library -->
+    <title>Climate Neutral - Best EV Options</title>
+    <link rel="stylesheet" href="css/common-styles.css" />
+    <link rel="stylesheet" href="css/best-ev-options.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
-    <title>GreenFleet</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/common.js" defer></script>
+    <script src="js/best-ev-options.js" defer></script>
 </head>
 
 <body>
-    <!-- header section, where all the navigation options and logo will be placed -->
+    <!-- Header -->
     <header>
-        <div class="logo">
-            <a href="/landing.html"><img src="assets/climate1.png" alt="Logo" /></a>
-        </div>
+        <img class="logo" onclick="window.location.href='/landing.html'" src="assets/climate1.png" alt="Logo" />
         <nav>
             <ul>
                 <li><a href="/main.html">Home</a></li>
@@ -29,12 +27,24 @@
             </ul>
         </nav>
     </header>
-    <!-- main section, where all the content will be placed -->
-    <div class="main" id="main">
-        <div class="header2">
-            Climate Neutral Alternatives
-        </div>
-        <div id="dynamic-divs">
+
+    <div class="heading">
+        Best EV Alternatives
+    </div>
+
+    <main id="dynamic-divs">
+        <div style="flex-grow: 1;">
+            <section class="table__header">
+                <div class="input-group search col">
+                    <input type="search" placeholder="Search Data..." />
+                    <img src="assets/icons/search.png" alt="" />
+                </div>
+                <div class="actions col">
+                    <div class="export__file" onclick="window.print()">
+                        <button class="print-btn"></button>
+                    </div>
+                </div>
+            </section>
             <section class="table__body">
                 <table id="fleetTable">
                     <thead>
@@ -58,50 +68,43 @@
                 <canvas id="myChart"></canvas>
             </div>
         </div>
-        <div class="direction-buttons">
-            <button id="goto_prevpage" class="button_prev" onclick="goToIndividualSavingsPage()">
-        Previous
-      </button>
-            <button class="button_next" style="display:none;" id="goto_nextpage" onclick="goToGreenOptionsPage()">
-        Next
-      </button>
+        <div class="row buttons">
+            <button id="prevButton" class="button">Previous</button>
+            <button class="button" style="display: none" id="nextButton">Next</button>
         </div>
-    </div>
+        </div>
+    </main>
 
-    <!-- modal section, where all the modal content will be placed -->
     <div id="settingsModal" class="modal" role="dialog">
         <span onclick="closeSettingsModal()">
-          <img class="close" src="assets/icons/close-icon.png" alt="Close Icon" />
+            <img class="close" src="assets/icons/close-icon.png" alt="Close Icon" />
         </span>
         <h1 class="modal-header">Settings</h1>
-        <div class="modal-content">
+        <div class="modal-row">
             <img class="settings-icon" src="assets/icons/settings_car.gif" alt="Settings Image" />
             <div class="modal-col">
-                <div class="modal-row">
-                    <label for="provinceSelect">Select Province</label>
-                    <div class="select-option">
-                        <button class="select-btn" id="provinceBtn" onclick="openOptions()"></button>
-                        <div class="option-dropdown" id="provinceSelect">
-                        </div>
-                        <div class="select-arrow">
+                <label for="provinceSelect">Select Province</label>
+                <div class="input-field">
+                    <div class="option-dropdown" id="provinceSelect">
+                        <span class="selected" id="selectedProvince" onclick="openOptions()"></span>
+                        <div class="options" id="provinceOptionsDiv"></div>
+                        <div class="select-arrow" onclick="openOptions()">
                             <i class="fas fa-chevron-down"></i>
                         </div>
                     </div>
                 </div>
 
-                <div class="modal-row" id="emissionCoefficientRow">
-                    <label for="emissionCoefficient">Emission Coefficient</label>
-                    <div class="select-option emission-coefficient">
-                        <div id="emissionCoefficient"></div>
-                    </div>
+                <label for="emissionCoefficient">Emission Coefficient</label>
+                <div class="input-field">
+                    <div id="emissionCoefficient"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="overlay"></div>
-    <!-- footer section, where all the content will be placed -->
+    <div class="overlay" id="overlay"></div>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-start">
             <div class="line"></div>
@@ -121,17 +124,9 @@
                 <a href="https://climateneutral.ca/privacy-policy">Privacy Policy</a>
                 <br />
                 <a href="https://climateneutral.ca/contact-us-2023">Contact Us</a>
-                <br />
             </div>
         </div>
     </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- link javascript file -->
-    <script src="js/coefficient.js"></script>
-    <script src="js/settings.js"></script>
-    <script src="js/coefficient.js"></script>
-    <script src="js/index.js"></script>
 </body>
 
 </html>

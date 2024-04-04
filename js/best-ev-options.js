@@ -1,21 +1,19 @@
-var best_ev_vehicles = JSON.parse(localStorage.getItem("best_ev_vehicles")) || [];
-
+var vehicles = JSON.parse(localStorage.getItem("best_ev_vehicles")) || [];
 var carTypes = ['T', 'I', 'S', 'C', 'M', 'L', 'WS', 'WM'];
 var truckTypes = ['PS', 'PL', 'US', 'UL', 'V', 'VC', 'VP', 'SP']
     // list of NA manufacturer 
 var NA_manufactured = ["Tesla", "Lucid", "Ford", "Chevrolet"];
 window.onload = function() {
-    if (best_ev_vehicles.length != 0) {
+    if (vehicles.length != 0) {
         let tbody = document.getElementById("fleetTable").tBodies[0];
-        for (let i = 0; i < best_ev_vehicles.length; i++) {
-            addRowToTable(tbody, best_ev_vehicles[i]);
+        for (let i = 0; i < vehicles.length; i++) {
+            addRowToTable(tbody, vehicles[i]);
         }
     } else {
         addEmptyRow();
     }
     calculateCharts();
-};
-
+}
 
 function addEmptyRow() {
     const row = document.createElement('tr'),
@@ -29,7 +27,6 @@ function addEmptyRow() {
 
 function addRowToTable(tbody, fleet) {
     let row = document.createElement("tr");
-    row.setAttribute("data-id", fleet.id);
     createTdFor(row, "Make", fleet.Make);
     createTdFor(row, "Model", fleet.Model);
     createTdFor(row, "Year", fleet.Year);
@@ -57,25 +54,25 @@ function createTdFor(row, fieldName, content) {
 const canvas = document.getElementById("myChart");
 const ctx = canvas.getContext("2d");
 
-var gradient = ctx ? ctx.createLinearGradient(0, 0, 2500, 0) : null;
+var gradient = ctx ? ctx.createLinearGradient(0, 0, 1400, 0) : null;
 if (gradient) {
-    gradient.addColorStop(0, "#a7deec");
-    gradient.addColorStop(1, "#26b170");
+    gradient.addColorStop(0, "#2cadc8");
+    gradient.addColorStop(1, "#a0e5f2");
 }
 
-var gradient2 = ctx ? ctx.createLinearGradient(0, 0, 3500, 0) : null;
+var gradient2 = ctx ? ctx.createLinearGradient(0, 0,1000, 0) : null;
 if (gradient2) {
-    gradient2.addColorStop(0, "#2BD231");
-    gradient2.addColorStop(1, "#178A53");
+    gradient2.addColorStop(0, "#8fb714");
+    gradient2.addColorStop(1, "#c8eb61");
 }
 
 var emmisionCoefficient = localStorage.getItem("emissionCoefficient") || "30";
 
 function calculateCharts() {
-    if (best_ev_vehicles) {
-        var labels = best_ev_vehicles.map((v) => v.MakeModel);
-        var totalCurrentEmissionsData = best_ev_vehicles.map((v) => v.ev_emissions_intensity);
- 
+    if (vehicles) {
+        var labels = vehicles.map((v) => v.MakeModel);
+        var totalCurrentEmissionsData = vehicles.map((v) => v.ev_emissions_intensity);
+
         var data = {
             labels,
             datasets: [{
@@ -84,15 +81,15 @@ function calculateCharts() {
                 fill: true,
                 backgroundColor: function(context) {
                     var index = context.dataIndex;
-                    return NA_manufactured.includes(best_ev_vehicles[index].Make) ? gradient2 : gradient;
+                    return NA_manufactured.includes(vehicles[index].Make) ? gradient2 : gradient;
                 },
                 borderColor: '#07354d',
                 borderWidth: 1.5,
                 borderRadius: 8
             }],
         };
- 
-        canvas.height = best_ev_vehicles.length === 1 ? 200 : best_ev_vehicles.length * 100;
+
+        canvas.height = vehicles.length === 1 ? 200 : vehicles.length * 75;
         var options = {
             indexAxis: "y",
             responsive: true,
@@ -168,7 +165,7 @@ function calculateCharts() {
                 }
             }
         };
- 
+
         new Chart(ctx, {
             type: "bar",
             data,
@@ -177,6 +174,54 @@ function calculateCharts() {
     }
 }
 
-function goToIndividualSavingsPage() {
-    window.location.href = "individualsavings.html";
+// Event listener for previous button if it exists
+if (document.getElementById("prevButton")) {
+    document.getElementById("prevButton").addEventListener("click", function() {
+        window.location.href = "/individual-savings.html"
+    });
 }
+
+const search = document.querySelector('.input-group input');
+search.addEventListener('input', searchTable);
+const table_headings = document.querySelectorAll('thead th');
+
+function searchTable() {
+    const rows = document.querySelectorAll('tbody tr'),
+        searchTerm = search.value.toLowerCase();
+
+    rows.forEach((row, index) => {
+        const rowText = row.textContent.toLowerCase();
+        console.log(rowText);
+        row.classList.toggle('hide', rowText.indexOf(searchTerm) < 0);
+        row.style.setProperty('--delay', index / 25 + 's');
+    });
+}
+
+table_headings.forEach((head, i) => {
+    let sort_asc = true;
+    head.onclick = () => {
+        table_headings.forEach(head => head.classList.remove('active'));
+        head.classList.add('active');
+
+        document.querySelectorAll('td').forEach(td => td.classList.remove('active'));
+        head.classList.toggle('asc', sort_asc);
+        sort_asc = head.classList.contains('asc') ? false : true;
+
+        sortTable(i, sort_asc);
+    }
+})
+
+function sortTable(column, sort_asc) {
+    const table_rows = document.querySelectorAll('tbody tr');
+
+    [...table_rows].sort((a, b) => {
+            let first_row = a.querySelectorAll('td')[column].textContent.toLowerCase(),
+                second_row = b.querySelectorAll('td')[column].textContent.toLowerCase();
+
+            return sort_asc ? (first_row < second_row ? 1 : -1) : (first_row < second_row ? -1 : 1);
+        })
+        .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
+}
+
+
+const csv_btn = document.querySelector('#downloadCSVBtn');

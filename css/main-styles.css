@@ -1,0 +1,68 @@
+.row {
+    padding: 10px 0;
+}
+
+.row.options {
+    display: flex;
+    justify-content: space-between;
+}
+
+.col {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.col.search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: large;
+    background-color: #fff5;
+    border-radius: 16px;
+    padding: 10px;
+    #searchInput {
+        width: 100%;
+        border: 0;
+        background-color: transparent;
+        font-size: large;
+        &:focus,
+        &:hover {
+            outline: none;
+        }
+    }
+  }
+}
+
+.export__file {
+  position: relative;
+  padding: 0 2px;
+  cursor: pointer;
+}
+
+#dataRowModal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    background-color: #fefefe;
+    border-radius: 16px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    min-width: 50vw;
+    max-height: 90vh;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    .button.disabled {
+        cursor: not-allowed;
+        opacity: 30%;
+    }
+}

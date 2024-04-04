@@ -1,0 +1,72 @@
+.row {
+    padding: 10px 0;
+}
+
+.row.options {
+    display: flex;
+    justify-content: space-between;
+}
+
+.col {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.col.search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: large;
+    background-color: #fff5;
+    border-radius: 16px;
+    padding: 10px;
+    #searchInput {
+        width: 100%;
+        border: 0;
+        background-color: transparent;
+        font-size: large;
+        &:focus,
+        &:hover {
+            outline: none;
+        }
+    }
+}
+
+.export__file .print-btn {
+    display: inline-block;
+    border: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: #fff6 url(/assets/icons/print.png) center / 80% no-repeat;
+    border-radius: 50%;
+    transition: 0.2s ease-in-out;
+    &:hover {
+        background-color: #fff;
+        transform: scale(1.15);
+        cursor: pointer;
+    }
+}
+
+.export__file {
+    position: relative;
+    padding: 0 2px;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+@media print {
+    @page {
+        background-color: #26b170 !important;
+        size: 420mm 594mm;
+        margin: 0;
+    }
+    .col.search *,
+    .print-button *,
+    .logo *,
+    .footer *,
+    .buttons *,
+    header * {
+        visibility: hidden;
+    }
+}
