@@ -536,7 +536,7 @@ document.getElementById('importFile').addEventListener('change', handleImport);
 // Event listener for previous button if it exists
 if (document.getElementById("prevButton")) {
     document.getElementById("prevButton").addEventListener("click", function() {
-        window.location.href = "/landing.html"
+        window.location.href = "landing.html"
     });
 }
 
@@ -546,7 +546,7 @@ if (document.getElementById("nextButton")) {
     document.getElementById("nextButton").addEventListener("click", function() {
         if (fleetData.length > 0) {
             localStorage.setItem("page", "current-emissions")
-            window.location.href = '/loading.html';
+            window.location.href = 'loading.html';
         }
     });
 }

@@ -1,5 +1,5 @@
 .container {
-    background-image: url("/assets/image2.png");
+    background-image: url("../assets/image2.png");
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -20,7 +20,7 @@
     line-height: 1;
 }
 
-.p{
+.p {
     line-height: 1.5;
 }
 

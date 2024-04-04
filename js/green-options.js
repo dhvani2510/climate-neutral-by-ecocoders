@@ -164,7 +164,7 @@ function updateGreenOption(id, option) {
 // Event listener for previous button if it exists
 if (document.getElementById("prevButton")) {
     document.getElementById("prevButton").addEventListener("click", function() {
-        window.location.href = "/current-emissions.html"
+        window.location.href = "current-emissions.html"
     });
 }
 

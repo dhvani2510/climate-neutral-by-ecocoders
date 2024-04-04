@@ -60,7 +60,7 @@ if (gradient) {
     gradient.addColorStop(1, "#a0e5f2");
 }
 
-var gradient2 = ctx ? ctx.createLinearGradient(0, 0,1000, 0) : null;
+var gradient2 = ctx ? ctx.createLinearGradient(0, 0, 1000, 0) : null;
 if (gradient2) {
     gradient2.addColorStop(0, "#8fb714");
     gradient2.addColorStop(1, "#c8eb61");
@@ -177,7 +177,7 @@ function calculateCharts() {
 // Event listener for previous button if it exists
 if (document.getElementById("prevButton")) {
     document.getElementById("prevButton").addEventListener("click", function() {
-        window.location.href = "/individual-savings.html"
+        window.location.href = "individual-savings.html"
     });
 }
 

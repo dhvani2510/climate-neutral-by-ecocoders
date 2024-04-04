@@ -79,7 +79,7 @@ function renderCharts(vehicles) {
 // Event listener for previous button if it exists
 if (document.getElementById("prevButton")) {
     document.getElementById("prevButton").addEventListener("click", function() {
-        window.location.href = "/main.html"
+        window.location.href = "main.html"
     });
 }
 
@@ -87,7 +87,7 @@ if (document.getElementById("prevButton")) {
 // Event listener for next button
 if (document.getElementById("nextButton")) {
     document.getElementById("nextButton").addEventListener("click", function() {
-        window.location.href = "/green-options.html"
+        window.location.href = "green-options.html"
     });
 }
 
