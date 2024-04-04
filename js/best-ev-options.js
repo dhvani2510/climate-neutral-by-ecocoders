@@ -40,6 +40,8 @@ function addRowToTable(tbody, fleet) {
     createTdFor(row, "Consumption", fleet.CombElectricLeConsumption.toFixed(1));
     createTdFor(row, "NewAnnualEmissions", fleet.new_annual_emissions.toFixed(2));
     createTdFor(row, "EmissionsIntensity", fleet.ev_emissions_intensity.toFixed(2));
+    createTdFor(row, "NA Manufactured", NA_manufactured.includes(fleet.Make) ? "Yes" : "No");
+
     tbody.appendChild(row);
 }
 
