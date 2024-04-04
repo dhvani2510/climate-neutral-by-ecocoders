@@ -318,12 +318,12 @@ function submitData() {
             // update the tr for the record
             const tr = document.querySelector(`tr[data-id="${selectedVehicle}"]`);
             populateRow(fleet, tr);
-            vehicleadded(`Vehicle updated successfully!!`, "success", 3000);
+            vehicleadded(`Vehicle updated successfully!!`, "success", 1000);
         } else {
             fleetData.push(fleet);
             const tbody = document.getElementById("fleetTable").tBodies[0];
             addRowToTable(tbody, fleet);
-            vehicleadded(`Vehicle added successfully!!`, "success", 3000);
+            vehicleadded(`Vehicle added successfully!!`, "success", 1000);
         }
         localStorage.setItem("fleetData", JSON.stringify(fleetData));
         document.querySelector('.emptyRow') ? document.querySelector('.emptyRow').remove() : null;
@@ -362,7 +362,7 @@ function deleteVehicleCallBack() {
     localStorage.setItem('fleetData', JSON.stringify(fleetData));
     console.log("Deleted vehicle from localstorage");
     closeModal();
-    vehicledeleted("Vehicle deleted successfully", "success", 3000);
+    vehicledeleted("Vehicle deleted successfully", "success", 1000);
 }
 
 function deleteRow() {
@@ -394,7 +394,7 @@ function searchTable() {
         const rowText = row.textContent.toLowerCase();
         row.classList.toggle('hide', rowText.indexOf(searchTerm) < 0);
         row.style.setProperty('--delay', index / 25 + 's');
-    });    
+    });
 }
 
 table_headings.forEach((head, i) => {

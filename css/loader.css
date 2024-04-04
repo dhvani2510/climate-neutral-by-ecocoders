@@ -24,7 +24,7 @@ body {
     left: 0;
     background: #fff;
     border-radius: 30%;
-    -webkit-animation: move 5s infinite;
+    -webkit-animation: move 2s infinite;
 }
 
 p {
