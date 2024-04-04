@@ -70,7 +70,7 @@ function renderCharts(vehicles) {
         }]
     };
 
-    canvas.height = canvas2.height = vehicles.length === 1 ? 100 : vehicles.length * 75;
+    canvas.height = canvas2.height = vehicles.length === 1 ? 100 : vehicles.length * 100;
 
     createChart(ctx, chartData, "Fleet Data", "Emissions", "Total Emissions");
     createChart(ctx2, chartData2, "Fleet Data", "Emissions Intensity", "Total Emission Intensity");
@@ -136,7 +136,8 @@ function createChart(ctx, chartData, yTitle, xTitle, legendTitle) {
                     font: { size: 20 },
                     color: "#000000",
                 }
-            }
+            },
+            barThickness: 40
         }
     });
 }
