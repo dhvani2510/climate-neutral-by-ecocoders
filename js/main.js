@@ -329,6 +329,7 @@ function submitData() {
         document.querySelector('.emptyRow') ? document.querySelector('.emptyRow').remove() : null;
         document.getElementById("nextButton").disabled = false;
         closeModal();
+        window.location.reload();
     } else {
         return;
     }

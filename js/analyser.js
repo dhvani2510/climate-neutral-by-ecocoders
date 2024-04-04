@@ -38,6 +38,7 @@ async function calculateSavings(vehicle) {
 function evaluateSavings(vehicle, ev_data) {
     let optionSelected = vehicle['selectedOption'];
     let type = vehicle['type'];
+    var selectedEV = null;
 
     console.log("Option selected: " + optionSelected);
     switch (optionSelected) {
@@ -49,8 +50,21 @@ function evaluateSavings(vehicle, ev_data) {
                 ev_data = ev_data.filter(x => truckTypes.includes(x['ClassId']));
             ev_data = ev_data.sort((x, y) => x['RankingAll'] - y['RankingAll']);
             ev_data = ev_data.slice(0, 15);
-            selectedEV = calculations(ev_data, vehicle);
+
+            ev_data.map(element => {
+                element.electical_efficiency = (element['CombElectricLeConsumption'] * 8.9) / 100;
+                element.ev_emissions_intensity = element.electical_efficiency * emmisionCoefficient;
+                element.savings = ((vehicle['current_emission_intensity'] - element.ev_emissions_intensity) / vehicle['current_emission_intensity']);
+                element.percent_savings = (element.savings * 100);
+                element.total_emissions_savings = element.savings * vehicle['current_annual_emission']
+                element.new_annual_emissions = vehicle['current_annual_emission'] - element.total_emissions_savings
+            });
+
+            ev_data = ev_data.sort((x, y) => x['total_emissions_savings'] - y['total_emissions_savings']);
+            selectedEV = ev_data[0];
             console.log(selectedEV);
+            console.log(selectedEV.percent_savings);
+            console.log(Math.trunc(selectedEV['percent_savings']));
             vehicle['percent_savings'] = Math.trunc(selectedEV['percent_savings']);
             vehicle['savings'] = (selectedEV['total_emissions_savings'] / 1000000).toFixed(2);
             return;
@@ -64,8 +78,18 @@ function evaluateSavings(vehicle, ev_data) {
             ev_data = ev_data.filter(x => x['FuelTypeId'] == 'E');
             ev_data = ev_data.sort((x, y) => x['RankingAll'] - y['RankingAll']);
             ev_data = ev_data.slice(0, 10);
-            selectedEV = calculations(ev_data, vehicle);
-            console.log(selectedEV);
+
+            ev_data.map(element => {
+                element.electical_efficiency = (element['CombGasConsumption'] * 8.9) / 100;
+                element.ev_emissions_intensity = element.electical_efficiency * emmisionCoefficient;
+                element.savings = ((vehicle['current_emission_intensity'] - element.ev_emissions_intensity) / vehicle['current_emission_intensity']);
+                element.percent_savings = (element.savings * 100);
+                element.total_emissions_savings = element.savings * vehicle['current_annual_emission']
+                element.new_annual_emissions = vehicle['current_annual_emission'] - element.total_emissions_savings
+            });
+
+            ev_data = ev_data.sort((x, y) => x['total_emissions_savings'] - y['total_emissions_savings']);
+            selectedEV = ev_data[0];
 
             if (selectedEV) {
                 vehicle['percent_savings'] = Math.trunc(selectedEV['percent_savings']);
@@ -81,7 +105,18 @@ function evaluateSavings(vehicle, ev_data) {
             ev_data = ev_data.filter(x => x['FuelTypeId'] == 'E');
             ev_data = ev_data.sort((x, y) => x['RankingAll'] - y['RankingAll']);
             ev_data = ev_data.slice(0, 10);
-            selectedEV = calculations(ev_data, vehicle);
+
+            ev_data.map(element => {
+                element.electical_efficiency = (element['CombGasConsumption'] * 8.9) / 100;
+                element.ev_emissions_intensity = element.electical_efficiency * emmisionCoefficient;
+                element.savings = ((vehicle['current_emission_intensity'] - element.ev_emissions_intensity) / vehicle['current_emission_intensity']);
+                element.percent_savings = (element.savings * 100);
+                element.total_emissions_savings = element.savings * vehicle['current_annual_emission']
+                element.new_annual_emissions = vehicle['current_annual_emission'] - element.total_emissions_savings
+            });
+
+            ev_data = ev_data.sort((x, y) => x['total_emissions_savings'] - y['total_emissions_savings']);
+            selectedEV = ev_data[0];
             if (selectedEV) {
                 vehicle['percent_savings'] = Math.trunc(selectedEV['percent_savings']);
                 vehicle['savings'] = (selectedEV['total_emissions_savings'] / 1000000).toFixed(2);
@@ -102,27 +137,13 @@ function evaluateSavings(vehicle, ev_data) {
             return;
         case "B20 Biodiesel Usage":
             vehicle['percent_savings'] = 15;
-            vehicle['savings'] = ((0.15 * vehicle['currentAnnualEmissions']) / 1000000).toFixed(2);
+            vehicle['savings'] = ((0.15 * vehicle['current_annual_emission']) / 1000000).toFixed(2);
             return;
         case "Nothing":
             return;
         default:
             return;
     }
-}
-
-function calculations(ev_data, vehicle) {
-    ev_data.map(element => {
-        element.electical_efficiency = (element['CombElectricLeConsumption'] * 8.9) / 100;
-        element.ev_emissions_intensity = element.electical_efficiency * emmisionCoefficient;
-        element.savings = ((vehicle['current_emission_intensity'] - element.ev_emissions_intensity) / vehicle['current_emission_intensity']);
-        element.percent_savings = (element.savings * 100);
-        element.total_emissions_savings = element.savings * vehicle['current_annual_emission']
-        element.new_annual_emissions = vehicle['current_annual_emission'] - element.total_emissions_savings
-    });
-
-    ev_data = ev_data.sort((x, y) => x['total_emissions_savings'] - y['total_emissions_savings']);
-    return ev_data[0];
 }
 
 function findRightSize(ev_data, vehicle) {
@@ -140,8 +161,18 @@ function findRightSize(ev_data, vehicle) {
         ev_data = ev_data_nobiofuel.slice(0, ev_data_nobiofuel.length - 1);
         ev_data = ev_data.concat(ev_data_biofuel.slice(0, ev_data_biofuel.length - 1));
     }
-    let selected = calculations(ev_data, vehicle);
-    return selected;
+
+    ev_data.map(element => {
+        element.electical_efficiency = (element['CombGasConsumption'] * 8.9) / 100;
+        element.ev_emissions_intensity = element.electical_efficiency * emmisionCoefficient;
+        element.savings = ((vehicle['current_emission_intensity'] - element.ev_emissions_intensity) / vehicle['current_emission_intensity']);
+        element.percent_savings = (element.savings * 100);
+        element.total_emissions_savings = element.savings * vehicle['current_annual_emission']
+        element.new_annual_emissions = vehicle['current_annual_emission'] - element.total_emissions_savings
+    });
+
+    ev_data = ev_data.sort((x, y) => x['total_emissions_savings'] - y['total_emissions_savings']);
+    return ev_data[0];
 }
 
 function evaluateBestEVOptions(ev_data) {
