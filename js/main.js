@@ -361,7 +361,6 @@ function deleteVehicleCallBack() {
     deleteRow();
     fleetData = deleteObjectFromArray(fleetData, 'id', selectedVehicle)
     localStorage.setItem('fleetData', JSON.stringify(fleetData));
-    console.log("Deleted vehicle from localstorage");
     closeModal();
     vehicledeleted("Vehicle deleted successfully", "success", 1000);
 }
@@ -500,7 +499,6 @@ function processCSV(contents) {
             existingVehicle.fuelType = fuelType;
             existingVehicle.flexFuel = flexFuel;
             existingVehicle.quantity = quantity;
-            console.log(existingVehicle);
             populateRow(existingVehicle, document.querySelector(`tr[data-id="${existingVehicle.id}"]`));
         } else {
             // Add the new vehicle to the fleetData array

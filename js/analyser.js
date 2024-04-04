@@ -40,7 +40,6 @@ function evaluateSavings(vehicle, ev_data) {
     let type = vehicle['type'];
     var selectedEV = null;
 
-    console.log("Option selected: " + optionSelected);
     switch (optionSelected) {
         case "Replace with EV Vehicle":
             ev_data = ev_data.filter(x => x['VehicleTypeId'] == 'BEV' || x['VehicleTypeId'] == 'PHEV');
@@ -62,9 +61,6 @@ function evaluateSavings(vehicle, ev_data) {
 
             ev_data = ev_data.sort((x, y) => x['total_emissions_savings'] - y['total_emissions_savings']);
             selectedEV = ev_data[0];
-            console.log(selectedEV);
-            console.log(selectedEV.percent_savings);
-            console.log(Math.trunc(selectedEV['percent_savings']));
             vehicle['percent_savings'] = Math.trunc(selectedEV['percent_savings']);
             vehicle['savings'] = (selectedEV['total_emissions_savings'] / 1000000).toFixed(2);
             return;

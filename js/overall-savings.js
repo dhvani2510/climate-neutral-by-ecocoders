@@ -150,10 +150,12 @@ window.onload = function() {
         total_saving += parseFloat(item['savings']);
         total_current_emissions += parseFloat(item['current_emission_in_tons']);
     });
-    console.log(total_saving, total_current_emissions);
     document.querySelector(".savings-value").innerHTML = total_saving.toFixed(2);
-
-    percent_overall_savings = (((total_current_emissions - total_saving) / total_current_emissions) * 100).toFixed(0);
+    if (total_saving == 0) {
+        percent_overall_savings = 0;
+    } else {
+        percent_overall_savings = (total_saving / total_current_emissions) * 100
+    }
     localStorage.setItem('percent_overall_savings', percent_overall_savings);
     totalRot = ((percent_overall_savings / 100) * 180 * Math.PI) / 180;
     getOverallSavingsPieChart()

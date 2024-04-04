@@ -193,7 +193,6 @@ function searchTable() {
 
     rows.forEach((row, index) => {
         const rowText = row.textContent.toLowerCase();
-        console.log(rowText);
         row.classList.toggle('hide', rowText.indexOf(searchTerm) < 0);
         row.style.setProperty('--delay', index / 25 + 's');
     });

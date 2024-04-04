@@ -25,7 +25,6 @@ var fuel_emissions_factor = {
 }
 
 window.onload = function() {
-    console.log(vehicles);
     vehicles.forEach(vehicle => {
         calculateEmissions(vehicle);
     });
@@ -35,7 +34,6 @@ window.onload = function() {
 
 
 function calculateEmissions(vehicle) {
-    console.log(vehicle);
     vehicle.current_fuel_efficiency = vehicle.annualFuel / vehicle.annualVKT;
     vehicle.current_annual_emission = vehicle.annualFuel * fuel_emissions_factor[vehicle.fuelType]; //gCO2e
     vehicle.current_emission_intensity = vehicle.current_annual_emission / vehicle.annualVKT; //gC02e/km

@@ -142,7 +142,6 @@ function createOptionsList(optionDropdown, item) {
             selectList.style.display = "none";
         }
     });
-    console.log(item['selectedOption']);
     if (item['selectedOption'] && item['selectedOption'] != "" && item['selectedOption'] != "Select option") {
         span.innerHTML = item['selectedOption'];
     } else {
