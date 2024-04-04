@@ -2,7 +2,7 @@ var vehicles = JSON.parse(localStorage.getItem("best_ev_vehicles")) || [];
 var carTypes = ['T', 'I', 'S', 'C', 'M', 'L', 'WS', 'WM'];
 var truckTypes = ['PS', 'PL', 'US', 'UL', 'V', 'VC', 'VP', 'SP']
     // list of NA manufacturer 
-var NA_manufactured = ["Tesla", "Lucid", "Ford", "Chevrolet"];
+var NA_manufactured = ["Tesla", "Lucid", "Ford", "Chevrolet", "Volvo", "Cadillac", "Chrysler", "Dodge", "GMC", "Jeep", "Lincoln", "Rivian"];
 window.onload = function() {
     if (vehicles.length != 0) {
         let tbody = document.getElementById("fleetTable").tBodies[0];
@@ -158,7 +158,7 @@ function calculateCharts() {
                 },
                 title: {
                     display: true,
-                    text: "Emission Intensities",
+                    text: "Comparative Stats on Cleaner Mobility Solutions",
                     color: "black",
                     font: {
                         size: 20
