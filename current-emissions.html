@@ -5,16 +5,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Climate Neutral - Current Emissions</title>
+    <!-- Link to CSS styles -->
     <link rel="stylesheet" href="css/common-styles.css" />
     <link rel="stylesheet" href="css/current-emissions-styles.css" />
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <!-- Chart.js library for generating charts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Scripts -->
     <script src="js/common.js" defer></script>
     <script src="js/current-emmissions.js" defer></script>
 </head>
 
 <body>
-    <!-- Header -->
+    <!-- Header section -->
     <header>
         <img class="logo" onclick="window.location.href='landing.html'" src="assets/climate1.png" alt="Logo" />
         <nav>
@@ -28,39 +32,47 @@
         </nav>
     </header>
 
+    <!-- Heading section -->
     <div class="row heading">
         Current Emissions
     </div>
 
+    <!-- Main Section -->
     <main id="dynamic-divs">
         <div style="flex-grow: 1;">
+            <!-- Buttons section -->
             <div id="buttons">
                 <div class="export__file" onclick="window.print()">
                     <button class="print-btn"></button>
                 </div>
             </div>
+            <!-- Chart canvas  for current annual emissions-->
             <div class="charts-canvas">
                 <canvas id="myChart"></canvas>
             </div>
+            <!-- Another chart canvas for emissions intensitites-->
             <div class="charts-canvas">
                 <canvas id="myChart2"></canvas>
             </div>
-            <!-- <div id="plotlyChart" ></div> -->
         </div>
+        <!-- Pagination buttons -->
         <div class="row buttons">
             <button id="prevButton" class="button">Previous</button>
             <button class="button" id="nextButton">Next</button>
         </div>
     </main>
 
+    <!-- Settings modal -->
     <div id="settingsModal" class="modal" role="dialog">
         <span onclick="closeSettingsModal()">
-        <img class="close" src="assets/icons/close-icon.png" alt="Close Icon" />
-      </span>
+            <img class="close" src="assets/icons/close-icon.png" alt="Close Icon" />
+        </span>
+        <!-- Modal header -->
         <h1 class="modal-header">Settings</h1>
         <div class="modal-row">
             <img class="settings-icon" src="assets/icons/settings_car.gif" alt="Settings Image" />
             <div class="modal-col">
+                <!-- Dropdown for selecting province -->
                 <label for="provinceSelect">Select Province</label>
                 <div class="input-field">
                     <div class="option-dropdown" id="provinceSelect">
@@ -72,6 +84,7 @@
                     </div>
                 </div>
 
+                <!-- Input field displaying emission coefficient -->
                 <label for="emissionCoefficient">Emission Coefficient</label>
                 <div class="input-field">
                     <div id="emissionCoefficient"></div>
@@ -80,9 +93,10 @@
         </div>
     </div>
 
+    <!-- Overlay for modal -->
     <div class="overlay" id="overlay"></div>
 
-    <!-- Footer -->
+    <!-- Footer section -->
     <footer class="footer">
         <div class="footer-start">
             <div class="line"></div>

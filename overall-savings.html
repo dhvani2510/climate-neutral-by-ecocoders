@@ -5,16 +5,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Climate Neutral - Overall Savings</title>
+    <!-- Link to CSS styles -->
     <link rel="stylesheet" href="css/common-styles.css" />
     <link rel="stylesheet" href="css/overall-savings-styles.css" />
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <!-- Chart.js library for charts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Scripts -->
     <script src="js/common.js" defer></script>
     <script src="js/overall-savings.js" defer></script>
 </head>
 
 <body>
-    <!-- Header -->
+    <!-- Header section -->
     <header>
         <img class="logo" onclick="window.location.href='landing.html'" src="assets/climate1.png" alt="Logo" />
         <nav>
@@ -28,33 +32,41 @@
         </nav>
     </header>
 
+    <!-- Heading section -->
     <div class="heading">
         Action Savings
+        <!-- Toggle buttons navigation for switching between individual and overall savings -->
         <div class="action-savings">
             <a href="individual-savings.html">Individual Savings</a>
             <a href="overall-savings.html" class="active">Overall Savings</a>
         </div>
     </div>
 
+    <!-- Main Section -->
     <main id="dynamic-divs">
         <div style="flex-grow: 1;">
             <div class="row">
+                <!-- Column for displaying car image -->
                 <div class="car">
                     <img src="assets/icons/car234.png" alt="car" />
                 </div>
+                <!-- Column for displaying savings information -->
                 <div class="info">
                     <div class="savings-info">
+                        <!-- Display full fleet savings -->
                         <div class="savings-emissions">Full Fleet Savings:
                             <span class="savings-value">25</span>
                             <sup>Tonnes / Year</sup>
                         </div>
                         <br>
+                        <!-- Display emission savings percentage -->
                         <div class="savings-percentage">
                             <div class="emission-savings">
                                 <h4>Emission Savings:</h4>
+                                <!-- Speedometer canvas -->
                                 <div class="speedo">
                                     <canvas id="canvas" height="175" width="350" class="m-auto">
-                                </canvas>
+                                    </canvas>
                                     <p class="text">0 %</p>
                                 </div>
                             </div>
@@ -62,25 +74,29 @@
                     </div>
                 </div>
             </div>
+            <!-- Chart canvas for overall savings -->
             <div class="charts-canvas">
                 <canvas id="overallSavingsChart"></canvas>
             </div>
         </div>
+        <!-- Pagination buttons -->
         <div class="row buttons">
             <button id="prevButton" class="button">Previous</button>
             <button class="button" id="nextButton">Next</button>
         </div>
-        </div>
     </main>
 
+    <!-- Settings modal -->
     <div id="settingsModal" class="modal" role="dialog">
         <span onclick="closeSettingsModal()">
             <img class="close" src="assets/icons/close-icon.png" alt="Close Icon" />
         </span>
+        <!-- Modal header -->
         <h1 class="modal-header">Settings</h1>
         <div class="modal-row">
             <img class="settings-icon" src="assets/icons/settings_car.gif" alt="Settings Image" />
             <div class="modal-col">
+                <!-- Dropdown for selecting province -->
                 <label for="provinceSelect">Select Province</label>
                 <div class="input-field">
                     <div class="option-dropdown" id="provinceSelect">
@@ -92,6 +108,7 @@
                     </div>
                 </div>
 
+                <!-- Input field displaying emission coefficient -->
                 <label for="emissionCoefficient">Emission Coefficient</label>
                 <div class="input-field">
                     <div id="emissionCoefficient"></div>
@@ -100,9 +117,10 @@
         </div>
     </div>
 
+    <!-- Overlay for modal -->
     <div class="overlay" id="overlay"></div>
 
-    <!-- Footer -->
+    <!-- Footer section -->
     <footer class="footer">
         <div class="footer-start">
             <div class="line"></div>

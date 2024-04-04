@@ -5,16 +5,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Climate Neutral - Home</title>
+    <!-- Links to CSS styles -->
     <link rel="stylesheet" href="css/common-styles.css" />
     <link rel="stylesheet" href="css/main-styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <!-- Scripts -->
     <script src="js/common.js" defer></script>
     <script src="js/main.js" defer></script>
 </head>
 
 <body>
-    <!-- Header -->
+    <!-- Header section -->
     <header>
         <img class="logo" onclick="window.location.href='landing.html'" src="assets/climate1.png" alt="Logo" />
         <nav>
@@ -30,12 +33,15 @@
 
     <!-- Main Section -->
     <main class="main">
+        <!-- Content section -->
         <div class="table">
             <section class="table__header">
+                <!-- Search input field -->
                 <div class="input-group search col">
                     <input type="search" placeholder="Search Data..." />
                     <img src="assets/icons/search.png" alt="" />
                 </div>
+                <!-- Actions buttons -->
                 <div class="actions col">
                     <div class="export__file" onclick="openDataModal()">
                         <button class="add_record-btn"></button>
@@ -49,9 +55,11 @@
                     </div>
                 </div>
             </section>
+            <!-- Table body -->
             <section class="table__body">
                 <table id="fleetTable">
                     <thead>
+                        <!-- Table headers -->
                         <tr>
                             <th>Id <span class="icon-arrow">&UpArrow;</span></th>
                             <th>Description <span class="icon-arrow">&UpArrow;</span></th>
@@ -71,21 +79,24 @@
                 </table>
             </section>
         </div>
+        <!-- Pagination buttons -->
         <div class="row buttons">
             <button id="prevButton" style="display: none" class="button">Previous</button>
             <button class="button" id="nextButton">Next</button>
         </div>
     </main>
 
-    <!-- setting modal -->
+    <!-- Settings modal -->
     <div id="settingsModal" class="modal" role="dialog">
         <span onclick="closeSettingsModal()">
-        <img class="close" src="assets/icons/close-icon.png" alt="Close Icon" />
-      </span>
+            <img class="close" src="assets/icons/close-icon.png" alt="Close Icon" />
+        </span>
+        <!-- Modal header -->
         <h1 class="modal-header">Settings</h1>
         <div class="modal-row">
             <img class="settings-icon" src="assets/icons/settings_car.gif" alt="Settings Image" />
             <div class="modal-col">
+                <!-- Dropdown for selecting province -->
                 <label for="provinceSelect">Select Province</label>
                 <div class="input-field">
                     <div class="option-dropdown" id="provinceSelect">
@@ -97,6 +108,7 @@
                     </div>
                 </div>
 
+                <!-- Input field displaying emission coefficient -->
                 <label for="emissionCoefficient">Emission Coefficient</label>
                 <div class="input-field">
                     <div id="emissionCoefficient"></div>
@@ -105,22 +117,22 @@
         </div>
     </div>
 
+    <!-- Data modal -->
     <div id="dataRowModal" class="dataRowModal">
         <div class="modal-content">
             <span onclick="closeModal()">
-          <img
-            class="close"
-            src="assets/icons/close-icon.png"
-            alt="Close Icon"
-          />
-        </span>
+                <img class="close" src="assets/icons/close-icon.png" alt="Close Icon" />
+            </span>
+            <!-- Modal header -->
             <h1 class="modal-header" id="data-modal-header"></h1>
             <div class="modal-row">
                 <div class="fields">
+                    <!-- Input field for description -->
                     <label for="modalDescription">Description</label>
                     <input class="input-field" type="text" id="modalDescription" />
                 </div>
                 <div class="fields">
+                    <!-- Dropdown for selecting type -->
                     <label for="modalType">Type</label>
                     <div class="input-field" id="type">
                         <div class="option-dropdown">
@@ -134,13 +146,14 @@
                 </div>
             </div>
 
-            <!-- Second row of inputs -->
             <div class="modal-row">
                 <div class="fields">
+                    <!-- Input field for year -->
                     <label for="modalYear">Year</label>
                     <input class="input-field" type="number" id="modalYear" min="1990" max="2025" />
                 </div>
                 <div class="fields">
+                    <!-- Input field for make -->
                     <label for="modalMake">Make</label>
                     <input class="input-field" type="text" id="modalMake" />
                 </div>
@@ -148,22 +161,25 @@
 
             <div class="modal-row">
                 <div class="fields">
+                    <!-- Input field for model -->
                     <label for="modalModel">Model</label>
                     <input class="input-field" type="text" id="modalModel" />
                 </div>
                 <div class="fields">
+                    <!-- Input field for annual VKT -->
                     <label for="modalAnnualVKT">Annual VKT</label>
                     <input class="input-field" type="number" id="modalAnnualVKT" />
                 </div>
             </div>
 
-            <!-- Third row of inputs -->
             <div class="modal-row">
                 <div class="fields">
+                    <!-- Input field for annual fuel -->
                     <label for="modalAnnualFuel">Annual Fuel</label>
                     <input class="input-field" type="number" id="modalAnnualFuel" />
                 </div>
                 <div class="fields">
+                    <!-- Dropdown for selecting fuel type -->
                     <label for="modalFuelType">Fuel Type</label>
                     <div class="input-field" id="fueltype">
                         <div class="option-dropdown">
@@ -177,40 +193,39 @@
                 </div>
             </div>
 
-            <!-- Fourth row of inputs -->
             <div class="modal-row">
                 <div class="fields" id="flexfuel">
                     <label for="modalFlexFuel">Flex Fuel</label>
                     <input type="text" id="modalFlexFuel" value="" class="hidden" hidden/>
+                    <!-- Buttons for selecting flex fuel -->
                     <div class="yes-no-select">
                         <button id="yes-button" onclick="selectFlexFuel('Yes')">
-                <i class="fas fa-check"></i> Yes
-              </button>
+                            <i class="fas fa-check"></i> Yes
+                        </button>
                         <button id="no-button" onclick="selectFlexFuel('No')">
-                <i class="fas fa-times"></i> No
-              </button>
+                            <i class="fas fa-times"></i> No
+                        </button>
                     </div>
                 </div>
                 <div class="fields">
+                    <!-- Input field for quantity -->
                     <label for="modalQuantity">Quantity</label>
                     <input class="input-field" type="number" id="modalQuantity" min="1" />
                 </div>
             </div>
         </div>
+        <!-- Modal buttons -->
         <div class="modal-buttons">
             <button class="button" onclick="validateData()">Validate</button>
-            <button class="button" id="vehicle_modal_submit_button" onclick="submitData()">
-          Save
-        </button>
-            <button id="deleteButton" class="button red" onclick="deleteVehicle()">
-          Delete
-        </button>
+            <button class="button" id="vehicle_modal_submit_button" onclick="submitData()">Save</button>
+            <button id="deleteButton" class="button red" onclick="deleteVehicle()">Delete</button>
         </div>
     </div>
 
+    <!-- Overlay for modal -->
     <div class="overlay" id="overlay"></div>
 
-    <!-- Footer -->
+    <!-- Footer section -->
     <footer class="footer">
         <div class="footer-start">
             <div class="line"></div>
