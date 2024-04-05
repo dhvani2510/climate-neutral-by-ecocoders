@@ -1,4 +1,3 @@
-// Function to call the third-party API
 async function callAPI() {
     const url = 'https://fcrapi.azurewebsites.net/VehiclesPublic';
     const header = {
@@ -48,4 +47,8 @@ async function callAPI() {
     }
 }
 
-export default callAPI;
+if (typeof test === 'function') {
+    module.exports = {
+        callAPI
+    }
+}
