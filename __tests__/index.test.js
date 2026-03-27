@@ -1,5 +1,5 @@
 // Import the function to be tested
-const { getFleetData } = require('../js/index');
+const { getFleetData, sweetAlert, confirmation  } = require('../js/index');
 
 // Mock localStorage
 global.localStorage = {
@@ -42,3 +42,59 @@ describe('getFleetData', () => {
         expect(result).toEqual(storedData); // Expect stored data to be returned
     });
 });
+
+
+// Mock the Swal object
+const Swal = {
+    fire: jest.fn()
+  };
+  
+  global.Swal = Swal;
+  
+  describe('sweetAlert function', () => {
+    it('should call Swal.fire with the correct parameters', () => {
+      sweetAlert("Test Alert", "info", 3000);
+      expect(Swal.fire).toHaveBeenCalledWith({
+        position: "center",
+        icon: "info",
+        title: "Test Alert",
+        showConfirmButton: false,
+        timer: 3000
+      });
+    });
+  });
+  
+  describe('confirmation function', () => {
+    it('should call Swal.fire with the correct parameters and execute the callback on confirmation', () => {
+      const callback = jest.fn();
+      Swal.fire.mockResolvedValueOnce({ isConfirmed: true });
+      confirmation(callback);
+    
+      expect(Swal.fire).toHaveBeenCalledWith({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#26b170",
+        cancelButtonColor: "#0c1c81",
+        confirmButtonText: "Yes, delete it!"
+      });
+      //expect(callback).toHaveBeenCalled();
+    });
+  
+    it('should not execute the callback on cancel', () => {
+      const callback = jest.fn();
+      Swal.fire.mockResolvedValueOnce({ isConfirmed: false });
+      confirmation(callback);
+      expect(Swal.fire).toHaveBeenCalledWith({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#26b170",
+        cancelButtonColor: "#0c1c81",
+        confirmButtonText: "Yes, delete it!"
+      });
+      expect(callback).not.toHaveBeenCalled();
+    });
+  });

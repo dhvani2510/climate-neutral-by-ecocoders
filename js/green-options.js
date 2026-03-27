@@ -178,3 +178,66 @@ if (document.getElementById("nextButton")) {
         window.location.href = '/analyser.html';
     });
 }
+            // (type === "Light Duty Truck" && flexFuel === "No" && fuelType === "Diesel" && (id === 8 || id === 9 || id === 10 || id === 12 || id === 16)) ||
+            // (type === "Light Duty Truck" && flexFuel === "Yes" && fuelType === "Diesel" && (id === 14 || id === 8 || id === 9 || id === 10 || id === 12 || id === 16))
+
+            (type === "Car" && flexFuel === "Yes" && fuelType === "Gasoline" && (id === 1 || id === 3 || id === 7)) ||
+            (type === "Car" && flexFuel === "No" && fuelType === "Gasoline" && (id === 5 || id === 1 || id === 7)) ||
+            (type === "Light Duty Truck" && flexFuel === "No" && fuelType === "Gasoline" && (id === 1 || id === 6 || id === 2 || id === 2 || id === 7)) ||
+            (type === "Light Duty Truck" && flexFuel === "Yes" && fuelType === "Gasoline" && (id === 3 || id === 1 || id === 2 || id === 2 || id === 7)) ||
+            (type === "Light Duty Truck" && flexFuel === "No" && fuelType === "Diesel" && (id === 1 || id === 6 || id === 2 || id === 2 || id === 7)) ||
+            (type === "Light Duty Truck" && flexFuel === "Yes" && fuelType === "Diesel" && (id === 4 || id === 1 || id === 6 || id === 2 || id === 2 || id === 7))
+        ) {
+            var value= greenOptions.find(option => option.id === id)
+            selectedGreenOptions.push(value); 
+        }
+        
+    });
+    if(selectedGreenOptions.length == 0) {
+        var value= greenOptions.find(option => option.id === 7)
+        selectedGreenOptions.push(value); 
+    }
+
+    return selectedGreenOptions;
+}
+
+// function goToActionSavings() {
+//     console.log(fleetData);
+//     if( fleetData.some(x => x['selectedOption'] == "") )
+//     {
+//         console.error("Please select all green options");
+//         return;
+//     }
+//     localStorage.setItem('fleetData', JSON.stringify(fleetData)); // Update the local storage data
+//     window.location.href = "individualsavings.html";
+// }
+
+function goToAnalyser() {
+    if( fleetData.some(x => x['selectedOption'] == "") )
+    {
+        sweetAlert("Please select all options", "warning");
+        return;
+    }
+    localStorage.setItem('fleetData', JSON.stringify(fleetData)); // Update the local storage data
+    window.location.href = "analyser.html";
+}
+
+function goToUserInputPage() {
+    localStorage.setItem('fleetData', JSON.stringify(fleetData)); // Update the local storage data
+    window.location.href = "/main.html";
+}
+
+if (typeof test === 'function'){
+  
+    module.exports = {
+        evauateGreenOpitions,
+        populateContainer,
+        createDescriptionDiv,
+        createOptionsDiv,
+        createOptionsList,
+        updateGreenFleetOption,
+        getGreenOptionById,
+        getGreenOptions,
+        goToActionSavings
+    };
+}
